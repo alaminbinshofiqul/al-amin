@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Rangpur Government College</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #f97316;
+            --secondary-light: #fb923c;
+            --secondary-dark: #ea580c;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --gray-dark: #475569;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            mix-blend-mode: multiply;
+            opacity: 0.15;
+        }
+
+        .bg-blob-1 {
+            top: 5%;
+            left: 5%;
+            width: 25rem;
+            height: 25rem;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .bg-blob-2 {
+            top: 15%;
+            right: 10%;
+            width: 30rem;
+            height: 30rem;
+            background: linear-gradient(45deg, #10b981, #06b6d4);
+            animation: float 30s infinite ease-in-out 3s;
+        }
+
+        .bg-blob-3 {
+            bottom: 10%;
+            left: 15%;
+            width: 28rem;
+            height: 28rem;
+            background: linear-gradient(45deg, #a855f7, #8b5cf6);
+            animation: float 22s infinite ease-in-out 6s;
+        }
+
+        .bg-blob-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 22rem;
+            height: 22rem;
+            background: linear-gradient(45deg, #ef4444, #f43f5e);
+            animation: float 28s infinite ease-in-out 9s;
+        }
+
+        /* Floating Administrative Elements */
+        .admin-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .admin-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: adminFloat 10s infinite ease-in-out;
+        }
+
+        .admin-shape-1 {
+            top: 10%;
+            left: 8%;
+            font-size: 2.5rem;
+            animation-delay: 0s;
+        }
+
+        .admin-shape-2 {
+            top: 20%;
+            right: 12%;
+            font-size: 2rem;
+            animation-delay: 2s;
+        }
+
+        .admin-shape-3 {
+            top: 60%;
+            left: 5%;
+            font-size: 2.2rem;
+            animation-delay: 4s;
+        }
+
+        .admin-shape-4 {
+            bottom: 25%;
+            right: 8%;
+            font-size: 2.8rem;
+            animation-delay: 6s;
+        }
+
+        .admin-shape-5 {
+            top: 40%;
+            left: 15%;
+            font-size: 2.3rem;
+            animation-delay: 1s;
+        }
+
+        .admin-shape-6 {
+            bottom: 40%;
+            right: 20%;
+            font-size: 2.1rem;
+            animation-delay: 3s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(180deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-45px) rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes adminFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(180deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+            40%, 43% {
+                transform: translate3d(0, -30px, 0);
+            }
+            70% {
+                transform: translate3d(0, -15px, 0);
+            }
+            90% {
+                transform: translate3d(0, -4px, 0);
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 8rem 1rem 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(249, 115, 22, 0.1));
+            border-radius: 2rem;
+            margin: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--dark), var(--gray-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            margin: 4rem 1rem;
+            position: relative;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .leader-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .leader-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .leader-card:hover .leader-image img {
+            transform: scale(1.1);
+        }
+
+        .leader-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .leader-card:hover .leader-overlay {
+            transform: translateY(0);
+        }
+
+        .leader-content {
+            padding: 2rem;
+        }
+
+        .leader-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .leader-bio {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .leader-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* Departments Section */
+        .departments-section {
+            background: linear-gradient(135deg, var(--light), rgba(255, 255, 255, 0.8));
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            margin: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .departments-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(79, 70, 229, 0.05), transparent);
+            animation: shimmer 5s infinite;
+        }
+
+        .departments-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .department-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .department-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .department-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .department-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .department-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .department-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .department-stat {
+            text-align: center;
+            padding: 0.75rem;
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 0.75rem;
+        }
+
+        .department-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .department-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .department-button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+        }
+
+        .department-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Services Section */
+        .services-section {
+            margin: 4rem 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            box-shadow: 0 8px 12px -3px rgba(249, 115, 22, 0.3);
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .service-feature-icon {
+            color: var(--success);
+            font-size: 1rem;
+        }
+
+        .service-button {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
+        }
+
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Organizational Chart Section */
+        .org-chart-section {
+            background: linear-gradient(135deg, var(--dark), var(--gray-dark));
+            color: white;
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            margin: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-chart-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmer 5s infinite;
+        }
+
+        .org-chart-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .org-chart-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .org-chart-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 36rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .org-position {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 200px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .org-position:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .org-position-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .org-position-name {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin: 4rem 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(135deg, var(--info), #0ea5e9);
+        }
+
+        .contact-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .contact-detail-icon {
+            color: var(--primary);
+            font-size: 1.125rem;
+            margin-top: 0.125rem;
+        }
+
+        .contact-detail-text {
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .contact-hours {
+            margin-top: 1.5rem;
+        }
+
+        .contact-hours-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .contact-hours-list {
+            list-style: none;
+            color: var(--gray);
+        }
+
+        .contact-hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed rgba(100, 116, 139, 0.3);
+        }
+
+        .contact-hours-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark), #0f172a);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(79, 70, 229, 0.1), rgba(249, 115, 22, 0.1));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .hero-section {
+                padding: 4rem 1rem 3rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-image" id="parallaxBg"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+        <div class="bg-blob bg-blob-4"></div>
+    </div>
+
+    <!-- Floating Administrative Elements -->
+    <div class="admin-elements">
+        <div class="admin-shape admin-shape-1">🏛️</div>
+        <div class="admin-shape admin-shape-2">📋</div>
+        <div class="admin-shape admin-shape-3">👥</div>
+        <div class="admin-shape admin-shape-4">📊</div>
+        <div class="admin-shape admin-shape-5">🎯</div>
+        <div class="admin-shape admin-shape-6">⚖️</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section section" id="heroSection">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🏛️ Excellence in Governance</div>
+                <h1 class="hero-title">Administration</h1>
+                <p class="hero-subtitle">
+                    Our dedicated administrative team ensures the smooth operation of Rangpur Government College, 
+                    fostering an environment of academic excellence, innovation, and student success through 
+                    effective leadership and strategic governance.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">58</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Administrative Staff</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Departments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12,000+</div>
+                        <div class="stat-label">Students Served</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section section" id="leadershipSection">
+        <div class="container">
+            <h2 class="section-title">Leadership Team</h2>
+            <p class="section-subtitle">
+                Meet our distinguished leadership team committed to advancing educational excellence and institutional growth.
+            </p>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="images/principle.jpg" alt="Principal">
+                        <div class="leader-overlay">
+                            <h4>Vision & Mission</h4>
+                            <p>Leading the institution towards academic excellence and holistic development of students.</p>
+                        </div>
+                    </div>
+                    <div class="leader-content">
+                        <h3 class="leader-name">Dr. Mohammad Aminul Islam</h3>
+                        <p class="leader-position">Principal</p>
+                        <p class="leader-bio">
+                            With over 25 years of experience in higher education, Dr. Islam has been instrumental in 
+                            transforming Rangpur Government College into a premier educational institution. His vision 
+                            focuses on academic excellence, research innovation, and student development.
+                        </p>
+                        <div class="leader-contact">
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <span>+880 1234 567890</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span>
+                                <span>principal@rangpurcollege.edu.bd</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🕒</span>
+                                <span>Mon-Thu: 9:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="images/vice.jpeg" alt="Vice Principal">
+                        <div class="leader-overlay">
+                            <h4>Academic Leadership</h4>
+                            <p>Overseeing academic programs and ensuring quality education delivery.</p>
+                        </div>
+                    </div>
+                    <div class="leader-content">
+                        <h3 class="leader-name">Prof. Naseem Ahmed</h3>
+                        <p class="leader-position">Vice Principal (Academic)</p>
+                        <p class="leader-bio">
+                            Prof. Ahmed brings extensive expertise in curriculum development and academic administration. 
+                            She oversees all academic programs, faculty development, and ensures the maintenance of 
+                            high educational standards across all departments.
+                        </p>
+                        <div class="leader-contact">
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <span>+880 1234 567891</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span>
+                                <span>vp.academic@rangpurcollege.edu.bd</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🕒</span>
+                                <span>Mon-Thu: 9:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="images/p7.jpg" alt="Registrar">
+                        <div class="leader-overlay">
+                            <h4>Administrative Excellence</h4>
+                            <p>Managing student records, admissions, and administrative operations.</p>
+                        </div>
+                    </div>
+                    <div class="leader-content">
+                        <h3 class="leader-name">Mr. Rafiqul Haque</h3>
+                        <p class="leader-position">Registrar</p>
+                        <p class="leader-bio">
+                            Mr. Haque oversees all administrative functions including student admissions, records 
+                            management, and institutional compliance. His efficient management ensures smooth 
+                            operations and excellent student services.
+                        </p>
+                        <div class="leader-contact">
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <span>+880 1234 567892</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span>
+                                <span>registrar@rangpurcollege.edu.bd</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🕒</span>
+                                <span>Mon-Thu: 9:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments-section section" id="departmentsSection">
+        <div class="container">
+            <div class="departments-content">
+                <h2 class="section-title">Administrative Departments</h2>
+                <p class="section-subtitle">
+                    Our specialized departments work collaboratively to provide comprehensive support and services to students, faculty, and staff.
+                </p>
+                <div class="departments-grid">
+                    <div class="department-card">
+                        <div class="department-icon">🎓</div>
+                        <h3 class="department-title">Academic Affairs</h3>
+                        <p class="department-description">
+                            Manages curriculum development, academic policies, faculty affairs, and ensures quality education delivery across all programs.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">15</div>
+                                <div class="department-stat-label">Programs</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">120+</div>
+                                <div class="department-stat-label">Faculty</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+
+                    <div class="department-card">
+                        <div class="department-icon">👥</div>
+                        <h3 class="department-title">Student Affairs</h3>
+                        <p class="department-description">
+                            Provides comprehensive student support services including counseling, activities, housing, and student development programs.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">50+</div>
+                                <div class="department-stat-label">Services</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">12K+</div>
+                                <div class="department-stat-label">Students</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+
+                    <div class="department-card">
+                        <div class="department-icon">📊</div>
+                        <h3 class="department-title">Finance & Accounts</h3>
+                        <p class="department-description">
+                            Manages institutional finances, budgeting, fee collection, financial aid, and ensures transparent financial operations.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">₹5Cr+</div>
+                                <div class="department-stat-label">Annual Budget</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">95%</div>
+                                <div class="department-stat-label">Transparency</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+
+                    <div class="department-card">
+                        <div class="department-icon">👤</div>
+                        <h3 class="department-title">Human Resources</h3>
+                        <p class="department-description">
+                            Handles recruitment, staff development, policy implementation, and maintains a positive work environment for all employees.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">200+</div>
+                                <div class="department-stat-label">Employees</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">98%</div>
+                                <div class="department-stat-label">Satisfaction</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+
+                    <div class="department-card">
+                        <div class="department-icon">🏢</div>
+                        <h3 class="department-title">Infrastructure & Maintenance</h3>
+                        <p class="department-description">
+                            Maintains campus facilities, manages construction projects, and ensures a safe and conducive learning environment.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">50+</div>
+                                <div class="department-stat-label">Buildings</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">24/7</div>
+                                <div class="department-stat-label">Maintenance</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+
+                    <div class="department-card">
+                        <div class="department-icon">💻</div>
+                        <h3 class="department-title">IT Services</h3>
+                        <p class="department-description">
+                            Provides technology support, manages digital infrastructure, and implements innovative solutions for education and administration.
+                        </p>
+                        <div class="department-stats">
+                            <div class="department-stat">
+                                <div class="department-stat-number">1000+</div>
+                                <div class="department-stat-label">Devices</div>
+                            </div>
+                            <div class="department-stat">
+                                <div class="department-stat-number">99.9%</div>
+                                <div class="department-stat-label">Uptime</div>
+                            </div>
+                        </div>
+                        <button class="department-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section section" id="servicesSection">
+        <div class="container">
+            <h2 class="section-title">Administrative Services</h2>
+            <p class="section-subtitle">
+                Comprehensive services designed to support students, faculty, and staff in achieving their academic and professional goals.
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3 class="service-title">Admissions & Registration</h3>
+                    <p class="service-description">
+                        Streamlined admission process and comprehensive registration services for all academic programs.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Online Application System</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Document Verification</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Course Registration</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Academic Records</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3 class="service-title">Financial Services</h3>
+                    <p class="service-description">
+                        Complete financial support including fee payment, scholarships, and financial aid programs.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Online Fee Payment</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Scholarship Programs</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Financial Aid</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Payment Plans</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3 class="service-title">Academic Support</h3>
+                    <p class="service-description">
+                        Comprehensive academic support services to enhance student learning and success.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Tutoring Services</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Academic Counseling</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Study Groups</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Resource Centers</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3 class="service-title">Health & Wellness</h3>
+                    <p class="service-description">
+                        Complete health and wellness services to support physical and mental well-being.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Medical Center</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Counseling Services</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Emergency Care</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Wellness Programs</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Technical Support</h3>
+                    <p class="service-description">
+                        Comprehensive IT support and technical assistance for all digital needs.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Help Desk Support</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Software Assistance</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Network Access</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Digital Training</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3 class="service-title">Career Services</h3>
+                    <p class="service-description">
+                        Professional development and career guidance to prepare students for successful careers.
+                    </p>
+                    <ul class="service-features">
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Career Counseling</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Job Placement</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Resume Building</span>
+                        </li>
+                        <li class="service-feature">
+                            <span class="service-feature-icon">✓</span>
+                            <span>Interview Preparation</span>
+                        </li>
+                    </ul>
+                    <button class="service-button">Access Service</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizational Chart Section -->
+    <section class="org-chart-section section" id="orgChartSection">
+        <div class="container">
+            <div class="org-chart-content">
+                <h2 class="org-chart-title">Organizational Structure</h2>
+                <p class="org-chart-description">
+                    Our hierarchical structure ensures efficient governance, clear accountability, and effective decision-making processes.
+                </p>
+                <div class="org-chart">
+                    <div class="org-level">
+                        <div class="org-position">
+                            <div class="org-position-title">Principal</div>
+                            <div class="org-position-name">Dr. Mohammad Aminul Islam</div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-position">
+                            <div class="org-position-title">Vice Principal (Academic)</div>
+                            <div class="org-position-name">Prof. Nasreen Ahmed</div>
+                        </div>
+                        <div class="org-position">
+                            <div class="org-position-title">Vice Principal (Admin)</div>
+                            <div class="org-position-name">Dr. Kamal Hossain</div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-position">
+                            <div class="org-position-title">Registrar</div>
+                            <div class="org-position-name">Mr. Rafiqul Haque</div>
+                        </div>
+                        <div class="org-position">
+                            <div class="org-position-title">Controller of Examinations</div>
+                            <div class="org-position-name">Dr. Mahmuda Begum</div>
+                        </div>
+                        <div class="org-position">
+                            <div class="org-position-title">Librarian</div>
+                            <div class="org-position-name">Ms. Farhana Rahman</div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-position">
+                            <div class="org-position-title">Head of Science</div>
+                            <div class="org-position-name">Dr. Abdul Karim</div>
+                        </div>
+                        <div class="org-position">
+                            <div class="org-position-title">Head of Arts</div>
+                            <div class="org-position-name">Prof. Rashida Khatun</div>
+                        </div>
+                        <div class="org-position">
+                            <div class="org-position-title">Head of Commerce</div>
+                            <div class="org-position-name">Mr. Shahidul Islam</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section section" id="contactSection">
+        <div class="container">
+            <h2 class="section-title">Administrative Contacts</h2>
+            <p class="section-subtitle">
+                Get in touch with our administrative departments for assistance, inquiries, and support services.
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">🏛️</div>
+                        <h3 class="contact-title">Principal's Office</h3>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">👤</span>
+                            <span class="contact-detail-text">Dr. Mohammad Aminul Islam</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📞</span>
+                            <span class="contact-detail-text">+880 1234 567890</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">✉️</span>
+                            <span class="contact-detail-text">principal@rangpurcollege.edu.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📍</span>
+                            <span class="contact-detail-text">Room 101, Administrative Building</span>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4 class="contact-hours-title">Office Hours</h4>
+                        <ul class="contact-hours-list">
+                            <li class="contact-hours-item">
+                                <span>Sunday - Thursday</span>
+                                <span>9:00 AM - 4:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Friday</span>
+                                <span>9:00 AM - 12:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Saturday</span>
+                                <span>Closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">📋</div>
+                        <h3 class="contact-title">Registrar's Office</h3>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">👤</span>
+                            <span class="contact-detail-text">Mr. Rafiqul Haque</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📞</span>
+                            <span class="contact-detail-text">+880 1234 567892</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">✉️</span>
+                            <span class="contact-detail-text">registrar@rangpurcollege.edu.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📍</span>
+                            <span class="contact-detail-text">Room 201, Administrative Building</span>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4 class="contact-hours-title">Office Hours</h4>
+                        <ul class="contact-hours-list">
+                            <li class="contact-hours-item">
+                                <span>Sunday - Thursday</span>
+                                <span>9:00 AM - 4:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Friday</span>
+                                <span>9:00 AM - 12:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Saturday</span>
+                                <span>Closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <div class="contact-icon">👥</div>
+                        <h3 class="contact-title">Student Affairs</h3>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">👤</span>
+                            <span class="contact-detail-text">Ms. Farhana Rahman</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📞</span>
+                            <span class="contact-detail-text">+880 1234 567893</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">✉️</span>
+                            <span class="contact-detail-text">studentaffairs@rangpurcollege.edu.bd</span>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">📍</span>
+                            <span class="contact-detail-text">Room 301, Student Center</span>
+                        </div>
+                    </div>
+                    <div class="contact-hours">
+                        <h4 class="contact-hours-title">Office Hours</h4>
+                        <ul class="contact-hours-list">
+                            <li class="contact-hours-item">
+                                <span>Sunday - Thursday</span>
+                                <span>8:00 AM - 5:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Friday</span>
+                                <span>9:00 AM - 1:00 PM</span>
+                            </li>
+                            <li class="contact-hours-item">
+                                <span>Saturday</span>
+                                <span>9:00 AM - 12:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Rangpur Government College Administration</h3>
+                <p class="footer-description">
+                    Committed to excellence in governance, academic leadership, and student success through innovative administration and strategic planning.
+                </p>
+                <div class="footer-meta">
+                    <span>© 2024 Rangpur Government College</span>
+                    <span>•</span>
+                    <span>Administrative Excellence</span>
+                    <span>•</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const sections = document.querySelectorAll('.section');
+        const parallaxBg = document.getElementById('parallaxBg');
+        const leaderCards = document.querySelectorAll('.leader-card');
+        const departmentCards = document.querySelectorAll('.department-card');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const orgPositions = document.querySelectorAll('.org-position');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show sections with staggered animation
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 100);
+
+            // Add event listeners
+            window.addEventListener('scroll', handleScroll);
+            
+            // Add click handlers for interactive elements
+            addClickHandlers();
+            
+            // Initialize card animations
+            initializeCardAnimations();
+        });
+
+        // Handle scroll events
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Parallax effect for background
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+            
+            // Animate sections on scroll
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight * 0.8;
+                
+                if (isInViewport && !section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Add click handlers for interactive elements
+        function addClickHandlers() {
+            // Department buttons
+            departmentCards.forEach(card => {
+                const button = card.querySelector('.department-button');
+                if (button) {
+                    button.addEventListener('click', function() {
+                        const departmentTitle = card.querySelector('.department-title').textContent;
+                        showDepartmentDetails(departmentTitle);
+                    });
+                }
+            });
+
+            // Service buttons
+            serviceCards.forEach(card => {
+                const button = card.querySelector('.service-button');
+                if (button) {
+                    button.addEventListener('click', function() {
+                        const serviceTitle = card.querySelector('.service-title').textContent;
+                        showServiceDetails(serviceTitle);
+                    });
+                }
+            });
+
+            // Organizational positions
+            orgPositions.forEach(position => {
+                position.addEventListener('click', function() {
+                    const positionTitle = position.querySelector('.org-position-title').textContent;
+                    const positionName = position.querySelector('.org-position-name').textContent;
+                    showPositionDetails(positionTitle, positionName);
+                });
+            });
+        }
+
+        // Initialize card animations
+        function initializeCardAnimations() {
+            // Leader cards hover effects
+            leaderCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-12px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Department cards interactive effects
+            departmentCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.department-icon');
+                    if (icon) {
+                        icon.style.animation = 'bounce 1s infinite';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.department-icon');
+                    if (icon) {
+                        icon.style.animation = 'bounce 2s infinite';
+                    }
+                });
+            });
+        }
+
+        // Show department details
+        function showDepartmentDetails(departmentTitle) {
+            const details = {
+                'Academic Affairs': {
+                    description: 'The Academic Affairs department oversees all academic programs, curriculum development, faculty management, and ensures the highest standards of education delivery.',
+                    services: ['Curriculum Development', 'Faculty Recruitment', 'Academic Policy Formation', 'Quality Assurance', 'Research Coordination'],
+                    contact: 'academic@rangpurcollege.edu.bd'
+                },
+                'Student Affairs': {
+                    description: 'Student Affairs provides comprehensive support services to enhance student experience, including counseling, activities, housing, and personal development programs.',
+                    services: ['Student Counseling', 'Campus Activities', 'Housing Services', 'Career Guidance', 'Health & Wellness'],
+                    contact: 'studentaffairs@rangpurcollege.edu.bd'
+                },
+                'Finance & Accounts': {
+                    description: 'The Finance & Accounts department manages all financial operations, budgeting, fee collection, and ensures transparent and efficient financial management.',
+                    services: ['Budget Management', 'Fee Collection', 'Financial Aid', 'Audit & Compliance', 'Financial Reporting'],
+                    contact: 'finance@rangpurcollege.edu.bd'
+                },
+                'Human Resources': {
+                    description: 'HR department handles recruitment, staff development, policy implementation, and maintains a positive work environment for all college employees.',
+                    services: ['Recruitment & Selection', 'Staff Development', 'Policy Implementation', 'Performance Management', 'Employee Relations'],
+                    contact: 'hr@rangpurcollege.edu.bd'
+                },
+                'Infrastructure & Maintenance': {
+                    description: 'This department ensures the maintenance and development of campus infrastructure, providing a safe and conducive environment for learning.',
+                    services: ['Facility Maintenance', 'Construction Projects', 'Safety & Security', 'Utilities Management', 'Campus Development'],
+                    contact: 'infrastructure@rangpurcollege.edu.bd'
+                },
+                'IT Services': {
+                    description: 'IT Services provides comprehensive technology support, manages digital infrastructure, and implements innovative solutions for education and administration.',
+                    services: ['Network Management', 'Software Support', 'Digital Learning Platforms', 'Data Management', 'Technical Training'],
+                    contact: 'it@rangpurcollege.edu.bd'
+                }
+            };
+
+            const dept = details[departmentTitle];
+            if (dept) {
+                const message = `
+Department: ${departmentTitle}
+
+Description: ${dept.description}
+
+Key Services:
+${dept.services.map(service => `• ${service}`).join('\n')}
+
+Contact: ${dept.contact}
+
+Would you like to know more about any specific service?
+                `;
+                alert(message);
+            }
+        }
+
+        // Show service details
+        function showServiceDetails(serviceTitle) {
+            const services = {
+                'Admissions & Registration': 'Complete admission and registration services including online applications, document verification, course registration, and academic record management.',
+                'Financial Services': 'Comprehensive financial support including online fee payment, scholarship programs, financial aid, and flexible payment plans.',
+                'Academic Support': 'Academic assistance services including tutoring, counseling, study groups, and resource centers to enhance student success.',
+                'Health & Wellness': 'Complete health and wellness services including medical center, counseling services, emergency care, and wellness programs.',
+                'Technical Support': 'Comprehensive IT support including help desk, software assistance, network access, and digital training programs.',
+                'Career Services': 'Professional development services including career counseling, job placement assistance, resume building, and interview preparation.'
+            };
+
+            const description = services[serviceTitle];
+            if (description) {
+                alert(`${serviceTitle}\n\n${description}\n\nFor more information, please contact the relevant department.`);
+            }
+        }
+
+        // Show position details
+        function showPositionDetails(positionTitle, positionName) {
+            const message = `
+Position: ${positionTitle}
+Name: ${positionName}
+
+This position plays a crucial role in the administration and governance of Rangpur Government College. 
+
+For appointments or inquiries, please contact the respective office during working hours.
+
+Office Hours: Sunday - Thursday, 9:00 AM - 4:00 PM
+            `;
+            alert(message);
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Add staggered animation to child elements
+                    const animatedElements = entry.target.querySelectorAll('.stat-card, .leader-card, .department-card, .service-card, .org-position, .contact-card');
+                    animatedElements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add mouse movement parallax effect
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            // Move floating elements based on mouse position
+            const adminShapes = document.querySelectorAll('.admin-shape');
+            adminShapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.3;
+                const x = mouseX * speed;
+                const y = mouseY * speed;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Add click animations to buttons
+        const buttons = document.querySelectorAll('button, .department-button, .service-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Add loading animation for dynamic content
+        function showLoadingAnimation(element) {
+            element.style.opacity = '0.5';
+            element.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.pointerEvents = 'auto';
+            }, 1000);
+        }
+
+        // Add search functionality for departments and services
+        function searchContent(query) {
+            const searchableElements = document.querySelectorAll('.department-card, .service-card, .leader-card');
+            const normalizedQuery = query.toLowerCase();
+            
+            searchableElements.forEach(element => {
+                const title = element.querySelector('h3, .leader-name').textContent.toLowerCase();
+                const description = element.querySelector('p, .leader-bio').textContent.toLowerCase();
+                
+                if (title.includes(normalizedQuery) || description.includes(normalizedQuery)) {
+                    element.style.display = 'block';
+                    element.style.opacity = '1';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + F for search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                const query = prompt('Search departments, services, or staff:');
+                if (query) {
+                    searchContent(query);
+                }
+            }
+            
+            // Escape to reset search
+            if (e.key === 'Escape') {
+                const searchableElements = document.querySelectorAll('.department-card, .service-card, .leader-card');
+                searchableElements.forEach(element => {
+                    element.style.display = 'block';
+                    element.style.opacity = '1';
+                });
+            }
+        });
+
+        // Initialize tooltips for interactive elements
+        function initializeTooltips() {
+            const tooltipElements = document.querySelectorAll('[data-tooltip]');
+            
+            tooltipElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = this.getAttribute('data-tooltip');
+                    tooltip.style.cssText = `
+                        position: absolute;
+                        background: rgba(0, 0, 0, 0.8);
+                        color: white;
+                        padding: 0.5rem;
+                        border-radius: 0.25rem;
+                        font-size: 0.875rem;
+                        z-index: 1000;
+                        pointer-events: none;
+                    `;
+                    document.body.appendChild(tooltip);
+                    
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.left = rect.left + 'px';
+                    tooltip.style.top = (rect.top - tooltip.offsetHeight - 5) + 'px';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    const tooltip = document.querySelector('.tooltip');
+                    if (tooltip) {
+                        tooltip.remove();
+                    }
+                });
+            });
+        }
+
+        // Call initialize tooltips
+        initializeTooltips();
+
+        // Add print functionality
+        function printPage() {
+            window.print();
+        }
+
+        // Add export functionality
+        function exportData() {
+            const data = {
+                leadership: Array.from(leaderCards).map(card => ({
+                    name: card.querySelector('.leader-name').textContent,
+                    position: card.querySelector('.leader-position').textContent,
+                    bio: card.querySelector('.leader-bio').textContent
+                })),
+                departments: Array.from(departmentCards).map(card => ({
+                    title: card.querySelector('.department-title').textContent,
+                    description: card.querySelector('.department-description').textContent
+                }))
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'administration-data.json';
+            link.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        // Add accessibility features
+        function enhanceAccessibility() {
+            // Add ARIA labels
+            const cards = document.querySelectorAll('.leader-card, .department-card, .service-card');
+            cards.forEach((card, index) => {
+                card.setAttribute('role', 'article');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Card ${index + 1}`);
+            });
+            
+            // Add keyboard navigation
+            cards.forEach(card => {
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
+
+        // Call accessibility enhancements
+        enhanceAccessibility();
+
+        // Performance optimization
+        function optimizePerformance() {
+            // Lazy load images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+            
+            // Debounce scroll events
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+                scrollTimeout = setTimeout(handleScroll, 10);
+            });
+        }
+
+        // Call performance optimizations
+        optimizePerformance();
+    </script>
+</body>
+</html>

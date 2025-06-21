@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Application - Rangpur Government College</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc, #ffffff, #f1f5f9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            mix-blend-mode: multiply;
+            opacity: 0.15;
+        }
+
+        .bg-blob-1 {
+            top: 5%;
+            left: 5%;
+            width: 25rem;
+            height: 25rem;
+            background: linear-gradient(45deg, #a855f7, #8b5cf6);
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .bg-blob-2 {
+            top: 15%;
+            right: 10%;
+            width: 30rem;
+            height: 30rem;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            animation: float 30s infinite ease-in-out 3s;
+        }
+
+        .bg-blob-3 {
+            bottom: 10%;
+            left: 15%;
+            width: 28rem;
+            height: 28rem;
+            background: linear-gradient(45deg, #10b981, #06b6d4);
+            animation: float 22s infinite ease-in-out 6s;
+        }
+
+        .bg-blob-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 22rem;
+            height: 22rem;
+            background: linear-gradient(45deg, #ef4444, #f43f5e);
+            animation: float 28s infinite ease-in-out 9s;
+        }
+
+        /* Floating Application Elements */
+        .application-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .application-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: appFloat 8s infinite ease-in-out;
+        }
+
+        .application-shape-1 {
+            top: 10%;
+            left: 8%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .application-shape-2 {
+            top: 20%;
+            right: 12%;
+            font-size: 1.5rem;
+            animation-delay: 2s;
+        }
+
+        .application-shape-3 {
+            top: 60%;
+            left: 5%;
+            font-size: 1.8rem;
+            animation-delay: 4s;
+        }
+
+        .application-shape-4 {
+            bottom: 25%;
+            right: 8%;
+            font-size: 2.2rem;
+            animation-delay: 6s;
+        }
+
+        .application-shape-5 {
+            top: 40%;
+            left: 15%;
+            font-size: 1.6rem;
+            animation-delay: 1s;
+        }
+
+        .application-shape-6 {
+            bottom: 40%;
+            right: 20%;
+            font-size: 1.9rem;
+            animation-delay: 3s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(180deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-45px) rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes appFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 4rem 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(245, 158, 11, 0.08));
+            border-radius: 2rem;
+            margin: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .hero-button-primary {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+        }
+
+        .hero-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.4);
+        }
+
+        .hero-button-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-button-secondary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Application Stats */
+        .application-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+
+        /* Application Types Section */
+        .application-types-section {
+            margin: 4rem 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 36rem;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .application-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .application-type-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .application-type-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .application-type-header {
+            padding: 2rem 2rem 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .application-type-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .application-type-icon-admission {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .application-type-icon-scholarship {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .application-type-icon-hostel {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        .application-type-icon-transfer {
+            background: linear-gradient(135deg, #ef4444, #f43f5e);
+        }
+
+        .application-type-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .application-type-content {
+            padding: 0 2rem 2rem;
+        }
+
+        .application-type-description {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .application-type-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .application-type-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .application-type-feature:hover {
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        .application-type-feature-icon {
+            color: #a855f7;
+            font-size: 1.25rem;
+            margin-top: 0.125rem;
+        }
+
+        .application-type-feature-text {
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .application-type-button {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(168, 85, 247, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .application-type-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            margin: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmer 5s infinite;
+        }
+
+        .process-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .process-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 36rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .process-step-number {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .process-step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-description {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+        }
+
+        /* Application Form Section */
+        .form-section {
+            margin: 4rem 1rem;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-description {
+            color: #64748b;
+            max-width: 36rem;
+            margin: 0 auto;
+        }
+
+        .application-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+        }
+
+        .form-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+        }
+
+        .form-textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem 1rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #a855f7;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 20rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(168, 85, 247, 0.1), rgba(245, 158, 11, 0.1));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 1rem 2rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            .application-types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-image" id="parallaxBg"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+        <div class="bg-blob bg-blob-4"></div>
+    </div>
+
+    <!-- Floating Application Elements -->
+    <div class="application-elements">
+        <div class="application-shape application-shape-1">📝</div>
+        <div class="application-shape application-shape-2">🎓</div>
+        <div class="application-shape application-shape-3">📋</div>
+        <div class="application-shape application-shape-4">🏆</div>
+        <div class="application-shape application-shape-5">📱</div>
+        <div class="application-shape application-shape-6">✅</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section section" id="heroSection">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">📝 Streamlined Application Process</div>
+                <h1 class="hero-title">Online Application</h1>
+                <p class="hero-subtitle">
+                    Apply to Rangpur Government College programs, scholarships, and services through our 
+                    secure and efficient online application system. No more paperwork or long queues.
+                </p>
+                <div class="hero-actions">
+                    <a href="#form" class="hero-button hero-button-primary">
+                        📝 Start Application
+                    </a>
+                    <a href="#process" class="hero-button hero-button-secondary">
+                        ℹ️ How It Works
+                    </a>
+                </div>
+                <div class="application-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5,000+</div>
+                        <div class="stat-label">Applications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Availability</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15 min</div>
+                        <div class="stat-label">Avg. Completion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Types Section -->
+    <section class="application-types-section section" id="typesSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Application Types</h2>
+                <p class="section-description">
+                    Choose from various application types based on your needs and academic goals.
+                </p>
+            </div>
+            <div class="application-types-grid">
+                <div class="application-type-card">
+                    <div class="application-type-header">
+                        <div class="application-type-icon application-type-icon-admission">🎓</div>
+                        <h3 class="application-type-title">Admission Application</h3>
+                    </div>
+                    <div class="application-type-content">
+                        <p class="application-type-description">
+                            Apply for admission to undergraduate and postgraduate programs at Rangpur Government College.
+                        </p>
+                        <ul class="application-type-features">
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Undergraduate Programs (HSC, Honors)</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Postgraduate Programs (Masters)</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Professional Certificate Courses</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Diploma Programs</span>
+                            </li>
+                        </ul>
+                        <button class="application-type-button">
+                            📝 Apply Now
+                        </button>
+                    </div>
+                </div>
+                <div class="application-type-card">
+                    <div class="application-type-header">
+                        <div class="application-type-icon application-type-icon-scholarship">🏆</div>
+                        <h3 class="application-type-title">Scholarship Application</h3>
+                    </div>
+                    <div class="application-type-content">
+                        <p class="application-type-description">
+                            Apply for various scholarships, financial aid, and grants available for eligible students.
+                        </p>
+                        <ul class="application-type-features">
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Merit-Based Scholarships</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Need-Based Financial Aid</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Research Grants</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Special Category Scholarships</span>
+                            </li>
+                        </ul>
+                        <button class="application-type-button">
+                            📝 Apply Now
+                        </button>
+                    </div>
+                </div>
+                <div class="application-type-card">
+                    <div class="application-type-header">
+                        <div class="application-type-icon application-type-icon-hostel">🏠</div>
+                        <h3 class="application-type-title">Hostel Application</h3>
+                    </div>
+                    <div class="application-type-content">
+                        <p class="application-type-description">
+                            Apply for accommodation in college hostels for male and female students.
+                        </p>
+                        <ul class="application-type-features">
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Male Hostel Accommodation</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Female Hostel Accommodation</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">International Student Housing</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Special Needs Accommodation</span>
+                            </li>
+                        </ul>
+                        <button class="application-type-button">
+                            📝 Apply Now
+                        </button>
+                    </div>
+                </div>
+                <div class="application-type-card">
+                    <div class="application-type-header">
+                        <div class="application-type-icon application-type-icon-transfer">🔄</div>
+                        <h3 class="application-type-title">Transfer Application</h3>
+                    </div>
+                    <div class="application-type-content">
+                        <p class="application-type-description">
+                            Apply for transfer from other institutions or between departments within the college.
+                        </p>
+                        <ul class="application-type-features">
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Inter-Institution Transfer</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Inter-Department Transfer</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Credit Transfer</span>
+                            </li>
+                            <li class="application-type-feature">
+                                <span class="application-type-feature-icon">✓</span>
+                                <span class="application-type-feature-text">Course Equivalency Assessment</span>
+                            </li>
+                        </ul>
+                        <button class="application-type-button">
+                            📝 Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section section" id="processSection">
+        <div class="container">
+            <div class="process-content">
+                <h2 class="process-title">Application Process</h2>
+                <p class="process-description">
+                    Our streamlined application process makes it easy to apply for programs, scholarships, and services at Rangpur Government College.
+                </p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <h3 class="process-step-title">Create Account</h3>
+                        <p class="process-step-description">Register for an account on our online application portal with your email and basic information.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <h3 class="process-step-title">Fill Application</h3>
+                        <p class="process-step-description">Complete the application form with your personal, academic, and other required information.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">3</div>
+                        <h3 class="process-step-title">Upload Documents</h3>
+                        <p class="process-step-description">Upload necessary documents such as transcripts, certificates, and identification proof.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">4</div>
+                        <h3 class="process-step-title">Pay Fees</h3>
+                        <p class="process-step-description">Pay the application fee securely through our online payment gateway.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">5</div>
+                        <h3 class="process-step-title">Track Status</h3>
+                        <p class="process-step-description">Track your application status in real-time through your account dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="form-section section" id="formSection">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 class="form-title">Start Your Application</h2>
+                    <p class="form-description">Fill out the form below to begin your application process</p>
+                </div>
+                <form class="application-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your last name">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Application Type</label>
+                        <select class="form-select">
+                            <option value="">Select Application Type</option>
+                            <option value="admission">Admission Application</option>
+                            <option value="scholarship">Scholarship Application</option>
+                            <option value="hostel">Hostel Application</option>
+                            <option value="transfer">Transfer Application</option>
+                        </select>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Program/Department</label>
+                            <select class="form-select">
+                                <option value="">Select Program/Department</option>
+                                <option value="science">Science</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="business">Business Studies</option>
+                                <option value="social">Social Sciences</option>
+                                <option value="engineering">Engineering</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Level of Study</label>
+                            <select class="form-select">
+                                <option value="">Select Level</option>
+                                <option value="hsc">HSC</option>
+                                <option value="honors">Honors</option>
+                                <option value="masters">Masters</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="certificate">Certificate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Additional Information</label>
+                        <textarea class="form-textarea" placeholder="Provide any additional information relevant to your application"></textarea>
+                    </div>
+                    <button type="button" class="form-button">
+                        📝 Submit Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section" id="faqSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Find answers to common questions about our online application process.
+                </p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What documents do I need to prepare for my application?</div>
+                    <div class="faq-answer">
+                        For most applications, you'll need to prepare digital copies of your academic transcripts, certificates, national ID or passport, recent photograph, and any program-specific documents. All documents should be clear, legible scans in PDF or JPG format.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How long does the application process take?</div>
+                    <div class="faq-answer">
+                        The online application form typically takes about 15-20 minutes to complete if you have all required documents ready. After submission, application review times vary by program: admission applications are typically processed within 2-3 weeks, scholarship applications within 4 weeks, and hostel applications within 1-2 weeks.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I save my application and complete it later?</div>
+                    <div class="faq-answer">
+                        Yes, our system automatically saves your progress. You can log out and return to complete your application at any time before the deadline. Simply log back into your account and click on "Continue Application" to resume where you left off.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I check the status of my application?</div>
+                    <div class="faq-answer">
+                        You can check your application status by logging into your account and visiting the "Application Status" section on your dashboard. You'll see real-time updates on your application, including whether it's under review, approved, or if additional information is needed.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What payment methods are accepted for application fees?</div>
+                    <div class="faq-answer">
+                        We accept various payment methods including credit/debit cards, mobile banking (bKash, Nagad, Rocket), and online banking transfers. All payments are processed through our secure payment gateway to ensure your financial information remains protected.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Rangpur Government College Online Application</h3>
+                <p class="footer-description">
+                    Simplifying the application process for students seeking quality education and opportunities.
+                </p>
+                <div class="footer-meta">
+                    <span>© 2024 Rangpur Government College</span>
+                    <span>•</span>
+                    <span>Admissions Office</span>
+                    <span>•</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const sections = document.querySelectorAll('.section');
+        const parallaxBg = document.getElementById('parallaxBg');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show sections with staggered animation
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 100);
+
+            // Add event listeners
+            window.addEventListener('scroll', handleScroll);
+            
+            // Initialize FAQ accordions
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+
+        // Handle scroll events
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Parallax effect for background
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+            
+            // Animate sections on scroll
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight * 0.8;
+                
+                if (isInViewport && !section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

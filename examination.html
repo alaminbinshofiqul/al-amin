@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Section - Rangpur Government College</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc, #ffffff, #f1f5f9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            mix-blend-mode: multiply;
+            opacity: 0.12;
+        }
+
+        .bg-blob-1 {
+            top: 5%;
+            left: 5%;
+            width: 22rem;
+            height: 22rem;
+            background: linear-gradient(45deg, #10b981, #06b6d4);
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .bg-blob-2 {
+            top: 15%;
+            right: 10%;
+            width: 28rem;
+            height: 28rem;
+            background: linear-gradient(45deg, #a855f7, #ec4899);
+            animation: float 30s infinite ease-in-out 3s;
+        }
+
+        .bg-blob-3 {
+            bottom: 10%;
+            left: 15%;
+            width: 25rem;
+            height: 25rem;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            animation: float 22s infinite ease-in-out 6s;
+        }
+
+        .bg-blob-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 20rem;
+            height: 20rem;
+            background: linear-gradient(45deg, #ef4444, #f43f5e);
+            animation: float 28s infinite ease-in-out 9s;
+        }
+
+        .bg-blob-5 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18rem;
+            height: 18rem;
+            background: linear-gradient(45deg, #8b5cf6, #06b6d4);
+            animation: float 20s infinite ease-in-out 12s;
+        }
+
+        /* Floating Academic Elements */
+        .academic-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .academic-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: academicFloat 8s infinite ease-in-out;
+        }
+
+        .academic-shape-1 {
+            top: 10%;
+            left: 8%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .academic-shape-2 {
+            top: 20%;
+            right: 12%;
+            font-size: 1.5rem;
+            animation-delay: 2s;
+        }
+
+        .academic-shape-3 {
+            top: 60%;
+            left: 5%;
+            font-size: 1.8rem;
+            animation-delay: 4s;
+        }
+
+        .academic-shape-4 {
+            bottom: 25%;
+            right: 8%;
+            font-size: 2.2rem;
+            animation-delay: 6s;
+        }
+
+        .academic-shape-5 {
+            top: 40%;
+            left: 15%;
+            font-size: 1.6rem;
+            animation-delay: 1s;
+        }
+
+        .academic-shape-6 {
+            bottom: 40%;
+            right: 20%;
+            font-size: 1.9rem;
+            animation-delay: 3s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(180deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-45px) rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes academicFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 4rem 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(168, 85, 247, 0.08));
+            border-radius: 2rem;
+            margin: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .hero-button-primary {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+
+        .hero-button-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-button-secondary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+
+        /* Notifications Section */
+        .notifications-section {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notifications-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+            animation: shimmer 3s infinite;
+        }
+
+        .notifications-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .notifications-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .notifications-subtitle {
+            color: #a16207;
+            font-weight: 500;
+        }
+
+        .notifications-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .notification-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .notification-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .notification-icon-urgent {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .notification-icon-info {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .notification-icon-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .notification-text {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .notification-date {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Exam Schedule Section */
+        .schedule-section {
+            margin: 4rem 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 36rem;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .schedule-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .schedule-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .schedule-tab.active {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+        }
+
+        .schedule-tab:not(.active) {
+            background: rgba(255, 255, 255, 0.9);
+            color: #64748b;
+            border-color: #e2e8f0;
+        }
+
+        .schedule-tab:not(.active):hover {
+            background: white;
+            color: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .schedule-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .exam-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .exam-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .exam-info {
+            flex: 1;
+        }
+
+        .exam-subject {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .exam-code {
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .exam-department {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .exam-status {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .exam-status-upcoming {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+
+        .exam-status-ongoing {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .exam-status-completed {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: white;
+        }
+
+        .exam-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .exam-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .exam-detail-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .exam-detail-icon-date {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .exam-detail-icon-time {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .exam-detail-icon-room {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .exam-detail-icon-duration {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .exam-detail-text {
+            flex: 1;
+        }
+
+        .exam-detail-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .exam-detail-value {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            margin: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmer 5s infinite;
+        }
+
+        .results-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .results-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .results-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 36rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .result-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-description {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+        }
+
+        .results-button {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            font-size: 1.125rem;
+        }
+
+        .results-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Guidelines Section */
+        .guidelines-section {
+            margin: 4rem 1rem;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .guideline-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .guideline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .guideline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guideline-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .guideline-icon-rules {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .guideline-icon-materials {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .guideline-icon-conduct {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .guideline-icon-health {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .guideline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .guideline-list {
+            list-style: none;
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .guideline-item:hover {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .guideline-item-icon {
+            color: #10b981;
+            font-size: 1.25rem;
+            margin-top: 0.125rem;
+        }
+
+        .guideline-item-text {
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(168, 85, 247, 0.1));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 1rem 2rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            .schedule-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .exam-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .exam-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-image" id="parallaxBg"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+        <div class="bg-blob bg-blob-4"></div>
+        <div class="bg-blob bg-blob-5"></div>
+    </div>
+
+    <!-- Floating Academic Elements -->
+    <div class="academic-elements">
+        <div class="academic-shape academic-shape-1">📚</div>
+        <div class="academic-shape academic-shape-2">✏️</div>
+        <div class="academic-shape academic-shape-3">📝</div>
+        <div class="academic-shape academic-shape-4">🎓</div>
+        <div class="academic-shape academic-shape-5">📊</div>
+        <div class="academic-shape academic-shape-6">🏆</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section section" id="heroSection">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">📋 Examination Control Office</div>
+                <h1 class="hero-title">Examination Section</h1>
+                <p class="hero-subtitle">
+                    Your comprehensive portal for examination schedules, results, guidelines, and important notifications. 
+                    Stay updated with all examination-related activities at Rangpur Government College.
+                </p>
+                <div class="hero-actions">
+                    <a href="#schedule" class="hero-button hero-button-primary">
+                        📅 View Exam Schedule
+                    </a>
+                    <a href="#results" class="hero-button hero-button-secondary">
+                        📊 Check Results
+                    </a>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Upcoming Exams</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2,847</div>
+                        <div class="stat-label">Registered Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-label">Attendance Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Exam Halls</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section class="notifications-section section" id="notificationsSection">
+        <div class="container">
+            <div class="notifications-header">
+                <h2 class="notifications-title">🔔 Important Notifications</h2>
+                <p class="notifications-subtitle">Stay informed with the latest examination updates and announcements</p>
+            </div>
+            <div class="notifications-grid" id="notificationsGrid">
+                <!-- Notifications will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam Schedule Section -->
+    <section class="schedule-section section" id="scheduleSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Examination Schedule</h2>
+                <p class="section-description">
+                    Complete examination timetable for all departments and semesters. Click on tabs to filter by examination type.
+                </p>
+            </div>
+            <div class="schedule-tabs">
+                <div class="schedule-tab active" data-tab="midterm">Mid-Term Exams</div>
+                <div class="schedule-tab" data-tab="final">Final Exams</div>
+                <div class="schedule-tab" data-tab="supplementary">Supplementary</div>
+                <div class="schedule-tab" data-tab="practical">Practical Exams</div>
+            </div>
+            <div class="schedule-grid" id="scheduleGrid">
+                <!-- Schedule will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section section" id="resultsSection">
+        <div class="container">
+            <div class="results-content">
+                <h2 class="results-title">📊 Examination Results</h2>
+                <p class="results-description">
+                    Access your examination results, transcripts, and academic performance reports through our secure portal.
+                </p>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">📋</div>
+                        <h3 class="result-title">Current Results</h3>
+                        <p class="result-description">View latest examination results and grades</p>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">📈</div>
+                        <h3 class="result-title">Grade Reports</h3>
+                        <p class="result-description">Download detailed grade reports and transcripts</p>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">🏆</div>
+                        <h3 class="result-title">Merit Lists</h3>
+                        <p class="result-description">Check merit positions and rankings</p>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">📊</div>
+                        <h3 class="result-title">Analytics</h3>
+                        <p class="result-description">View performance analytics and trends</p>
+                    </div>
+                </div>
+                <button class="results-button" onclick="window.location.href='#'">
+                    🔍 Access Result Portal
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines Section -->
+    <section class="guidelines-section section" id="guidelinesSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Examination Guidelines</h2>
+                <p class="section-description">
+                    Important rules, regulations, and guidelines for all examination activities. Please read carefully before appearing for exams.
+                </p>
+            </div>
+            <div class="guidelines-grid">
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon guideline-icon-rules">⚖️</div>
+                        <h3 class="guideline-title">Examination Rules</h3>
+                    </div>
+                    <ul class="guideline-list">
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Arrive at least 30 minutes before exam time</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Bring valid student ID and admit card</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">No electronic devices allowed in exam hall</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Follow seating arrangements strictly</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon guideline-icon-materials">📝</div>
+                        <h3 class="guideline-title">Allowed Materials</h3>
+                    </div>
+                    <ul class="guideline-list">
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Blue or black ink pens only</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Pencils for diagrams and graphs</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Scientific calculator (if permitted)</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Geometric instruments for technical subjects</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon guideline-icon-conduct">⚠️</div>
+                        <h3 class="guideline-title">Code of Conduct</h3>
+                    </div>
+                    <ul class="guideline-list">
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Maintain complete silence during exam</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">No communication with other students</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Raise hand for any assistance needed</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Submit answer sheets before leaving</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon guideline-icon-health">🏥</div>
+                        <h3 class="guideline-title">Health & Safety</h3>
+                    </div>
+                    <ul class="guideline-list">
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Follow COVID-19 safety protocols</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Inform invigilator if feeling unwell</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Maintain proper hygiene standards</span>
+                        </li>
+                        <li class="guideline-item">
+                            <span class="guideline-item-icon">✓</span>
+                            <span class="guideline-item-text">Emergency contact numbers available</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Examination Control Office</h3>
+                <p class="footer-description">
+                    Ensuring fair, transparent, and efficient examination processes for all students at Rangpur Government College.
+                </p>
+                <div class="footer-meta">
+                    <span>© 2024 Rangpur Government College</span>
+                    <span>•</span>
+                    <span>Examination Division</span>
+                    <span>•</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data for notifications
+        const notifications = [
+            {
+                id: 1,
+                type: "urgent",
+                icon: "🚨",
+                title: "Mid-Term Exam Schedule Released",
+                text: "Mid-term examination schedule for Spring 2024 semester has been published. Check your exam dates and venues.",
+                date: "2 hours ago"
+            },
+            {
+                id: 2,
+                type: "info",
+                icon: "ℹ️",
+                title: "Admit Card Download Available",
+                text: "Students can now download their admit cards for upcoming examinations from the student portal.",
+                date: "1 day ago"
+            },
+            {
+                id: 3,
+                type: "success",
+                icon: "✅",
+                title: "Final Exam Results Published",
+                text: "Fall 2023 semester final examination results are now available. Check your results online.",
+                date: "3 days ago"
+            },
+            {
+                id: 4,
+                type: "info",
+                icon: "📋",
+                title: "Supplementary Exam Registration",
+                text: "Registration for supplementary examinations is open until March 15, 2024. Apply through student portal.",
+                date: "1 week ago"
+            }
+        ];
+
+        // Sample data for exam schedules
+        const examSchedules = {
+            midterm: [
+                {
+                    subject: "Advanced Mathematics",
+                    code: "MATH-301",
+                    department: "Department of Mathematics",
+                    date: "March 25, 2024",
+                    time: "10:00 AM - 1:00 PM",
+                    room: "Hall A-101",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                },
+                {
+                    subject: "Computer Programming",
+                    code: "CSE-201",
+                    department: "Department of Computer Science",
+                    date: "March 26, 2024",
+                    time: "2:00 PM - 5:00 PM",
+                    room: "Lab B-205",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                },
+                {
+                    subject: "English Literature",
+                    code: "ENG-101",
+                    department: "Department of English",
+                    date: "March 27, 2024",
+                    time: "9:00 AM - 12:00 PM",
+                    room: "Hall C-301",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                }
+            ],
+            final: [
+                {
+                    subject: "Organic Chemistry",
+                    code: "CHEM-401",
+                    department: "Department of Chemistry",
+                    date: "April 15, 2024",
+                    time: "10:00 AM - 1:00 PM",
+                    room: "Hall A-201",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                },
+                {
+                    subject: "Modern Physics",
+                    code: "PHYS-301",
+                    department: "Department of Physics",
+                    date: "April 16, 2024",
+                    time: "2:00 PM - 5:00 PM",
+                    room: "Hall B-101",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                }
+            ],
+            supplementary: [
+                {
+                    subject: "Business Statistics",
+                    code: "BBA-201",
+                    department: "Department of Business Administration",
+                    date: "May 10, 2024",
+                    time: "10:00 AM - 1:00 PM",
+                    room: "Hall C-201",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                }
+            ],
+            practical: [
+                {
+                    subject: "Chemistry Lab",
+                    code: "CHEM-401L",
+                    department: "Department of Chemistry",
+                    date: "March 30, 2024",
+                    time: "9:00 AM - 12:00 PM",
+                    room: "Chemistry Lab 1",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                },
+                {
+                    subject: "Physics Lab",
+                    code: "PHYS-301L",
+                    department: "Department of Physics",
+                    date: "March 31, 2024",
+                    time: "2:00 PM - 5:00 PM",
+                    room: "Physics Lab 2",
+                    duration: "3 Hours",
+                    status: "upcoming"
+                }
+            ]
+        };
+
+        // DOM Elements
+        const sections = document.querySelectorAll('.section');
+        const parallaxBg = document.getElementById('parallaxBg');
+        const notificationsGrid = document.getElementById('notificationsGrid');
+        const scheduleGrid = document.getElementById('scheduleGrid');
+        const scheduleTabs = document.querySelectorAll('.schedule-tab');
+
+        let currentTab = 'midterm';
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show sections with staggered animation
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 100);
+
+            // Render notifications and schedule
+            renderNotifications();
+            renderSchedule(currentTab);
+
+            // Add event listeners
+            window.addEventListener('scroll', handleScroll);
+            scheduleTabs.forEach(tab => {
+                tab.addEventListener('click', handleTabClick);
+            });
+        });
+
+        // Handle scroll events
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Parallax effect for background
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+            
+            // Animate sections on scroll
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight * 0.8;
+                
+                if (isInViewport && !section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Handle tab clicks
+        function handleTabClick(event) {
+            const clickedTab = event.target;
+            const tabType = clickedTab.getAttribute('data-tab');
+            
+            // Update active tab
+            scheduleTabs.forEach(tab => tab.classList.remove('active'));
+            clickedTab.classList.add('active');
+            
+            // Update current tab and render schedule
+            currentTab = tabType;
+            renderSchedule(currentTab);
+        }
+
+        // Render notifications
+        function renderNotifications() {
+            notificationsGrid.innerHTML = '';
+            
+            notifications.forEach((notification, index) => {
+                const notificationItem = document.createElement('div');
+                notificationItem.className = 'notification-item';
+                notificationItem.style.animationDelay = `${index * 0.1}s`;
+                notificationItem.innerHTML = `
+                    <div class="notification-icon notification-icon-${notification.type}">
+                        ${notification.icon}
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-text">${notification.text}</div>
+                        <div class="notification-date">${notification.date}</div>
+                    </div>
+                `;
+                
+                notificationsGrid.appendChild(notificationItem);
+            });
+        }
+
+        // Render exam schedule
+        function renderSchedule(tabType) {
+            scheduleGrid.innerHTML = '';
+            const exams = examSchedules[tabType] || [];
+            
+            exams.forEach((exam, index) => {
+                const examCard = document.createElement('div');
+                examCard.className = 'exam-card';
+                examCard.style.animationDelay = `${index * 0.1}s`;
+                examCard.innerHTML = `
+                    <div class="exam-header">
+                        <div class="exam-info">
+                            <h3 class="exam-subject">${exam.subject}</h3>
+                            <div class="exam-code">${exam.code}</div>
+                            <div class="exam-department">${exam.department}</div>
+                        </div>
+                        <div class="exam-status exam-status-${exam.status}">
+                            ${exam.status.charAt(0).toUpperCase() + exam.status.slice(1)}
+                        </div>
+                    </div>
+                    <div class="exam-details">
+                        <div class="exam-detail">
+                            <div class="exam-detail-icon exam-detail-icon-date">📅</div>
+                            <div class="exam-detail-text">
+                                <div class="exam-detail-label">Date</div>
+                                <div class="exam-detail-value">${exam.date}</div>
+                            </div>
+                        </div>
+                        <div class="exam-detail">
+                            <div class="exam-detail-icon exam-detail-icon-time">⏰</div>
+                            <div class="exam-detail-text">
+                                <div class="exam-detail-label">Time</div>
+                                <div class="exam-detail-value">${exam.time}</div>
+                            </div>
+                        </div>
+                        <div class="exam-detail">
+                            <div class="exam-detail-icon exam-detail-icon-room">🏢</div>
+                            <div class="exam-detail-text">
+                                <div class="exam-detail-label">Venue</div>
+                                <div class="exam-detail-value">${exam.room}</div>
+                            </div>
+                        </div>
+                        <div class="exam-detail">
+                            <div class="exam-detail-icon exam-detail-icon-duration">⏱️</div>
+                            <div class="exam-detail-text">
+                                <div class="exam-detail-label">Duration</div>
+                                <div class="exam-detail-value">${exam.duration}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                scheduleGrid.appendChild(examCard);
+            });
+            
+            if (exams.length === 0) {
+                scheduleGrid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: #64748b;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📅</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No Exams Scheduled</h3>
+                        <p>No examinations are currently scheduled for this category.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

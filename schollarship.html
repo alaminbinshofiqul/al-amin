@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarships - Rangpur Government College</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc, #ffffff, #f1f5f9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url('https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            mix-blend-mode: multiply;
+            opacity: 0.15;
+        }
+
+        .bg-blob-1 {
+            top: 5%;
+            left: 5%;
+            width: 25rem;
+            height: 25rem;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .bg-blob-2 {
+            top: 15%;
+            right: 10%;
+            width: 30rem;
+            height: 30rem;
+            background: linear-gradient(45deg, #10b981, #06b6d4);
+            animation: float 30s infinite ease-in-out 3s;
+        }
+
+        .bg-blob-3 {
+            bottom: 10%;
+            left: 15%;
+            width: 28rem;
+            height: 28rem;
+            background: linear-gradient(45deg, #a855f7, #8b5cf6);
+            animation: float 22s infinite ease-in-out 6s;
+        }
+
+        .bg-blob-4 {
+            bottom: 20%;
+            right: 15%;
+            width: 22rem;
+            height: 22rem;
+            background: linear-gradient(45deg, #ef4444, #f43f5e);
+            animation: float 28s infinite ease-in-out 9s;
+        }
+
+        /* Floating Scholarship Elements */
+        .scholarship-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .scholarship-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: scholarshipFloat 8s infinite ease-in-out;
+        }
+
+        .scholarship-shape-1 {
+            top: 10%;
+            left: 8%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .scholarship-shape-2 {
+            top: 20%;
+            right: 12%;
+            font-size: 1.5rem;
+            animation-delay: 2s;
+        }
+
+        .scholarship-shape-3 {
+            top: 60%;
+            left: 5%;
+            font-size: 1.8rem;
+            animation-delay: 4s;
+        }
+
+        .scholarship-shape-4 {
+            bottom: 25%;
+            right: 8%;
+            font-size: 2.2rem;
+            animation-delay: 6s;
+        }
+
+        .scholarship-shape-5 {
+            top: 40%;
+            left: 15%;
+            font-size: 1.6rem;
+            animation-delay: 1s;
+        }
+
+        .scholarship-shape-6 {
+            bottom: 40%;
+            right: 20%;
+            font-size: 1.9rem;
+            animation-delay: 3s;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(-15px) rotate(180deg) scale(0.95);
+            }
+            75% {
+                transform: translateY(-45px) rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes scholarshipFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 4rem 1rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(16, 185, 129, 0.08));
+            border-radius: 2rem;
+            margin: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .hero-button-primary {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+        }
+
+        .hero-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.4);
+        }
+
+        .hero-button-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-button-secondary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Scholarship Stats */
+        .scholarship-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+
+        /* Scholarship Categories Section */
+        .categories-section {
+            margin: 4rem 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 36rem;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-header {
+            padding: 2rem 2rem 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .category-icon-merit {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .category-icon-need {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        .category-icon-research {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .category-icon-special {
+            background: linear-gradient(135deg, #ef4444, #f43f5e);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .category-content {
+            padding: 0 2rem 2rem;
+        }
+
+        .category-description {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .category-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-feature:hover {
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .category-feature-icon {
+            color: #f59e0b;
+            font-size: 1.25rem;
+            margin-top: 0.125rem;
+        }
+
+        .category-feature-text {
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .category-button {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Featured Scholarships Section */
+        .scholarships-section {
+            margin: 4rem 1rem;
+        }
+
+        .scholarships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .scholarship-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .scholarship-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .scholarship-banner {
+            height: 8rem;
+            position: relative;
+        }
+
+        .scholarship-banner-merit {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .scholarship-banner-need {
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+        }
+
+        .scholarship-banner-research {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .scholarship-banner-special {
+            background: linear-gradient(135deg, #ef4444, #f43f5e);
+        }
+
+        .scholarship-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            backdrop-filter: blur(4px);
+        }
+
+        .scholarship-content {
+            padding: 2rem;
+        }
+
+        .scholarship-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .scholarship-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .scholarship-description {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .scholarship-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .scholarship-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .scholarship-detail-icon {
+            color: #f59e0b;
+        }
+
+        .scholarship-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .scholarship-deadline {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ef4444;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .scholarship-button {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+        }
+
+        .scholarship-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Eligibility Section */
+        .eligibility-section {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            margin: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eligibility-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmer 5s infinite;
+        }
+
+        .eligibility-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .eligibility-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .eligibility-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            max-width: 36rem;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .eligibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .eligibility-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .eligibility-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .eligibility-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .eligibility-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .eligibility-card-description {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+        }
+
+        /* Application Process Section */
+        .process-section {
+            margin: 4rem 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .process-step-number {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 1rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+        }
+
+        .process-step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Success Stories Section */
+        .stories-section {
+            margin: 4rem 1rem;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .story-avatar-1 {
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80');
+        }
+
+        .story-avatar-2 {
+            background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80');
+        }
+
+        .story-avatar-3 {
+            background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80');
+        }
+
+        .story-info {
+            flex: 1;
+        }
+
+        .story-name {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .story-program {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .story-quote {
+            color: #475569;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .story-scholarship {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 4rem 1rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #f59e0b;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 20rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(16, 185, 129, 0.1));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 1rem 2rem;
+                margin: 1rem 0.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .scholarships-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-image" id="parallaxBg"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+        <div class="bg-blob bg-blob-4"></div>
+    </div>
+
+    <!-- Floating Scholarship Elements -->
+    <div class="scholarship-elements">
+        <div class="scholarship-shape scholarship-shape-1">🏆</div>
+        <div class="scholarship-shape scholarship-shape-2">💰</div>
+        <div class="scholarship-shape scholarship-shape-3">🎓</div>
+        <div class="scholarship-shape scholarship-shape-4">📚</div>
+        <div class="scholarship-shape scholarship-shape-5">⭐</div>
+        <div class="scholarship-shape scholarship-shape-6">🌟</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section section" id="heroSection">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🏆 Empowering Dreams Through Education</div>
+                <h1 class="hero-title">Scholarships & Financial Aid</h1>
+                <p class="hero-subtitle">
+                    Unlock your potential with our comprehensive scholarship programs. We believe that financial 
+                    constraints should never limit educational aspirations. Discover opportunities that can 
+                    transform your academic journey.
+                </p>
+                <div class="hero-actions">
+                    <a href="#scholarships" class="hero-button hero-button-primary">
+                        🔍 Browse Scholarships
+                    </a>
+                    <a href="#eligibility" class="hero-button hero-button-secondary">
+                        📋 Check Eligibility
+                    </a>
+                </div>
+                <div class="scholarship-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">₹2.5Cr</div>
+                        <div class="stat-label">Total Awarded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1,250+</div>
+                        <div class="stat-label">Recipients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Scholarship Types</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scholarship Categories Section -->
+    <section class="categories-section section" id="categoriesSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Scholarship Categories</h2>
+                <p class="section-description">
+                    Explore our diverse range of scholarship programs designed to support students from all backgrounds and academic pursuits.
+                </p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon category-icon-merit">🏆</div>
+                        <h3 class="category-title">Merit-Based Scholarships</h3>
+                    </div>
+                    <div class="category-content">
+                        <p class="category-description">
+                            Recognizing academic excellence and outstanding achievements in various fields of study.
+                        </p>
+                        <ul class="category-features">
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Academic Excellence Awards</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Subject-Specific Merit Scholarships</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Leadership Achievement Awards</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Extracurricular Excellence</span>
+                            </li>
+                        </ul>
+                        <button class="category-button">
+                            🔍 View Scholarships
+                        </button>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon category-icon-need">💚</div>
+                        <h3 class="category-title">Need-Based Financial Aid</h3>
+                    </div>
+                    <div class="category-content">
+                        <p class="category-description">
+                            Supporting students who demonstrate financial need to pursue their educational goals.
+                        </p>
+                        <ul class="category-features">
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Full Tuition Coverage</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Partial Financial Assistance</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Living Expense Support</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Emergency Financial Aid</span>
+                            </li>
+                        </ul>
+                        <button class="category-button">
+                            🔍 View Scholarships
+                        </button>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon category-icon-research">🔬</div>
+                        <h3 class="category-title">Research Grants</h3>
+                    </div>
+                    <div class="category-content">
+                        <p class="category-description">
+                            Funding opportunities for students engaged in innovative research projects and academic pursuits.
+                        </p>
+                        <ul class="category-features">
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Undergraduate Research Grants</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Graduate Research Funding</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Conference Presentation Support</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Publication Assistance</span>
+                            </li>
+                        </ul>
+                        <button class="category-button">
+                            🔍 View Scholarships
+                        </button>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-header">
+                        <div class="category-icon category-icon-special">🌟</div>
+                        <h3 class="category-title">Special Category Scholarships</h3>
+                    </div>
+                    <div class="category-content">
+                        <p class="category-description">
+                            Targeted support for specific groups and communities to promote diversity and inclusion.
+                        </p>
+                        <ul class="category-features">
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Minority Community Support</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Women in STEM Scholarships</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Rural Student Support</span>
+                            </li>
+                            <li class="category-feature">
+                                <span class="category-feature-icon">✓</span>
+                                <span class="category-feature-text">Disability Support Scholarships</span>
+                            </li>
+                        </ul>
+                        <button class="category-button">
+                            🔍 View Scholarships
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Scholarships Section -->
+    <section class="scholarships-section section" id="scholarshipsSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Scholarships</h2>
+                <p class="section-description">
+                    Discover our most popular and impactful scholarship opportunities currently available for applications.
+                </p>
+            </div>
+            <div class="scholarships-grid">
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-merit">
+                        <div class="scholarship-badge">Most Popular</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Excellence in Academics Scholarship</h3>
+                        <div class="scholarship-amount">₹50,000 - ₹1,00,000</div>
+                        <p class="scholarship-description">
+                            Awarded to students who demonstrate exceptional academic performance and maintain high GPA throughout their studies.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>50 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>All Programs</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Annual</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">🎯</span>
+                                <span>GPA 3.8+</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: March 31, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-need">
+                        <div class="scholarship-badge">High Impact</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Financial Need Support Program</h3>
+                        <div class="scholarship-amount">₹25,000 - ₹75,000</div>
+                        <p class="scholarship-description">
+                            Comprehensive financial assistance for students from economically disadvantaged backgrounds to pursue higher education.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>100 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>All Programs</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Annual</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">💰</span>
+                                <span>Income Based</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: April 15, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-research">
+                        <div class="scholarship-badge">Research Focus</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Innovation Research Grant</h3>
+                        <div class="scholarship-amount">₹30,000 - ₹1,50,000</div>
+                        <p class="scholarship-description">
+                            Supporting groundbreaking research projects that contribute to scientific advancement and societal development.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>25 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>Science & Tech</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Project Based</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">🔬</span>
+                                <span>Research Proposal</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: May 30, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-special">
+                        <div class="scholarship-badge">Special Category</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Women in Leadership Scholarship</h3>
+                        <div class="scholarship-amount">₹40,000 - ₹80,000</div>
+                        <p class="scholarship-description">
+                            Empowering women students who demonstrate leadership potential and commitment to community service.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>30 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>All Programs</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Annual</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👩</span>
+                                <span>Women Only</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: June 15, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-merit">
+                        <div class="scholarship-badge">New</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Digital Innovation Scholarship</h3>
+                        <div class="scholarship-amount">₹60,000 - ₹1,20,000</div>
+                        <p class="scholarship-description">
+                            Supporting students pursuing technology and digital innovation projects that address real-world challenges.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>20 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>Tech Programs</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Annual</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">💻</span>
+                                <span>Portfolio Required</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: July 31, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scholarship-card">
+                    <div class="scholarship-banner scholarship-banner-need">
+                        <div class="scholarship-badge">Community Impact</div>
+                    </div>
+                    <div class="scholarship-content">
+                        <h3 class="scholarship-title">Rural Development Scholarship</h3>
+                        <div class="scholarship-amount">₹35,000 - ₹70,000</div>
+                        <p class="scholarship-description">
+                            Supporting students from rural areas who are committed to contributing to rural development and community upliftment.
+                        </p>
+                        <div class="scholarship-details">
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">👥</span>
+                                <span>40 Recipients</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">📚</span>
+                                <span>All Programs</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">⏱️</span>
+                                <span>Annual</span>
+                            </div>
+                            <div class="scholarship-detail">
+                                <span class="scholarship-detail-icon">🌾</span>
+                                <span>Rural Background</span>
+                            </div>
+                        </div>
+                        <div class="scholarship-footer">
+                            <div class="scholarship-deadline">
+                                <span>⏰</span>
+                                <span>Deadline: August 15, 2024</span>
+                            </div>
+                            <button class="scholarship-button">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="eligibility-section section" id="eligibilitySection">
+        <div class="container">
+            <div class="eligibility-content">
+                <h2 class="eligibility-title">Eligibility Criteria</h2>
+                <p class="eligibility-description">
+                    Understanding the general eligibility requirements for our scholarship programs to help you identify the best opportunities.
+                </p>
+                <div class="eligibility-grid">
+                    <div class="eligibility-card">
+                        <div class="eligibility-icon">🎓</div>
+                        <h3 class="eligibility-card-title">Academic Standing</h3>
+                        <p class="eligibility-card-description">Maintain minimum GPA requirements and good academic standing in your program.</p>
+                    </div>
+                    <div class="eligibility-card">
+                        <div class="eligibility-icon">📋</div>
+                        <h3 class="eligibility-card-title">Enrollment Status</h3>
+                        <p class="eligibility-card-description">Be enrolled as a full-time or part-time student in an eligible program.</p>
+                    </div>
+                    <div class="eligibility-card">
+                        <div class="eligibility-icon">💰</div>
+                        <h3 class="eligibility-card-title">Financial Need</h3>
+                        <p class="eligibility-card-description">Demonstrate financial need through required documentation and income verification.</p>
+                    </div>
+                    <div class="eligibility-card">
+                        <div class="eligibility-icon">🌟</div>
+                        <h3 class="eligibility-card-title">Merit & Achievement</h3>
+                        <p class="eligibility-card-description">Show excellence in academics, leadership, or community service activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process Section -->
+    <section class="process-section section" id="processSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Application Process</h2>
+                <p class="section-description">
+                    Follow our streamlined application process to apply for scholarships and maximize your chances of success.
+                </p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <h3 class="process-step-title">Research & Identify</h3>
+                    <p class="process-step-description">Browse available scholarships and identify those that match your profile, interests, and eligibility criteria.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <h3 class="process-step-title">Prepare Documents</h3>
+                    <p class="process-step-description">Gather required documents including transcripts, recommendation letters, essays, and financial documentation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <h3 class="process-step-title">Submit Application</h3>
+                    <p class="process-step-description">Complete the online application form and upload all required documents before the deadline.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">4</div>
+                    <h3 class="process-step-title">Review Process</h3>
+                    <p class="process-step-description">Applications are reviewed by our scholarship committee based on merit, need, and program-specific criteria.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">5</div>
+                    <h3 class="process-step-title">Award Notification</h3>
+                    <p class="process-step-description">Successful candidates are notified via email and official letters with award details and next steps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="stories-section section" id="storiesSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-description">
+                    Read inspiring stories from our scholarship recipients who have achieved remarkable success in their academic and professional journeys.
+                </p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar story-avatar-1"></div>
+                        <div class="story-info">
+                            <div class="story-name">Rahul Sharma</div>
+                            <div class="story-program">Computer Science Engineering</div>
+                        </div>
+                    </div>
+                    <p class="story-quote">
+                        "The Excellence in Academics Scholarship not only supported my education financially but also motivated me to maintain high standards. Today, I'm working at a leading tech company and giving back to the community."
+                    </p>
+                    <div class="story-scholarship">Merit Scholarship Recipient</div>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar story-avatar-2"></div>
+                        <div class="story-info">
+                            <div class="story-name">Priya Patel</div>
+                            <div class="story-program">Business Administration</div>
+                        </div>
+                    </div>
+                    <p class="story-quote">
+                        "The Women in Leadership Scholarship empowered me to pursue my entrepreneurial dreams. I now run my own startup and mentor other young women in business."
+                    </p>
+                    <div class="story-scholarship">Leadership Scholarship Recipient</div>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar story-avatar-3"></div>
+                        <div class="story-info">
+                            <div class="story-name">Arjun Das</div>
+                            <div class="story-program">Environmental Science</div>
+                        </div>
+                    </div>
+                    <p class="story-quote">
+                        "The Research Grant allowed me to conduct groundbreaking research on sustainable agriculture. My work is now being implemented in rural communities across the region."
+                    </p>
+                    <div class="story-scholarship">Research Grant Recipient</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section" id="faqSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">
+                    Find answers to common questions about our scholarship programs and application process.
+                </p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What are the general eligibility requirements for scholarships?</div>
+                    <div class="faq-answer">
+                        General eligibility requirements include being enrolled as a student at Rangpur Government College, maintaining good academic standing (usually a minimum GPA of 3.0), and meeting specific criteria for each scholarship program such as financial need, merit, or program of study.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I apply for multiple scholarships?</div>
+                    <div class="faq-answer">
+                        You can apply for multiple scholarships through our online portal. Each scholarship has its own application form and requirements. We recommend applying for all scholarships you're eligible for to maximize your chances of receiving financial aid.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">When are scholarship applications typically due?</div>
+                    <div class="faq-answer">
+                        Scholarship deadlines vary throughout the year. Most major scholarships have deadlines between March and August. We recommend checking our scholarship portal regularly and applying early to ensure you don't miss any opportunities.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can international students apply for scholarships?</div>
+                    <div class="faq-answer">
+                        Yes, international students are eligible for certain scholarship programs. Some scholarships are specifically designed for international students, while others are open to all students regardless of nationality. Check individual scholarship requirements for specific eligibility criteria.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How are scholarship recipients selected?</div>
+                    <div class="faq-answer">
+                        Recipients are selected by our scholarship committee based on various factors including academic merit, financial need, leadership potential, community service, and program-specific criteria. The selection process is competitive and fair, ensuring deserving students receive support.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What happens if I receive multiple scholarship awards?</div>
+                    <div class="faq-answer">
+                        If you receive multiple scholarship awards, our financial aid office will work with you to determine the best combination of awards that maximizes your benefit while adhering to program guidelines. Some scholarships can be combined, while others cannot.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Rangpur Government College Scholarships</h3>
+                <p class="footer-description">
+                    Empowering students to achieve their academic dreams through comprehensive scholarship and financial aid programs.
+                </p>
+                <div class="footer-meta">
+                    <span>© 2024 Rangpur Government College</span>
+                    <span>•</span>
+                    <span>Financial Aid Office</span>
+                    <span>•</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const sections = document.querySelectorAll('.section');
+        const parallaxBg = document.getElementById('parallaxBg');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show sections with staggered animation
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 100);
+
+            // Add event listeners
+            window.addEventListener('scroll', handleScroll);
+            
+            // Initialize FAQ accordions
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+
+        // Handle scroll events
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Parallax effect for background
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+            
+            // Animate sections on scroll
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight * 0.8;
+                
+                if (isInViewport && !section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

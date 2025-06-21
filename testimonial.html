@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Testimonials - Rangpur Government College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: #f8fafc;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(16,185,129,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(59,130,246,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 30s linear infinite;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: #e5e7eb;
+            opacity: 0.5;
+        }
+
+        .testimonial-content {
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .testimonial-card:hover .author-avatar::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Featured Testimonial */
+        .featured-testimonial {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            color: white;
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .featured-testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 20s linear infinite;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-quote {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .featured-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .featured-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        /* Video Testimonials */
+        .video-testimonials {
+            margin: 4rem 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f2937;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .testimonial-cta {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            padding: 4rem;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .testimonial-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 25s linear infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #1f2937;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
+            }
+
+            .featured-testimonial {
+                padding: 2.5rem;
+            }
+
+            .featured-quote {
+                font-size: 1.2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-badge">Student Success Stories</span>
+                <h2 class="section-title">What Our Students Say</h2>
+                <p class="section-subtitle">Discover how Rangpur Government College has transformed the lives of thousands of students, helping them achieve their dreams and build successful careers.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-count="15000">0</div>
+                    <div class="stat-label">Successful Graduates</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">% Success Rate</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-count="4.9">0</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"Rangpur Government College provided me with an exceptional education and the foundation I needed to succeed. The faculty's dedication and the college's resources helped me secure admission to Dhaka University for my master's degree."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Md. Rakibul Islam</h4>
+                            <p>Software Engineer at Google • Class of 2019</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"The supportive environment at RGC helped me discover my passion for medicine. The excellent science department and dedicated teachers prepared me well for medical college entrance exams. I'm now a practicing doctor thanks to their guidance."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SA</div>
+                        <div class="author-info">
+                            <h4>Dr. Sultana Akter</h4>
+                            <p>Medical Officer at Rangpur Medical College • Class of 2018</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"RGC not only provided quality education but also shaped my character and leadership skills. The extracurricular activities and student organizations helped me develop confidence that serves me well in my banking career today."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AH</div>
+                        <div class="author-info">
+                            <h4>Abdullah Hasan</h4>
+                            <p>Branch Manager at Dutch Bangla Bank • Class of 2017</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"The English department at RGC was outstanding. My professors encouraged my love for literature and helped me develop strong communication skills. I'm now teaching at university level and pursuing my PhD abroad."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">FR</div>
+                        <div class="author-info">
+                            <h4>Fatema Rahman</h4>
+                            <p>Assistant Professor at Rajshahi University • Class of 2016</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"RGC's business studies program gave me a solid foundation in commerce and entrepreneurship. The practical approach to learning and industry connections helped me start my own successful business right after graduation."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KA</div>
+                        <div class="author-info">
+                            <h4>Karim Ahmed</h4>
+                            <p>CEO of TechStart Bangladesh • Class of 2020</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <p class="testimonial-text">"The mathematics department at RGC is exceptional. The rigorous curriculum and supportive faculty helped me excel in competitive exams. I'm now working as a data scientist at a multinational company."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">NH</div>
+                        <div class="author-info">
+                            <h4>Nasir Hossain</h4>
+                            <p>Data Scientist at Samsung R&D • Class of 2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Testimonial -->
+            <div class="featured-testimonial animate-on-scroll">
+                <div class="featured-content">
+                    <p class="featured-quote">"Rangpur Government College is more than an educational institution; it's a place where dreams take shape and futures are built. The values, knowledge, and friendships I gained here continue to guide me in my journey as a successful entrepreneur and community leader."</p>
+                    <div class="featured-author">
+                        <div class="featured-avatar">MA</div>
+                        <div>
+                            <h3>Mahmuda Akter</h3>
+                            <p>Founder & CEO of EduTech Solutions • Distinguished Alumna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Testimonials -->
+            <div class="video-testimonials">
+                <h3 class="section-title animate-on-scroll" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Video Stories</h3>
+                <div class="video-grid">
+                    <div class="video-card animate-on-scroll">
+                        <div class="video-thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title">Success Story: From RGC to Silicon Valley</h4>
+                            <p class="video-description">Watch how our alumnus made it to top tech companies</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card animate-on-scroll">
+                        <div class="video-thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title">Medical Journey: RGC to Doctor</h4>
+                            <p class="video-description">A graduate's path to becoming a successful physician</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card animate-on-scroll">
+                        <div class="video-thumbnail">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4 class="video-title">Entrepreneurship Excellence</h4>
+                            <p class="video-description">How RGC shaped a successful business leader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="testimonial-cta animate-on-scroll">
+                <div class="cta-content">
+                    <h3 class="cta-title">Ready to Write Your Success Story?</h3>
+                    <p class="cta-description">Join thousands of successful graduates who started their journey at Rangpur Government College. Your future begins here.</p>
+                    <a href="#" class="btn">Start Your Application Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('stat-card')) {
+                        animateCounter(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Counter animation function
+        function animateCounter(card) {
+            const numberElement = card.querySelector('.stat-number');
+            const targetNumber = parseInt(numberElement.getAttribute('data-count'));
+            const isDecimal = numberElement.getAttribute('data-count').includes('.');
+            let currentNumber = 0;
+            const increment = targetNumber / 100;
+            const duration = 2000; // 2 seconds
+            const stepTime = duration / 100;
+
+            const timer = setInterval(() => {
+                currentNumber += increment;
+                if (currentNumber >= targetNumber) {
+                    currentNumber = targetNumber;
+                    clearInterval(timer);
+                }
+                
+                if (isDecimal) {
+                    numberElement.textContent = currentNumber.toFixed(1);
+                } else {
+                    numberElement.textContent = Math.floor(currentNumber).toLocaleString();
+                }
+            }, stepTime);
+        }
+
+        // Video play functionality
+        function initVideoPlayers() {
+            document.querySelectorAll('.video-thumbnail').forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const playButton = this.querySelector('.play-button');
+                    playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                    
+                    // Add loading animation
+                    this.style.background = 'linear-gradient(135deg, #10b981, #3b82f6)';
+                    
+                    // Simulate video loading
+                    setTimeout(() => {
+                        alert('Video player would open here in a real implementation');
+                        playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    }, 1000);
+                });
+            });
+        }
+
+        // Testimonial card hover effects
+        function initTestimonialEffects() {
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.03)';
+                    this.style.boxShadow = '0 30px 60px rgba(0, 0, 0, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        }
+
+        // Staggered animation for testimonials
+        function initStaggeredAnimations() {
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const videoCards = document.querySelectorAll('.video-card');
+            
+            testimonialCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            videoCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Rating animation
+        function animateRatings() {
+            document.querySelectorAll('.rating').forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                stars.forEach((star, index) => {
+                    setTimeout(() => {
+                        star.style.transform = 'scale(1.2)';
+                        star.style.color = '#fbbf24';
+                        setTimeout(() => {
+                            star.style.transform = 'scale(1)';
+                        }, 200);
+                    }, index * 100);
+                });
+            });
+        }
+
+        // Initialize all functionality
+        function init() {
+            // Observe all animated elements
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize other features
+            initVideoPlayers();
+            initTestimonialEffects();
+            initStaggeredAnimations();
+            
+            // Animate ratings when they come into view
+            const ratingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateRatings();
+                        ratingObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.testimonials-grid').forEach(grid => {
+                ratingObserver.observe(grid);
+            });
+        }
+
+        // Start everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Add smooth scrolling for CTA button
+        document.querySelector('.testimonial-cta .btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would scroll to the application form
+            alert('This would navigate to the application form');
+        });
+    </script>
+</body>
+</html>

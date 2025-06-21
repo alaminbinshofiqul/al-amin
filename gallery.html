@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rangpur Government College Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gallery-main.css">
+  <link rel="stylesheet" href="gallery-responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="gallery-header">
+    <div class="container">
+      <h1>Photo Gallery</h1>
+      <p class="subtitle">Capturing moments of excellence at Rangpur Government College since 1902</p>
+    </div>
+  </header>
+
+  <main class="gallery-section">
+    <div class="container">
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="campus">Campus</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="academics">Academics</button>
+        <button class="filter-btn" data-filter="achievements">Achievements</button>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Campus Images -->
+        <div class="gallery-item" data-category="campus">
+          <a href="#img1" class="gallery-link">
+            <img src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Main Academic Building" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Main Academic Building</h3>
+              <p>The historic main building of Rangpur Government College established in 1902</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="campus">
+          <a href="#img2" class="gallery-link">
+            <img src="https://images.pexels.com/photos/2305098/pexels-photo-2305098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Science Building" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Science Building</h3>
+              <p>Modern science building housing laboratories and research facilities</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="campus">
+          <a href="#img3" class="gallery-link">
+            <img src="https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Central Library" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Central Library</h3>
+              <p>Our central library with over 50,000 books and digital resources</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Events Images -->
+        <div class="gallery-item" data-category="events">
+          <a href="#img4" class="gallery-link">
+            <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Convocation Ceremony" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Convocation Ceremony</h3>
+              <p>Annual convocation ceremony celebrating student achievements</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="events">
+          <a href="#img5" class="gallery-link">
+            <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cultural Program" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Cultural Program</h3>
+              <p>Students performing at the annual cultural program</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Academics Images -->
+        <div class="gallery-item" data-category="academics">
+          <a href="#img6" class="gallery-link">
+            <img src="https://images.pexels.com/photos/8471799/pexels-photo-8471799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Chemistry Laboratory" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Chemistry Laboratory</h3>
+              <p>Students conducting experiments in our modern chemistry lab</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="academics">
+          <a href="#img7" class="gallery-link">
+            <img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Classroom" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Interactive Classroom</h3>
+              <p>Modern classroom facilities with interactive teaching methods</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Achievements Images -->
+        <div class="gallery-item" data-category="achievements">
+          <a href="#img8" class="gallery-link">
+            <img src="https://images.pexels.com/photos/4778413/pexels-photo-4778413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Science Fair Award" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Science Fair Award</h3>
+              <p>Students receiving awards at the National Science Fair</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="achievements">
+          <a href="#img9" class="gallery-link">
+            <img src="https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Debate Competition" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Debate Championship</h3>
+              <p>Our debate team winning the regional championship</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="events">
+          <a href="#img10" class="gallery-link">
+            <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sports Day" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Annual Sports Day</h3>
+              <p>Students participating in various sports activities</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="campus">
+          <a href="#img11" class="gallery-link">
+            <img src="https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="College Garden" loading="lazy">
+            <div class="gallery-caption">
+              <h3>College Garden</h3>
+              <p>The beautiful garden area where students relax between classes</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="gallery-item" data-category="academics">
+          <a href="#img12" class="gallery-link">
+            <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Library Resources" loading="lazy">
+            <div class="gallery-caption">
+              <h3>Library Resources</h3>
+              <p>Extensive collection of academic resources for student research</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox Implementation -->
+  <div class="lightbox" id="img1">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Main Academic Building">
+      <div class="caption">
+        <h3>Main Academic Building</h3>
+        <p>The historic main building of Rangpur Government College established in 1902</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img2">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/2305098/pexels-photo-2305098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Science Building">
+      <div class="caption">
+        <h3>Science Building</h3>
+        <p>Modern science building housing laboratories and research facilities</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img3">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Central Library">
+      <div class="caption">
+        <h3>Central Library</h3>
+        <p>Our central library with over 50,000 books and digital resources</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img4">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Convocation Ceremony">
+      <div class="caption">
+        <h3>Convocation Ceremony</h3>
+        <p>Annual convocation ceremony celebrating student achievements</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img5">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cultural Program">
+      <div class="caption">
+        <h3>Cultural Program</h3>
+        <p>Students performing at the annual cultural program</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img6">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/8471799/pexels-photo-8471799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Chemistry Laboratory">
+      <div class="caption">
+        <h3>Chemistry Laboratory</h3>
+        <p>Students conducting experiments in our modern chemistry lab</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img7">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Classroom">
+      <div class="caption">
+        <h3>Interactive Classroom</h3>
+        <p>Modern classroom facilities with interactive teaching methods</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img8">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/4778413/pexels-photo-4778413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Science Fair Award">
+      <div class="caption">
+        <h3>Science Fair Award</h3>
+        <p>Students receiving awards at the National Science Fair</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img9">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Debate Competition">
+      <div class="caption">
+        <h3>Debate Championship</h3>
+        <p>Our debate team winning the regional championship</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img10">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sports Day">
+      <div class="caption">
+        <h3>Annual Sports Day</h3>
+        <p>Students participating in various sports activities</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img11">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="College Garden">
+      <div class="caption">
+        <h3>College Garden</h3>
+        <p>The beautiful garden area where students relax between classes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="img12">
+    <a href="#" class="close"></a>
+    <div class="lightbox-content">
+      <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Library Resources">
+      <div class="caption">
+        <h3>Library Resources</h3>
+        <p>Extensive collection of academic resources for student research</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="gallery-footer">
+    <div class="container">
+      <p>&copy; 2025 Rangpur Government College. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple JS for category filtering - this would normally be in a separate file
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filter = this.getAttribute('data-filter');
+          
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+   <script src="main.js"></script>
+</body>
+</html>

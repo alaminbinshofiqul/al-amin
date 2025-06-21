@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangpur Government College - Academic Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <style>
+        :root {
+            --primary-color: #1a4b8e;
+            --secondary-color: #e8b923;
+            --accent-color: #d9232f;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1a1a2e;
+            --animation-duration: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .academic-calendar-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(26, 75, 142, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+            color: white;
+        }
+
+        .bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .bg-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .bg-slideshow img.active {
+            opacity: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: fadeInDown var(--animation-duration) ease-out;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp var(--animation-duration) ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .calendar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* FullCalendar Customization */
+        .fc {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn var(--animation-duration) ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .fc .fc-toolbar-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .fc .fc-col-header-cell-cushion {
+            color: white;
+            font-weight: 500;
+        }
+
+        .fc .fc-daygrid-day-number {
+            color: white;
+        }
+
+        .fc .fc-button {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .fc .fc-button:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .fc .fc-button-primary:not(:disabled).fc-button-active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .fc .fc-daygrid-day.fc-day-today {
+            background-color: rgba(232, 185, 35, 0.2);
+        }
+
+        /* Event Categories */
+        .fc-event-academic {
+            background-color: #1a4b8e;
+            border-color: #1a4b8e;
+        }
+
+        .fc-event-holiday {
+            background-color: #d9232f;
+            border-color: #d9232f;
+        }
+
+        .fc-event-exam {
+            background-color: #8e1a4b;
+            border-color: #8e1a4b;
+        }
+
+        .fc-event-cultural {
+            background-color: #238ed9;
+            border-color: #238ed9;
+        }
+
+        .fc-event-sports {
+            background-color: #4b8e1a;
+            border-color: #4b8e1a;
+        }
+
+        .fc .fc-event {
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-left-width: 4px;
+        }
+
+        .fc .fc-event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .fc .fc-daygrid-event-dot {
+            display: none;
+        }
+
+        .fc .fc-event-title {
+            font-weight: 500;
+        }
+
+        .fc .fc-daygrid-day-frame {
+            min-height: 80px;
+        }
+
+        /* Academic Timeline */
+        .academic-timeline {
+            margin-top: 50px;
+            position: relative;
+            animation: fadeIn var(--animation-duration) ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .timeline-header h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .session-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .session-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .session-btn.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 4px;
+            background: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: -40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 4px solid var(--secondary-color);
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: -15px;
+            left: -45px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .timeline-content p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Event Modal */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn var(--animation-duration) ease-out;
+        }
+
+        .event-modal-content {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .event-modal h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .event-date {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .event-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .event-details {
+            margin-bottom: 20px;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .event-detail i {
+            width: 30px;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+
+        /* View Selector */
+        .view-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: fadeIn var(--animation-duration) ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .view-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .view-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .view-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .view-btn:hover::before {
+            left: 0;
+        }
+
+        .view-btn.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeIn var(--animation-duration) ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(217, 35, 47, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(217, 35, 47, 0.6);
+        }
+
+        .download-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .fc {
+                padding: 15px;
+            }
+
+            .fc .fc-toolbar-title {
+                font-size: 1.2rem;
+            }
+
+            .fc .fc-button {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+
+            .view-btn {
+                padding: 8px 15px;
+                margin: 0 5px;
+                font-size: 0.9rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .session-selector {
+                flex-wrap: wrap;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item::before {
+                left: -30px;
+            }
+
+            .timeline-date {
+                left: -35px;
+            }
+
+            .event-modal-content {
+                padding: 20px;
+            }
+
+            .event-modal h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fc .fc-toolbar.fc-header-toolbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .view-selector {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Academic Calendar Section -->
+    <section class="academic-calendar-section">
+        <!-- Background Slideshow -->
+        <div class="bg-slideshow">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="College Building" class="active">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Students in Classroom">
+            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Library">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Campus Ground">
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <div class="section-header">
+            <h2>Academic Calendar</h2>
+            <p>Explore the complete academic schedule of Rangpur Government College for the current session</p>
+        </div>
+
+        <div class="calendar-container">
+            <!-- View Selector -->
+            <div class="view-selector">
+                <button class="view-btn active" data-view="dayGridMonth">Month</button>
+                <button class="view-btn" data-view="timeGridWeek">Week</button>
+                <button class="view-btn" data-view="timeGridDay">Day</button>
+                <button class="view-btn" data-view="listMonth">List</button>
+            </div>
+
+            <!-- Calendar -->
+            <div id="calendar"></div>
+
+            <!-- Academic Timeline -->
+            <div class="academic-timeline">
+                <div class="timeline-header">
+                    <h3>Key Academic Dates</h3>
+                    <div class="session-selector">
+                        <button class="session-btn active">2023-24</button>
+                        <button class="session-btn">2024-25</button>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jun 15</div>
+                        <div class="timeline-content">
+                            <h4>Admission Process Begins</h4>
+                            <p>Online and offline admission for HSC 1st year starts. Last date for application submission is July 10.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 1</div>
+                        <div class="timeline-content">
+                            <h4>Classes Commence</h4>
+                            <p>First day of classes for all HSC 1st year students. Orientation program will be held in the morning.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Sep 5-15</div>
+                        <div class="timeline-content">
+                            <h4>First Term Examination</h4>
+                            <p>First term examination for all classes. Detailed schedule will be published on notice boards.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Dec 10-20</div>
+                        <div class="timeline-content">
+                            <h4>Second Term Examination</h4>
+                            <p>Second term examination for all classes. Practical exams will be conducted before written exams.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Feb 1</div>
+                        <div class="timeline-content">
+                            <h4>College Foundation Day</h4>
+                            <p>Celebration of Rangpur Government College Foundation Day with cultural programs and alumni meet.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mar 15-30</div>
+                        <div class="timeline-content">
+                            <h4>Final Examination</h4>
+                            <p>Annual examination for all classes. Practical exams will be conducted before written exams.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i> Download Academic Calendar (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="event-modal">
+        <div class="event-modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-event-title">Event Title</h3>
+            <div class="event-date" id="modal-event-date">June 15, 2023</div>
+            <div class="event-description" id="modal-event-description">
+                This is a detailed description of the event. It will contain all the important information that students and faculty need to know about this particular event.
+            </div>
+            <div class="event-details">
+                <div class="event-detail">
+                    <i class="fas fa-clock"></i>
+                    <span id="modal-event-time">10:00 AM - 12:00 PM</span>
+                </div>
+                <div class="event-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="modal-event-location">College Auditorium</span>
+                </div>
+                <div class="event-detail">
+                    <i class="fas fa-user-tie"></i>
+                    <span id="modal-event-organizer">Department of Physics</span>
+                </div>
+            </div>
+            <button class="view-btn" style="margin-top: 20px;" id="add-to-calendar">
+                <i class="fas fa-calendar-plus"></i> Add to My Calendar
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Background slideshow
+            const bgImages = document.querySelectorAll('.bg-slideshow img');
+            let currentImage = 0;
+
+            function changeBackground() {
+                bgImages[currentImage].classList.remove('active');
+                currentImage = (currentImage + 1) % bgImages.length;
+                bgImages[currentImage].classList.add('active');
+            }
+
+            setInterval(changeBackground, 5000);
+
+            // Sample academic events data
+            const academicEvents = [
+                {
+                    title: 'Admission Starts',
+                    start: '2023-06-15',
+                    end: '2023-06-15',
+                    description: 'Online admission for HSC 1st year 2023-24 session begins today. Students can apply through the college website or in-person at the admission office.',
+                    time: '9:00 AM - 4:00 PM',
+                    location: 'Admission Office',
+                    organizer: 'Administration',
+                    className: 'fc-event-academic'
+                },
+                {
+                    title: 'Classes Begin',
+                    start: '2023-07-01',
+                    end: '2023-07-01',
+                    description: 'First day of classes for all HSC 1st year students. Orientation program will be held in the college auditorium at 10:00 AM.',
+                    time: '8:30 AM - 1:30 PM',
+                    location: 'Respective Classrooms',
+                    organizer: 'Academic Council',
+                    className: 'fc-event-academic'
+                },
+                {
+                    title: 'Eid-ul-Adha Holiday',
+                    start: '2023-06-21',
+                    end: '2023-06-23',
+                    description: 'College will remain closed for Eid-ul-Adha celebrations. Classes will resume on June 26.',
+                    time: 'All Day',
+                    location: '',
+                    organizer: 'Administration',
+                    className: 'fc-event-holiday'
+                },
+                {
+                    title: 'First Term Exam',
+                    start: '2023-09-05',
+                    end: '2023-09-15',
+                    description: 'First term examination for all HSC students. Detailed schedule will be published on the notice board two weeks prior.',
+                    time: '10:00 AM - 1:00 PM',
+                    location: 'Exam Halls',
+                    organizer: 'Examination Committee',
+                    className: 'fc-event-exam'
+                },
+                {
+                    title: 'Durga Puja Holiday',
+                    start: '2023-10-20',
+                    end: '2023-10-24',
+                    description: 'College will remain closed for Durga Puja celebrations. Classes will resume on October 25.',
+                    time: 'All Day',
+                    location: '',
+                    organizer: 'Administration',
+                    className: 'fc-event-holiday'
+                },
+                {
+                    title: 'Second Term Exam',
+                    start: '2023-12-10',
+                    end: '2023-12-20',
+                    description: 'Second term examination for all HSC students. Practical exams will be conducted before written exams.',
+                    time: '10:00 AM - 1:00 PM',
+                    location: 'Exam Halls',
+                    organizer: 'Examination Committee',
+                    className: 'fc-event-exam'
+                },
+                {
+                    title: 'Winter Vacation',
+                    start: '2023-12-25',
+                    end: '2024-01-05',
+                    description: 'College winter vacation. Administrative offices will remain open during this period.',
+                    time: 'All Day',
+                    location: '',
+                    organizer: 'Administration',
+                    className: 'fc-event-holiday'
+                },
+                {
+                    title: 'College Foundation Day',
+                    start: '2024-02-01',
+                    end: '2024-02-01',
+                    description: 'Celebration of Rangpur Government College Foundation Day with cultural programs and alumni meet.',
+                    time: '10:00 AM - 5:00 PM',
+                    location: 'College Auditorium',
+                    organizer: 'Cultural Committee',
+                    className: 'fc-event-cultural'
+                },
+                {
+                    title: 'Annual Sports Week',
+                    start: '2024-02-10',
+                    end: '2024-02-15',
+                    description: 'College Annual Sports Week featuring cricket, football, athletics, and other competitions.',
+                    time: '8:00 AM - 5:00 PM Daily',
+                    location: 'College Ground',
+                    organizer: 'Sports Committee',
+                    className: 'fc-event-sports'
+                },
+                {
+                    title: 'Final Exam',
+                    start: '2024-03-15',
+                    end: '2024-03-30',
+                    description: 'Annual examination for all HSC students. Practical exams will be conducted before written exams.',
+                    time: '10:00 AM - 1:00 PM',
+                    location: 'Exam Halls',
+                    organizer: 'Examination Committee',
+                    className: 'fc-event-exam'
+                },
+                {
+                    title: 'Result Publication',
+                    start: '2024-05-15',
+                    end: '2024-05-15',
+                    description: 'HSC Final Examination results will be published today. Students can check results on the college website or notice board.',
+                    time: '12:00 PM',
+                    location: 'College Website/Notice Board',
+                    organizer: 'Examination Committee',
+                    className: 'fc-event-academic'
+                }
+            ];
+
+            // Initialize calendar
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: ''
+                },
+                events: academicEvents,
+                eventClick: function(info) {
+                    const event = info.event;
+                    document.getElementById('modal-event-title').textContent = event.title;
+                    document.getElementById('modal-event-date').textContent = event.start ? event.start.toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    }) : '';
+                    document.getElementById('modal-event-description').textContent = event.extendedProps.description || 'No description available';
+                    document.getElementById('modal-event-time').textContent = event.extendedProps.time || 'All Day';
+                    document.getElementById('modal-event-location').textContent = event.extendedProps.location || 'Various Locations';
+                    document.getElementById('modal-event-organizer').textContent = event.extendedProps.organizer || 'College Administration';
+                    
+                    document.querySelector('.event-modal').style.display = 'flex';
+                },
+                eventContent: function(arg) {
+                    const eventEl = document.createElement('div');
+                    eventEl.className = 'fc-event-content';
+                    eventEl.innerHTML = `
+                        <div class="fc-event-title">${arg.event.title}</div>
+                        ${arg.timeText ? `<div class="fc-event-time">${arg.timeText}</div>` : ''}
+                    `;
+                    return { domNodes: [eventEl] };
+                },
+                eventDisplay: 'block',
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    meridiem: 'short'
+                }
+            });
+
+            calendar.render();
+
+            // View selector functionality
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    calendar.changeView(btn.getAttribute('data-view'));
+                });
+            });
+
+            // Session selector functionality
+            const sessionBtns = document.querySelectorAll('.session-btn');
+            sessionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sessionBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // Here you would typically load different events for different sessions
+                    // For demo, we're using the same events
+                });
+            });
+
+            // Modal functionality
+            const modal = document.querySelector('.event-modal');
+            const closeModal = document.querySelector('.close-modal');
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Add to calendar functionality
+            document.getElementById('add-to-calendar').addEventListener('click', function() {
+                alert('Event has been added to your personal calendar!');
+                modal.style.display = 'none';
+            });
+
+            // Download button functionality
+            document.querySelector('.download-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Academic calendar PDF download will start shortly.');
+            });
+
+            // Animate elements on scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.fc, .view-selector, .academic-timeline, .download-section');
+                elements.forEach((el, index) => {
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+
+                    if (elementPosition < screenPosition) {
+                        el.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
+                    }
+                });
+            }
+
+            // Initial animation
+            animateOnScroll();
+
+            // Animate on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>

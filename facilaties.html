@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangpur Government College - World Class Facilities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section with Parallax */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(30, 58, 138, 0.6)),
+                        url('https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 3rem;
+            color: #bfdbfe;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            display: block;
+        }
+
+        .stat-label {
+            color: #bfdbfe;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Facilities Section */
+        .facilities-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+
+        .facilities-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.05;
+            will-change: transform;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e40af, #3730a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            color: #64748b;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            left: 0;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Facilities Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+        }
+
+        .facility-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(29, 78, 216, 0.6));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .facility-card:hover .card-image::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover .card-icon {
+            background: white;
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            padding: 0.4rem 0.8rem;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .facilities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .filter-container {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Rangpur Government College</h1>
+            <p class="hero-subtitle">Excellence in Education Since 1918</p>
+            
+            <div class="stats-container">
+                <div class="stat-item floating">
+                    <span class="stat-number">15,000+</span>
+                    <span class="stat-label">Students</span>
+                </div>
+                <div class="stat-item floating">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Faculty Members</span>
+                </div>
+                <div class="stat-item floating">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Departments</span>
+                </div>
+                <div class="stat-item floating">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities-section">
+        <div class="facilities-bg"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">World-Class Facilities</h2>
+                <p class="section-subtitle">Discover our state-of-the-art infrastructure designed to foster learning, innovation, and personal growth</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Facilities</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="recreation">Recreation</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="health">Health & Wellness</button>
+                <button class="filter-btn" data-filter="dining">Dining</button>
+            </div>
+
+            <!-- Facilities Grid -->
+            <div class="facilities-grid">
+                <!-- Central Library -->
+                <div class="facility-card" data-category="academic">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/2041540/pexels-photo-2041540.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">📚</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Central Library</h3>
+                        <p class="card-description">A magnificent library housing over 50,000 books, digital resources, and peaceful study environments with modern amenities.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">50,000+ Books</span>
+                            <span class="feature-tag">Digital Resources</span>
+                            <span class="feature-tag">24/7 Access</span>
+                            <span class="feature-tag">Study Rooms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Science Laboratories -->
+                <div class="facility-card" data-category="academic">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🔬</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Advanced Science Labs</h3>
+                        <p class="card-description">State-of-the-art laboratories equipped with cutting-edge instruments for Physics, Chemistry, Biology, and research activities.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">Modern Equipment</span>
+                            <span class="feature-tag">Safety Standards</span>
+                            <span class="feature-tag">Research Facilities</span>
+                            <span class="feature-tag">Expert Supervision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sports Complex -->
+                <div class="facility-card" data-category="recreation">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🏃‍♂️</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sports Complex</h3>
+                        <p class="card-description">Comprehensive sports facilities including swimming pool, gymnasium, tennis courts, and athletic tracks for all sports enthusiasts.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">Olympic Pool</span>
+                            <span class="feature-tag">Multi-sports Court</span>
+                            <span class="feature-tag">Fitness Center</span>
+                            <span class="feature-tag">Athletic Track</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Center -->
+                <div class="facility-card" data-category="technology">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">💻</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Digital Campus</h3>
+                        <p class="card-description">Advanced computer labs, campus-wide Wi-Fi, smart classrooms, and integrated digital learning platforms for modern education.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">High-Speed Internet</span>
+                            <span class="feature-tag">Smart Boards</span>
+                            <span class="feature-tag">E-Learning</span>
+                            <span class="feature-tag">Tech Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Center -->
+                <div class="facility-card" data-category="health">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/4033148/pexels-photo-4033148.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🏥</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Medical Center</h3>
+                        <p class="card-description">On-campus medical facility with qualified doctors, emergency care services, and comprehensive health support for students and staff.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">24/7 Emergency</span>
+                            <span class="feature-tag">Qualified Doctors</span>
+                            <span class="feature-tag">Pharmacy</span>
+                            <span class="feature-tag">Health Checkups</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cafeteria -->
+                <div class="facility-card" data-category="dining">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🍽️</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Student Cafeteria</h3>
+                        <p class="card-description">Spacious dining hall serving nutritious meals with diverse menu options, maintaining high standards of hygiene and quality.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">Healthy Menu</span>
+                            <span class="feature-tag">Affordable Prices</span>
+                            <span class="feature-tag">Cultural Cuisine</span>
+                            <span class="feature-tag">Hygienic Environment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auditorium -->
+                <div class="facility-card" data-category="academic">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🎭</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Grand Auditorium</h3>
+                        <p class="card-description">A magnificent auditorium with seating for 1,500 people, equipped with advanced audio-visual systems for events and performances.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">1,500 Capacity</span>
+                            <span class="feature-tag">Modern AV System</span>
+                            <span class="feature-tag">Stage Lighting</span>
+                            <span class="feature-tag">Events & Concerts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Dormitory -->
+                <div class="facility-card" data-category="recreation">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2')">
+                        <div class="card-icon">🏠</div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Student Dormitory</h3>
+                        <p class="card-description">Comfortable accommodation facilities with modern amenities, study areas, and recreational spaces for residential students.</p>
+                        <div class="card-features">
+                            <span class="feature-tag">Modern Rooms</span>
+                            <span class="feature-tag">Common Areas</span>
+                            <span class="feature-tag">Security</span>
+                            <span class="feature-tag">Study Spaces</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const heroBg = document.querySelector('.hero-bg');
+            const facilitiesBg = document.querySelector('.facilities-bg');
+            
+            if (heroBg) {
+                heroBg.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+            
+            if (facilitiesBg) {
+                facilitiesBg.style.transform = `translate3d(0, ${scrolled * -0.2}px, 0)`;
+            }
+        });
+
+        // Intersection Observer for card animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all facility cards
+        document.querySelectorAll('.facility-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const facilityCards = document.querySelectorAll('.facility-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                facilityCards.forEach((card, index) => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        setTimeout(() => {
+                            card.style.display = 'block';
+                            card.classList.add('animate');
+                        }, index * 50);
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('animate');
+                    }
+                });
+            });
+        });
+
+        // Smooth reveal animation on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Add floating animation delay to stats
+        document.querySelectorAll('.stat-item').forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Enhanced hover effects for cards
+        facilityCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Dynamic background color change based on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+            const hue = Math.floor(scrollPercentage * 60) + 200; // Blue to purple range
+            
+            document.documentElement.style.setProperty('--dynamic-hue', hue);
+        });
+
+        // Add click animation to filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Performance optimization: Throttle scroll events
+        let ticking = false;
+        function updateScrollEffects() {
+            // Parallax and other scroll effects here
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffects);
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>

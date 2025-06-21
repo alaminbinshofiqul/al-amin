@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Department - Rangpur Government College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Parallax Container */
+        .parallax-container {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px;
+        }
+
+        /* Hero Section with Parallax */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transform: translateZ(-1px) scale(2);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: translateZ(-1px) scale(2); }
+            100% { transform: translateZ(-1px) scale(2.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: slideInLeft 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInRight 1s ease-out 0.7s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+            animation: bounceIn 1s ease-out 1s both;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            transform: translateY(-100%);
+        }
+
+        .navbar.visible {
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4facfe;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            background-attachment: fixed;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Faculty Section */
+        .faculty {
+            background: white;
+            position: relative;
+        }
+
+        .faculty::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            background-attachment: fixed;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faculty-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faculty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .faculty-card:hover::before {
+            left: 100%;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .faculty-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faculty-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .faculty-card:hover .faculty-avatar::before {
+            opacity: 1;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .programs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            background-attachment: fixed;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* Research Section */
+        .research {
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .research::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            background-attachment: fixed;
+        }
+
+        .research-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .research-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4facfe;
+        }
+
+        .research-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            background-attachment: fixed;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mathematics specific animations */
+        .equation-animation {
+            animation: equationSolve 3s ease-in-out;
+        }
+
+        @keyframes equationSolve {
+            0% {
+                transform: scale(0.8) rotate(-5deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.1) rotate(2deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .geometric-float {
+            animation: geometricFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes geometricFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                border-radius: 20px;
+            }
+            25% { 
+                transform: translateY(-15px) rotate(90deg); 
+                border-radius: 50%;
+            }
+            50% { 
+                transform: translateY(-10px) rotate(180deg); 
+                border-radius: 0%;
+            }
+            75% { 
+                transform: translateY(-5px) rotate(270deg); 
+                border-radius: 30%;
+            }
+        }
+
+        .formula-glow {
+            animation: formulaGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes formulaGlow {
+            from {
+                text-shadow: 0 0 5px #4facfe;
+                color: #333;
+            }
+            to {
+                text-shadow: 0 0 20px #4facfe, 0 0 30px #00f2fe;
+                color: #4facfe;
+            }
+        }
+
+        /* Mathematical symbols floating background */
+        .math-symbols {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .math-symbol {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(79, 172, 254, 0.1);
+            animation: mathFloat 15s linear infinite;
+        }
+
+        @keyframes mathFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Statistics chart animation */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4facfe;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Mathematical formulas display */
+        .formula-display {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.25rem;
+            box-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mathematical Symbols Background -->
+    <div class="math-symbols" id="mathSymbols"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">RGC Mathematics</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#faculty">Faculty</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="floating formula-glow">Department of Mathematics</h1>
+            <p>Rangpur Government College</p>
+            <p class="geometric-float">Where Logic Meets Beauty, Numbers Tell Stories</p>
+            <a href="#about" class="cta-button">Explore Mathematical Excellence</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Our Department</h2>
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <h3>Excellence in Mathematical Education</h3>
+                    <p>The Department of Mathematics at Rangpur Government College stands as a beacon of analytical thinking and mathematical excellence. We nurture logical minds and foster problem-solving skills that extend far beyond the classroom.</p>
+                    <p>Our comprehensive curriculum spans pure mathematics, applied mathematics, statistics, and computational mathematics. We prepare students for careers in academia, research, technology, finance, and data science.</p>
+                    <p>With state-of-the-art computer labs, experienced faculty, and strong industry connections, we provide an environment where mathematical concepts come alive through practical applications.</p>
+                    
+                    <div class="formula-display equation-animation">
+                        ∫ Knowledge dx = Understanding + C
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Graduate Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Research Papers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Industry Partners</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <span class="achievement-badge">Excellence in Teaching</span>
+                        <span class="achievement-badge">Research Innovation</span>
+                        <span class="achievement-badge">Industry Recognition</span>
+                        <span class="achievement-badge">Student Success</span>
+                    </div>
+                </div>
+                <div class="about-image slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mathematics classroom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="section faculty" id="faculty">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Distinguished Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Dr. Abdur Rahman</h3>
+                    <p><strong>Professor & Head</strong></p>
+                    <p>Ph.D. in Pure Mathematics, 28+ years experience. Specializes in abstract algebra, number theory, and mathematical analysis.</p>
+                </div>
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Dr. Sultana Razia</h3>
+                    <p><strong>Associate Professor</strong></p>
+                    <p>Ph.D. in Statistics, Expert in probability theory, statistical inference, and data analysis methodologies.</p>
+                </div>
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mr. Kamal Uddin</h3>
+                    <p><strong>Assistant Professor</strong></p>
+                    <p>M.Sc. in Applied Mathematics, Specializes in differential equations, numerical analysis, and computational mathematics.</p>
+                </div>
+                <div class="faculty-card fade-in">
+                    <div class="faculty-avatar">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <h3>Ms. Nasreen Akter</h3>
+                    <p><strong>Lecturer</strong></p>
+                    <p>M.Sc. in Mathematics, Research interests include topology, real analysis, and mathematical modeling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section programs" id="programs">
+        <div class="container">
+            <h2 class="section-title fade-in">Academic Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Bachelor of Science (Honors)</h3>
+                    <p>4-year comprehensive program covering calculus, algebra, geometry, statistics, and advanced mathematical concepts.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Master of Science</h3>
+                    <p>2-year advanced program focusing on specialized areas including pure mathematics, applied mathematics, and research methodology.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Science Track</h3>
+                    <p>Specialized program combining mathematics, statistics, and computer science for modern data analysis careers.</p>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Research Programs</h3>
+                    <p>Independent research opportunities in pure and applied mathematics with faculty mentorship and collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section research" id="research">
+        <div class="container">
+            <h2 class="section-title fade-in">Research & Innovation</h2>
+            <div class="research-content fade-in">
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Our department conducts cutting-edge research in various mathematical fields, contributing to both theoretical advancement and practical applications.</p>
+                
+                <div class="formula-display">
+                    Research = Curiosity × Methodology + Innovation²
+                </div>
+                
+                <div class="research-grid">
+                    <div class="research-item slide-in-left">
+                        <h3><i class="fas fa-infinity"></i> Pure Mathematics</h3>
+                        <p>Advanced research in abstract algebra, real and complex analysis, topology, and number theory with international collaborations.</p>
+                    </div>
+                    <div class="research-item slide-in-right">
+                        <h3><i class="fas fa-chart-bar"></i> Applied Statistics</h3>
+                        <p>Statistical modeling, biostatistics, econometrics, and data mining applications for real-world problem solving.</p>
+                    </div>
+                    <div class="research-item slide-in-left">
+                        <h3><i class="fas fa-cogs"></i> Computational Mathematics</h3>
+                        <p>Numerical methods, algorithm development, and mathematical software for engineering and scientific applications.</p>
+                    </div>
+                    <div class="research-item slide-in-right">
+                        <h3><i class="fas fa-brain"></i> Mathematical Modeling</h3>
+                        <p>Creating mathematical models for biological systems, economic phenomena, and environmental processes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Department of Mathematics<br>Rangpur Government College<br>Rangpur, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+880-521-12348<br>+880-521-67893</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>mathematics@rgc.edu.bd<br>info@rgc.edu.bd</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Office Hours</h3>
+                            <p>Sunday - Thursday: 9:00 AM - 5:00 PM<br>Friday: 9:00 AM - 12:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form slide-in-right">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Create floating mathematical symbols
+        function createMathSymbols() {
+            const symbols = ['∑', '∫', '∞', 'π', 'α', 'β', 'γ', 'δ', 'θ', 'λ', '∂', '∇', '≈', '≠', '≤', '≥', '∈', '∉', '∪', '∩', '⊂', '⊃', '∀', '∃', '∴', '∵', '√', '∛', '∜', '±', '×', '÷', '∝', '∼', '≡', '≅', '∠', '⊥', '∥', '⊕', '⊗'];
+            const container = document.getElementById('mathSymbols');
+            
+            function addSymbol() {
+                const symbol = document.createElement('div');
+                symbol.className = 'math-symbol';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                symbol.style.left = Math.random() * 100 + '%';
+                symbol.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                symbol.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(symbol);
+                
+                setTimeout(() => {
+                    container.removeChild(symbol);
+                }, 20000);
+            }
+            
+            // Add symbols periodically
+            setInterval(addSymbol, 2000);
+            
+            // Add initial symbols
+            for (let i = 0; i < 5; i++) {
+                setTimeout(addSymbol, i * 1000);
+            }
+        }
+
+        // Navbar Show/Hide on Scroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form Submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Calculating...';
+            submitBtn.style.background = '#28a745';
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Dynamic text animation for hero section
+        const heroText = document.querySelector('.geometric-float');
+        const texts = [
+            'Where Logic Meets Beauty, Numbers Tell Stories',
+            'Solving Tomorrow\'s Problems with Today\'s Mathematics',
+            'Excellence in Mathematical Education and Research',
+            'Building Analytical Minds for a Digital Future'
+        ];
+        
+        let textIndex = 0;
+        setInterval(() => {
+            heroText.style.opacity = '0';
+            setTimeout(() => {
+                textIndex = (textIndex + 1) % texts.length;
+                heroText.textContent = texts[textIndex];
+                heroText.style.opacity = '1';
+            }, 500);
+        }, 4000);
+
+        // Mathematics-specific animations
+        setInterval(() => {
+            const cards = document.querySelectorAll('.faculty-card, .program-card');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            randomCard.classList.add('equation-animation');
+            
+            setTimeout(() => {
+                randomCard.classList.remove('equation-animation');
+            }, 3000);
+        }, 5000);
+
+        // Formula glow effect for random elements
+        setInterval(() => {
+            const titles = document.querySelectorAll('h3');
+            const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+            randomTitle.classList.add('formula-glow');
+            
+            setTimeout(() => {
+                randomTitle.classList.remove('formula-glow');
+            }, 2000);
+        }, 6000);
+
+        // Animated statistics counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+                    }
+                }, 50);
+            });
+        }
+
+        // Trigger stats animation when section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            statsObserver.observe(statsContainer);
+        }
+
+        // Mouse trail effect with mathematical symbols
+        document.addEventListener('mousemove', function(e) {
+            const symbols = ['∑', '∫', '∞', 'π', '√', '∂', '≈', '±', '×', '÷'];
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.fontSize = '14px';
+            trail.style.color = '#4facfe';
+            trail.style.pointerEvents = 'none';
+            trail.style.zIndex = '9999';
+            trail.style.opacity = '0.7';
+            trail.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'translateY(-20px) rotate(360deg)';
+                trail.style.transition = 'all 0.8s ease';
+                
+                setTimeout(() => {
+                    document.body.removeChild(trail);
+                }, 800);
+            }, 150);
+        });
+
+        // Parallax effect for background images
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('[style*="background-attachment: fixed"]');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Initialize mathematical symbols
+        createMathSymbols();
+
+        // Add geometric floating animation to random cards
+        setInterval(() => {
+            const cards = document.querySelectorAll('.research-item, .program-card');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            randomCard.classList.add('geometric-float');
+            
+            setTimeout(() => {
+                randomCard.classList.remove('geometric-float');
+            }, 4000);
+        }, 8000);
+
+        // Mathematical equation solver animation
+        function showEquationSolver() {
+            const equations = [
+                'x² + 5x + 6 = 0 → x = -2, -3',
+                '∫ x² dx = x³/3 + C',
+                'lim(x→∞) 1/x = 0',
+                'e^(iπ) + 1 = 0',
+                '∑(n=1 to ∞) 1/n² = π²/6'
+            ];
+            
+            const formula = document.querySelector('.formula-display');
+            if (formula) {
+                let equationIndex = 0;
+                setInterval(() => {
+                    formula.style.opacity = '0';
+                    setTimeout(() => {
+                        formula.textContent = equations[equationIndex];
+                        formula.style.opacity = '1';
+                        equationIndex = (equationIndex + 1) % equations.length;
+                    }, 500);
+                }, 5000);
+            }
+        }
+
+        // Start equation solver animation
+        setTimeout(showEquationSolver, 3000);
+    </script>
+</body>
+</html>

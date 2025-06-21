@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangpur Government College - Result Portal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc, #ffffff, #f1f5f9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Elements */
+        .bg-elements {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url('https://placehold.co/1920x1080');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            mix-blend-mode: multiply;
+            opacity: 0.2;
+        }
+
+        .bg-blob-1 {
+            top: 5rem;
+            left: 5rem;
+            width: 18rem;
+            height: 18rem;
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            animation: pulse 15s infinite alternate;
+        }
+
+        .bg-blob-2 {
+            top: 10rem;
+            right: 5rem;
+            width: 24rem;
+            height: 24rem;
+            background: linear-gradient(to right, #a855f7, #ec4899);
+            animation: pulse 18s infinite alternate 1s;
+        }
+
+        .bg-blob-3 {
+            bottom: 5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20rem;
+            height: 20rem;
+            background: linear-gradient(to right, #f59e0b, #f97316);
+            animation: pulse 20s infinite alternate 2s;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: bounce 3s infinite;
+        }
+
+        .particle-1 {
+            top: 25%;
+            left: 25%;
+            width: 0.25rem;
+            height: 0.25rem;
+            background-color: #10b981;
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            top: 33%;
+            right: 33%;
+            width: 0.1875rem;
+            height: 0.1875rem;
+            background-color: #a855f7;
+            animation-delay: 1s;
+        }
+
+        .particle-3 {
+            bottom: 25%;
+            left: 33%;
+            width: 0.3125rem;
+            height: 0.3125rem;
+            background-color: #f59e0b;
+            animation-delay: 2s;
+        }
+
+        .particle-4 {
+            top: 50%;
+            right: 25%;
+            width: 0.125rem;
+            height: 0.125rem;
+            background-color: #f43f5e;
+            animation-delay: 3s;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.25;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 3rem 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Styles */
+        header {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo svg {
+            width: 2rem;
+            height: 2rem;
+            color: white;
+        }
+
+        .logo-text {
+            text-align: left;
+        }
+
+        .logo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+
+        .header-description {
+            max-width: 36rem;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1);
+        }
+
+        .stat-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: white;
+        }
+
+        .stat-icon-students {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .stat-icon-results {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+        }
+
+        .stat-icon-grades {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .stat-icon-departments {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Search Section */
+        .search-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-description {
+            color: #64748b;
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 3.5rem;
+            padding-left: 3rem;
+            font-size: 1.125rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
+        .search-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .search-filters {
+                flex-direction: row;
+            }
+        }
+
+        .semester-select {
+            flex: 1;
+            height: 3rem;
+            padding: 0 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .semester-select:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
+        .search-button {
+            flex: none;
+            height: 3rem;
+            padding: 0 2rem;
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #059669, #0891b2);
+        }
+
+        /* Results Section */
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .results-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .results-count {
+            background-color: #f1f5f9;
+            color: #64748b;
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+
+        .results-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .result-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .result-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .result-info {
+            flex: 1;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-avatar {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            transition: color 0.3s ease;
+        }
+
+        .result-card:hover .result-name {
+            color: #10b981;
+        }
+
+        .result-id {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .result-details {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .result-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .result-detail-icon {
+            color: #10b981;
+        }
+
+        .result-detail-icon.purple {
+            color: #a855f7;
+        }
+
+        .result-detail-icon.amber {
+            color: #f59e0b;
+        }
+
+        .result-detail-text {
+            color: #1e293b;
+        }
+
+        .result-grade {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .result-grade-aplus {
+            background: linear-gradient(to right, #f59e0b, #f97316);
+            color: white;
+        }
+
+        .result-grade-a {
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            color: white;
+        }
+
+        .result-grade-aminus {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .result-actions {
+                flex-direction: row;
+            }
+        }
+
+        .result-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .result-button-outline {
+            border: 2px solid #10b981;
+            color: #10b981;
+            background-color: transparent;
+        }
+
+        .result-button-outline:hover {
+            background-color: #ecfdf5;
+            transform: scale(1.05);
+        }
+
+        .result-button-primary {
+            background: linear-gradient(to right, #10b981, #06b6d4);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-button-primary:hover {
+            background: linear-gradient(to right, #059669, #0891b2);
+            transform: scale(1.05);
+        }
+
+        .no-results {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .no-results-icon {
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .no-results-icon svg {
+            width: 3rem;
+            height: 3rem;
+            color: #64748b;
+        }
+
+        .no-results-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results-text {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            padding: 3rem 1rem;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            max-width: 36rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            flex-wrap: wrap;
+        }
+
+        .footer-separator {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .footer-separator {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-image" id="parallaxBg"></div>
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="section" id="headerSection">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-title">Rangpur Government College</h1>
+                    <p class="logo-subtitle">Academic Result Portal</p>
+                </div>
+            </div>
+            <p class="header-description">
+                Access your academic results, transcripts, and performance analytics with our modern digital portal
+            </p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="section" id="statsSection">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon stat-icon-students">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="stat-value">2,847</p>
+                            <p class="stat-label">Total Students</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon stat-icon-results">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="stat-value">1,234</p>
+                            <p class="stat-label">Published Results</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon stat-icon-grades">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="stat-value">456</p>
+                            <p class="stat-label">A+ Grades</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon stat-icon-departments">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="stat-value">12</p>
+                            <p class="stat-label">Departments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="section" id="searchSection">
+            <div class="search-card">
+                <div class="search-header">
+                    <h2 class="search-title">Search Your Results</h2>
+                    <p class="search-description">Enter your Student ID or Name to find your academic results</p>
+                </div>
+                <div class="search-input-container">
+                    <div class="search-input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Enter Student ID or Name (e.g., RGC2024001 or Rahman Ahmed)">
+                </div>
+                <div class="search-filters">
+                    <select id="semesterSelect" class="semester-select">
+                        <option value="all">All Semesters</option>
+                        <option value="spring2024">Spring 2024</option>
+                        <option value="fall2023">Fall 2023</option>
+                        <option value="summer2023">Summer 2023</option>
+                    </select>
+                    <button id="searchButton" class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Search Results
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="section" id="resultsSection">
+            <div class="results-header">
+                <h2 class="results-title">Recent Results</h2>
+                <div id="resultsCount" class="results-count">4 Results Found</div>
+            </div>
+
+            <div id="resultsContainer" class="results-grid">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-overlay"></div>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Rangpur Government College</h3>
+                <p class="footer-description">
+                    Empowering students with digital excellence and academic transparency since 1965
+                </p>
+                <div class="footer-meta">
+                    <span>© 2024 Rangpur Government College</span>
+                    <span class="footer-separator">•</span>
+                    <span>Academic Portal v2.0</span>
+                    <span class="footer-separator">•</span>
+                    <span>All Rights Reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data for results
+        const results = [
+            {
+                id: "RGC2024001",
+                name: "Md. Rahman Ahmed",
+                semester: "Spring 2024",
+                department: "Computer Science",
+                cgpa: 3.85,
+                grade: "A",
+                status: "Published"
+            },
+            {
+                id: "RGC2024002",
+                name: "Fatima Khatun",
+                semester: "Spring 2024",
+                department: "Mathematics",
+                cgpa: 3.92,
+                grade: "A+",
+                status: "Published"
+            },
+            {
+                id: "RGC2024003",
+                name: "Mohammad Hasan",
+                semester: "Fall 2023",
+                department: "Physics",
+                cgpa: 3.78,
+                grade: "A-",
+                status: "Published"
+            },
+            {
+                id: "RGC2024004",
+                name: "Rashida Begum",
+                semester: "Spring 2024",
+                department: "Chemistry",
+                cgpa: 3.95,
+                grade: "A+",
+                status: "Published"
+            }
+        ];
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const semesterSelect = document.getElementById('semesterSelect');
+        const searchButton = document.getElementById('searchButton');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const resultsCount = document.getElementById('resultsCount');
+        const parallaxBg = document.getElementById('parallaxBg');
+        const sections = document.querySelectorAll('.section');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show sections with animation
+            setTimeout(() => {
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 300);
+                });
+            }, 100);
+
+            // Render initial results
+            renderResults(results);
+
+            // Add event listeners
+            searchInput.addEventListener('input', handleSearch);
+            semesterSelect.addEventListener('change', handleSearch);
+            searchButton.addEventListener('click', handleSearch);
+            window.addEventListener('scroll', handleScroll);
+        });
+
+        // Handle scroll events
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Parallax effect for background
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+            }
+            
+            // Check if sections are in viewport and animate them
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight * 0.8;
+                
+                if (isInViewport && !section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Handle search functionality
+        function handleSearch() {
+            const query = searchInput.value.toLowerCase();
+            const semester = semesterSelect.value;
+            
+            let filteredResults = results.filter(result => {
+                const nameMatch = result.name.toLowerCase().includes(query);
+                const idMatch = result.id.toLowerCase().includes(query);
+                const semesterMatch = semester === 'all' || result.semester.toLowerCase().includes(semester.replace(/(\d+)$/, ' $1'));
+                
+                return (nameMatch || idMatch) && semesterMatch;
+            });
+            
+            renderResults(filteredResults);
+        }
+
+        // Render results to the DOM
+        function renderResults(resultsToRender) {
+            resultsContainer.innerHTML = '';
+            resultsCount.textContent = `${resultsToRender.length} Results Found`;
+            
+            if (resultsToRender.length === 0 && searchInput.value) {
+                // Show no results message
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <h3 class="no-results-title">No Results Found</h3>
+                        <p class="no-results-text">No results found for "${searchInput.value}". Please check your Student ID or Name and try again.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Create result cards
+            resultsToRender.forEach(result => {
+                const initials = result.name.split(' ').map(n => n[0]).join('');
+                const gradeClass = result.grade === 'A+' ? 'result-grade-aplus' : 
+                                  result.grade === 'A' ? 'result-grade-a' : 'result-grade-aminus';
+                
+                const resultCard = document.createElement('div');
+                resultCard.className = 'result-card';
+                resultCard.innerHTML = `
+                    <div class="result-content">
+                        <div class="result-info">
+                            <div class="result-header">
+                                <div class="result-avatar">${initials}</div>
+                                <div>
+                                    <h3 class="result-name">${result.name}</h3>
+                                    <p class="result-id">ID: ${result.id}</p>
+                                </div>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-detail">
+                                    <svg class="result-detail-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span class="result-detail-text">${result.semester}</span>
+                                </div>
+                                <div class="result-detail">
+                                    <svg class="result-detail-icon purple" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                    <span class="result-detail-text">${result.department}</span>
+                                </div>
+                                <div class="result-detail">
+                                    <svg class="result-detail-icon amber" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="8" r="7"></circle>
+                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                                    </svg>
+                                    <span class="result-grade ${gradeClass}">${result.grade} (CGPA: ${result.cgpa})</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <button class="result-button result-button-outline">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                View Details
+                            </button>
+                            <button class="result-button result-button-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(resultCard);
+            });
+        }
+
+        // Add animation to elements when they come into view
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.result-card, .stat-card');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight * 0.9) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

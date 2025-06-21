@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rangpur Government College</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script src="main.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <header id="main-header" class="header">
+      <div class="container">
+            <div class="logo-container">
+                <img src="images/logo.jpg" alt="RGC Logo" class="logo">
+                <div class="logo-text">
+              <h1>Rangpur Government College</h1>
+              <p>Est. 1902 | Excellence in Education</p>
+            </div>
+          </div>
+          
+          <div class="quick-contact">
+            <div class="contact-item">
+              <span class="icon">📞</span>
+              <span>+880-521-63177</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">✉️</span>
+              <span>info@rgc.edu.bd</span>
+            </div>
+          </div>
+          
+          <div class="nav-toggle" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        
+        <nav id="main-nav" class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+            <li class="nav-item dropdown">
+              <a href="about.html" class="nav-link">About</a>
+              <ul class="dropdown-menu">
+                <li><a href="history.html">History</a></li>
+                <li><a href="mission.html">Vision & Mission</a></li>
+                <li><a href="admistative.html">Administration</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="academics.html" class="nav-link">Academics</a>
+              <ul class="dropdown-menu">
+                <li><a href="department.html">Departments</a></li>
+                <li><a href="program.html">Programs</a></li>
+                <li><a href="examination.html">Examination</a></li>
+                <li><a href="result_portal.html">Results</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="admission.html" class="nav-link">Admission</a>
+              <ul class="dropdown-menu">
+                <li><a href="undergraduate.html">Undergraduate</a></li>
+                <li><a href="graduate.html">Graduate</a></li>
+                <li><a href="application_process.html">Application Process</a></li>
+                <li><a href="fees_structure.html">Fees Structure</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a href="alumni.html" class="nav-link">Alumni</a></li>
+            <li class="nav-item"><a href="campus_life.html" class="nav-link">Campus Life</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-slider">
+        <div class="slide active">
+          <div class="slide-image" style="background-image: url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
+          <div class="slide-content">
+            <h1 class="animate-text">Welcome to Rangpur Government College</h1>
+            <p class="animate-text delay-1">Shaping the future through excellence in education since 1902</p>
+            <div class="hero-buttons">
+              <a href="about.html" class="btn btn-primary animate-text delay-2">Explore</a>
+              <a href="online_application.html" class="btn btn-secondary animate-text delay-2">Apply Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-image" style="background-image: url('https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
+          <div class="slide-content">
+            <h1 class="animate-text">Academic Excellence</h1>
+            <p class="animate-text delay-1">Discover our renowned academic programs and esteemed faculty</p>
+            <div class="hero-buttons">
+              <a href="program.html" class="btn btn-primary animate-text delay-2">Programs</a>
+              <a href="department.html" class="btn btn-secondary animate-text delay-2">Department</a>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-image" style="background-image: url('https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
+          <div class="slide-content">
+            <h1 class="animate-text">Campus Life</h1>
+            <p class="animate-text delay-1">Experience vibrant student activities and cultural events</p>
+            <div class="hero-buttons">
+              <a href="campus_life.html" class="btn btn-primary animate-text delay-2">Discover</a>
+              <a href="events.html" class="btn btn-secondary animate-text delay-2">Events</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button class="prev-slide">❮</button>
+        <div class="slide-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+        </div>
+        <button class="next-slide">❯</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Our College</h2>
+          <div class="section-underline"></div>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-image reveal-element">
+            <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Rangpur Government College Historic Building">
+          </div>
+          
+          <div class="about-text reveal-element">
+            <h3>A Legacy of Excellence Since 1902</h3>
+            <p>Rangpur Government College, established in 1902, is one of the oldest and most prestigious educational institutions in Bangladesh. With over a century of academic excellence, our college has produced countless leaders, scholars, and professionals who have contributed significantly to the nation's development.</p>
+            
+            <div class="stats-container">
+              <div class="stat-item">
+                <div class="stat-number" data-count="120">0</div>
+                <div class="stat-label">Years of Excellence</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-count="15000">0</div>
+                <div class="stat-label">Students</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-count="300">0</div>
+                <div class="stat-label">Faculty Members</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-count="25">0</div>
+                <div class="stat-label">Departments</div>
+              </div>
+            </div>
+            
+            <a href="history.html" class="btn btn-outline">Learn More About Our History</a>
+          </div>
+        </div>
+        
+        <div class="vision-mission">
+          <div class="vm-card reveal-element">
+            <div class="vm-icon">🔭</div>
+            <h3>Our Vision</h3>
+            <p>To be a center of academic excellence that nurtures critical thinking, innovation, and ethical leadership, preparing students to meet global challenges.</p>
+          </div>
+          
+          <div class="vm-card reveal-element">
+            <div class="vm-icon">🎯</div>
+            <h3>Our Mission</h3>
+            <p>To provide quality education that develops intellectual capabilities, professional skills, and moral values, enabling students to contribute meaningfully to society.</p>
+          </div>
+          
+          <div class="vm-card reveal-element">
+            <div class="vm-icon">🌟</div>
+            <h3>Our Values</h3>
+            <p>Excellence, Integrity, Inclusivity, Innovation, and Social Responsibility form the foundation of our educational philosophy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section id="announcements" class="announcements-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Latest Announcements</h2>
+          <div class="section-underline"></div>
+        </div>
+        
+        <div class="announcements-slider">
+          <div class="announcement-card active reveal-element">
+            <div class="announcement-date">
+              <span class="day">15</span>
+              <span class="month">Jun</span>
+            </div>
+            <div class="announcement-content">
+              <h3>Admission Open for 2025-2026 Academic Session</h3>
+              <p>Applications are now being accepted for undergraduate and graduate programs. The last date for submission is July 15, 2025.</p>
+              <a href="online_application.html" class="read-more">Read More</a>
+            </div>
+            <div class="announcement-badge">New</div>
+          </div>
+          
+          <div class="announcement-card reveal-element">
+            <div class="announcement-date">
+              <span class="day">10</span>
+              <span class="month">Jun</span>
+            </div>
+            <div class="announcement-content">
+              <h3>National Science Fair 2025</h3>
+              <p>Rangpur Government College is proud to host the National Science Fair from July 5-7, 2025. Students from across the country are invited to participate.</p>
+              <a href="events.html" class="read-more">Read More</a>
+            </div>
+          </div>
+          
+          <div class="announcement-card reveal-element">
+            <div class="announcement-date">
+              <span class="day">05</span>
+              <span class="month">Jun</span>
+            </div>
+            <div class="announcement-content">
+              <h3>Scholarship Results Announced</h3>
+              <p>The results for the 2025 Merit Scholarship Examination have been published. Congratulations to all successful candidates!</p>
+              <a href="result_portal.html" class="read-more">Read More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="announcements-navigation">
+          <button class="prev-announcement">❮</button>
+          <button class="next-announcement">❯</button>
+        </div>
+        
+        <div class="view-all-container">
+          <a href="anoucement.html" class="btn btn-outline">View All Announcements</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Academic Programs</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">Discover our comprehensive range of undergraduate and graduate programs designed to prepare you for success.</p>
+        </div>
+        
+        <div class="programs-tabs">
+          <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="undergraduate">Undergraduate</button>
+            <button class="tab-btn" data-tab="graduate">Graduate</button>
+            <button class="tab-btn" data-tab="professional">Professional Courses</button>
+          </div>
+          
+          <div class="tabs-content">
+            <div class="tab-pane active" id="undergraduate">
+              <div class="programs-grid">
+                <div class="program-card reveal-element">
+                  <div class="program-icon">🔬</div>
+                  <h3>Bachelor of Science</h3>
+                  <p>Physics, Chemistry, Mathematics, Biology, Computer Science, Environmental Science</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card reveal-element">
+                  <div class="program-icon">📚</div>
+                  <h3>Bachelor of Arts</h3>
+                  <p>Bengali, English, History, Philosophy, Islamic Studies, Political Science</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card reveal-element">
+                  <div class="program-icon">💼</div>
+                  <h3>Bachelor of Business Studies</h3>
+                  <p>Management, Accounting, Marketing, Finance, Banking, Economics</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card reveal-element">
+                  <div class="program-icon">🌐</div>
+                  <h3>Bachelor of Social Sciences</h3>
+                  <p>Sociology, Economics, Public Administration, International Relations</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="graduate">
+              <div class="programs-grid">
+                <div class="program-card">
+                  <div class="program-icon">🔬</div>
+                  <h3>Master of Science</h3>
+                  <p>Advanced studies in Physics, Chemistry, Mathematics, Biology, Computer Science</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">📚</div>
+                  <h3>Master of Arts</h3>
+                  <p>Advanced studies in Bengali, English, History, Philosophy, Islamic Studies</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">💼</div>
+                  <h3>Master of Business Administration</h3>
+                  <p>Specialized tracks in Finance, Marketing, Human Resources, Operations</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">🌐</div>
+                  <h3>Master of Social Sciences</h3>
+                  <p>Advanced studies in Sociology, Economics, Public Administration</p>
+                  <a href="department.html" class="btn btn-small">Details</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="professional">
+              <div class="programs-grid">
+                <div class="program-card">
+                  <div class="program-icon">💻</div>
+                  <h3>IT Certification Programs</h3>
+                  <p>Web Development, Data Science, Cybersecurity, Network Administration</p>
+                  <a href="program.html" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">📊</div>
+                  <h3>Professional Accounting</h3>
+                  <p>Preparation courses for CPA, ACCA, and other professional certifications</p>
+                  <a href="#" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">🗣️</div>
+                  <h3>Language Proficiency</h3>
+                  <p>English, Chinese, Japanese, German, and French language courses</p>
+                  <a href="#" class="btn btn-small">Details</a>
+                </div>
+                
+                <div class="program-card">
+                  <div class="program-icon">🏢</div>
+                  <h3>Management Development</h3>
+                  <p>Leadership, Project Management, Entrepreneurship, Innovation</p>
+                  <a href="#" class="btn btn-small">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="program-cta">
+          <h3>Ready to Begin Your Academic Journey?</h3>
+          <p>Explore our programs and take the first step toward a rewarding future.</p>
+          <a href="online_application.html" class="btn btn-primary">Apply Now</a>
+          <a href="#" class="btn btn-secondary">Download Prospectus</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty" class="faculty-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Distinguished Faculty</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">Learn from experienced educators and researchers dedicated to academic excellence.</p>
+        </div>
+        
+        <div class="faculty-departments">
+          <div class="department-tabs">
+            <button class="dept-tab active" data-dept="all">All</button>
+            <button class="dept-tab" data-dept="science">Science</button>
+            <button class="dept-tab" data-dept="arts">Arts</button>
+            <button class="dept-tab" data-dept="business">Business</button>
+            <button class="dept-tab" data-dept="social">Social Sciences</button>
+          </div>
+          
+          <div class="faculty-grid">
+            <div class="faculty-card reveal-element" data-dept="science">
+              <div class="faculty-image">
+                <img src="images/p2.jpg" alt="Professor Rahman">
+              </div>
+              <div class="faculty-info">
+                <h3>Dr. Masud Rahman</h3>
+                <p class="faculty-position">Professor & Head, Department of Physics</p>
+                <p class="faculty-edu">Ph.D. in Theoretical Physics, University of Cambridge</p>
+                <div class="faculty-contact">
+                  <a href="mailto:m.rahman@rgc.edu.bd" class="contact-icon">✉️</a>
+                  <a href="#" class="contact-icon">🔗</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="faculty-card reveal-element" data-dept="arts">
+              <div class="faculty-image">
+                <img src="images/c3.jpg" alt="Professor Jahan">
+              </div>
+              <div class="faculty-info">
+                <h3>Dr. Nusrat Jahan</h3>
+                <p class="faculty-position">Professor, Department of English</p>
+                <p class="faculty-edu">Ph.D. in English Literature, University of Oxford</p>
+                <div class="faculty-contact">
+                  <a href="mailto:n.jahan@rgc.edu.bd" class="contact-icon">✉️</a>
+                  <a href="#" class="contact-icon">🔗</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="faculty-card reveal-element" data-dept="business">
+              <div class="faculty-image">
+                <img src="images/c2.jpg" alt="Professor Ahmed">
+              </div>
+              <div class="faculty-info">
+                <h3>Dr. Kamal Ahmed</h3>
+                <p class="faculty-position">Professor, Department of Business Administration</p>
+                <p class="faculty-edu">Ph.D. in Business Management, Harvard University</p>
+                <div class="faculty-contact">
+                  <a href="mailto:k.ahmed@rgc.edu.bd" class="contact-icon">✉️</a>
+                  <a href="#" class="contact-icon">🔗</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="faculty-card reveal-element" data-dept="social">
+              <div class="faculty-image">
+                <img src="images/c1.jpg" alt="Professor Chowdhury">
+              </div>
+              <div class="faculty-info">
+                <h3>Dr. Salma Chowdhury</h3>
+                <p class="faculty-position">Associate Professor, Department of Sociology</p>
+                <p class="faculty-edu">Ph.D. in Sociology, Columbia University</p>
+                <div class="faculty-contact">
+                  <a href="mailto:s.chowdhury@rgc.edu.bd" class="contact-icon">✉️</a>
+                  <a href="#" class="contact-icon">🔗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faculty-cta">
+          <a href="department.html" class="btn btn-outline">View All Faculty Members</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus Life Section -->
+    <section id="campus-life" class="campus-life-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Campus Life</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">Experience a vibrant campus environment that fosters personal growth and community engagement.</p>
+        </div>
+        
+        <div class="campus-life-gallery">
+          <div class="gallery-item large reveal-element">
+            <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Campus Building">
+            <div class="gallery-overlay">
+              <h3>Historic Main Building</h3>
+            </div>
+          </div>
+          
+          <div class="gallery-item reveal-element">
+            <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Library">
+            <div class="gallery-overlay">
+              <h3>Central Library</h3>
+            </div>
+          </div>
+          
+          <div class="gallery-item reveal-element">
+            <img src="https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Laboratory">
+            <div class="gallery-overlay">
+              <h3>Science Laboratory</h3>
+            </div>
+          </div>
+          
+          <div class="gallery-item reveal-element">
+            <img src="images/comp.jpeg" alt="Computer Lab">
+            <div class="gallery-overlay">
+              <h3>Computer Center</h3>
+            </div>
+          </div>
+          
+          <div class="gallery-item reveal-element">
+            <img src="https://images.pexels.com/photos/1164572/pexels-photo-1164572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sports Ground">
+            <div class="gallery-overlay">
+              <h3>Sports Complex</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="campus-facilities">
+          <h3 class="facilities-title">Campus Facilities</h3>
+          
+          <div class="facilities-grid">
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">📚</div>
+              <h4>Modern Library</h4>
+              <p>Our library houses over 100,000 books, journals, and digital resources, providing a quiet environment for research and study.</p>
+            </div>
+            
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">🔬</div>
+              <h4>Advanced Laboratories</h4>
+              <p>Well-equipped laboratories for Physics, Chemistry, Biology, Computer Science, and Language studies.</p>
+            </div>
+            
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">🏀</div>
+              <h4>Sports Facilities</h4>
+              <p>Indoor and outdoor sports facilities including cricket field, football ground, basketball court, and gymnasium.</p>
+            </div>
+            
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">🎭</div>
+              <h4>Auditorium</h4>
+              <p>A 500-seat auditorium for cultural events, seminars, conferences, and student performances.</p>
+            </div>
+            
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">🏠</div>
+              <h4>Residential Halls</h4>
+              <p>Separate residential halls for male and female students with modern amenities and security.</p>
+            </div>
+            
+            <div class="facility-card reveal-element">
+              <div class="facility-icon">🍽️</div>
+              <h4>Cafeteria</h4>
+              <p>Spacious cafeteria offering nutritious meals and refreshments at affordable prices.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="student-clubs">
+          <h3 class="clubs-title">Student Clubs & Activities</h3>
+          
+          <div class="clubs-slider">
+            <div class="club-card active reveal-element">
+              <div class="club-image">
+                <img src="images/Debate.jpg" alt="Debate Club">
+              </div>
+              <div class="club-info">
+                <h4>Debate Club</h4>
+                <p>Fostering critical thinking and public speaking skills through regular debates and competitions.</p>
+              </div>
+            </div>
+            
+            <div class="club-card reveal-element">
+              <div class="club-image">
+                <img src="images/literature.jpeg" alt="Literary Club">
+              </div>
+              <div class="club-info">
+                <h4>Literary Club</h4>
+                <p>Promoting literary creativity through poetry recitations, book discussions, and writing workshops.</p>
+              </div>
+            </div>
+            
+            <div class="club-card reveal-element">
+              <div class="club-image">
+                <img src="images/scence.jpeg" alt="Science Club">
+              </div>
+              <div class="club-info">
+                <h4>Science Club</h4>
+                <p>Encouraging scientific exploration through experiments, research projects, and science fairs.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="clubs-navigation">
+            <button class="prev-club">❮</button>
+            <button class="next-club">❯</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Upcoming Events</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">Stay updated with the latest happenings and mark your calendar for these exciting events.</p>
+        </div>
+        
+        <div class="events-timeline">
+          <div class="event-card reveal-element">
+            <div class="event-date">
+              <div class="date-box">
+                <span class="event-day">25</span>
+                <span class="event-month">Jun</span>
+              </div>
+              <div class="event-time">10:00 AM - 4:00 PM</div>
+            </div>
+            
+            <div class="event-details">
+              <h3>Open House 2025</h3>
+              <p class="event-location">📍 Main Campus Auditorium</p>
+              <p class="event-description">Prospective students and their families are invited to explore our campus, meet faculty members, and learn about our academic programs.</p>
+              <div class="event-countdown" data-date="2025-06-25T10:00:00">
+                <div class="countdown-item">
+                  <span class="count-number days">00</span>
+                  <span class="count-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number hours">00</span>
+                  <span class="count-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number minutes">00</span>
+                  <span class="count-label">Minutes</span>
+                </div>
+              </div>
+              <a href="#" class="btn btn-small">Register</a>
+            </div>
+          </div>
+          
+          <div class="event-card reveal-element">
+            <div class="event-date">
+              <div class="date-box">
+                <span class="event-day">30</span>
+                <span class="event-month">Jun</span>
+              </div>
+              <div class="event-time">5:30 PM - 8:00 PM</div>
+            </div>
+            
+            <div class="event-details">
+              <h3>Annual Science Exhibition</h3>
+              <p class="event-location">📍 Science Building</p>
+              <p class="event-description">A showcase of innovative science projects by our talented students from various departments.</p>
+              <div class="event-countdown" data-date="2025-06-30T17:30:00">
+                <div class="countdown-item">
+                  <span class="count-number days">00</span>
+                  <span class="count-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number hours">00</span>
+                  <span class="count-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number minutes">00</span>
+                  <span class="count-label">Minutes</span>
+                </div>
+              </div>
+              <a href="#" class="btn btn-small">Learn More</a>
+            </div>
+          </div>
+          
+          <div class="event-card reveal-element">
+            <div class="event-date">
+              <div class="date-box">
+                <span class="event-day">10</span>
+                <span class="event-month">Jul</span>
+              </div>
+              <div class="event-time">9:00 AM - 1:00 PM</div>
+            </div>
+            
+            <div class="event-details">
+              <h3>Alumni Reunion 2025</h3>
+              <p class="event-location">📍 College Grounds</p>
+              <p class="event-description">A special gathering for our alumni to reconnect, network, and share their experiences with current students.</p>
+              <div class="event-countdown" data-date="2025-07-10T09:00:00">
+                <div class="countdown-item">
+                  <span class="count-number days">00</span>
+                  <span class="count-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number hours">00</span>
+                  <span class="count-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="count-number minutes">00</span>
+                  <span class="count-label">Minutes</span>
+                </div>
+              </div>
+              <a href="#" class="btn btn-small">RSVP</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="events-calendar">
+          <a href="events.html" class="btn btn-outline">View Full Calendar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Campus Map</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">Explore our campus and find your way around with our interactive map.</p>
+        </div>
+        
+        <div class="map-container reveal-element">
+          <div class="campus-map" id="campus-map">
+            <!-- Map will be loaded via JavaScript -->
+            <div class="map-placeholder">
+              <img src="images/Rangpur-Govt.jpg" alt="Campus Map">
+              <div class="map-overlay">
+                <h3>Rangpur Government College Campus</h3>
+                <p>Click on any building to get more information</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="map-legend">
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #4a6bdf;"></span>
+              <span class="legend-text">Academic Buildings</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #45a049;"></span>
+              <span class="legend-text">Residential Halls</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #f7c932;"></span>
+              <span class="legend-text">Administrative Buildings</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #d14836;"></span>
+              <span class="legend-text">Sports Facilities</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #9d5cbb;"></span>
+              <span class="legend-text">Cafeteria & Food Courts</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="campus-address reveal-element">
+          <h3>Visit Us</h3>
+          <p>Rangpur Government College</p>
+          <p>Rangpur, Bangladesh</p>
+          <p>Phone: +880-521-63177</p>
+          <p>Email: info@rgc.edu.bd</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-small">Get Directions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section id="quick-links" class="quick-links-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Quick Links</h2>
+          <div class="section-underline"></div>
+        </div>
+        
+        <div class="quick-links-grid">
+          <div class="link-card reveal-element">
+            <div class="link-icon">📝</div>
+            <h3>Online Application</h3>
+            <p>Apply for admission to our undergraduate and graduate programs.</p>
+            <a href="online_application.html" class="card-link">Apply Now</a>
+          </div>
+          
+          <div class="link-card reveal-element">
+            <div class="link-icon">📊</div>
+            <h3>Result Portal</h3>
+            <p>Access your examination results and academic records.</p>
+            <a href="result_portal.html" class="card-link">Check Results</a>
+          </div>
+          
+          <div class="link-card reveal-element">
+            <div class="link-icon">📅</div>
+            <h3>Academic Calendar</h3>
+            <p>View important dates, holidays, and examination schedules.</p>
+            <a href="academiccalender.html" class="card-link">View Calendar</a>
+          </div>
+          
+          <div class="link-card reveal-element">
+            <div class="link-icon">📚</div>
+            <h3>Digital Library</h3>
+            <p>Access e-books, journals, and research papers online.</p>
+            <a href="digital_liabrary.html" class="card-link">Explore Resources</a>
+          </div>
+          
+          <div class="link-card reveal-element">
+            <div class="link-icon">💰</div>
+            <h3>Scholarships</h3>
+            <p>Learn about various scholarship opportunities and financial aid.</p>
+            <a href="schollarship.html" class="card-link">Find Scholarships</a>
+          </div>
+          
+          <div class="link-card reveal-element">
+            <div class="link-icon">👨‍🎓</div>
+            <h3>Alumni Network</h3>
+            <p>Connect with former students and join our alumni association.</p>
+            <a href="alumni.html" class="card-link">Join Network</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section reveal-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Contact Us</h2>
+          <div class="section-underline"></div>
+          <p class="section-subtitle">We're here to help. Reach out to us with any questions or inquiries.</p>
+        </div>
+        
+        <div class="contact-wrapper">
+          <div class="contact-info reveal-element">
+            <div class="info-card">
+              <div class="info-icon">📍</div>
+              <h3>Address</h3>
+              <p>Rangpur Government College</p>
+              <p>Rangpur, Bangladesh</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">📞</div>
+              <h3>Phone</h3>
+              <p>Main Office: +880-521-63177</p>
+              <p>Admission Office: +880-521-63178</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">✉️</div>
+              <h3>Email</h3>
+              <p>General Inquiries: info@rgc.edu.bd</p>
+              <p>Admissions: admissions@rgc.edu.bd</p>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">🕒</div>
+              <h3>Office Hours</h3>
+              <p>Sunday - Thursday: 9:00 AM - 5:00 PM</p>
+              <p>Friday - Saturday: Closed</p>
+            </div>
+            
+            <div class="social-links">
+              <h3>Connect With Us</h3>
+              <div class="social-icons">
+                <a href="#" class="social-icon">Fb</a>
+                <a href="#" class="social-icon">Tw</a>
+                <a href="#" class="social-icon">In</a>
+                <a href="#" class="social-icon">Yt</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form reveal-element">
+            <h3>Send Us a Message</h3>
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <div class="logo-emblem">RGC</div>
+              <div class="logo-text">
+                <h3>Rangpur Government College</h3>
+                <p>Est. 1902</p>
+              </div>
+            </div>
+            <p class="footer-about">Rangpur Government College is committed to providing quality education and fostering intellectual growth, preparing students to become responsible citizens and future leaders.</p>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#programs">Academic Programs</a></li>
+              <li><a href="#faculty">Faculty</a></li>
+              <li><a href="#campus-life">Campus Life</a></li>
+              <li><a href="#events">Events</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Results</a></li>
+              <li><a href="#">Academic Calendar</a></li>
+              <li><a href="#">Publications</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">Career Services</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col">
+            <h3>Contact Information</h3>
+            <ul class="contact-list">
+              <li><span class="contact-icon">📍</span> Rangpur, Bangladesh</li>
+              <li><span class="contact-icon">📞</span> +880-521-63177</li>
+              <li><span class="contact-icon">✉️</span> info@rgc.edu.bd</li>
+            </ul>
+            <div class="newsletter">
+              <h3>Subscribe to Newsletter</h3>
+              <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit" class="btn btn-small">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 Rangpur Government College. All Rights Reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-to-top" id="back-to-top">
+        <span>↑</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

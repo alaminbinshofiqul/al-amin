@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Rangpur Government College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        /* Floating Heritage Elements */
+        .heritage-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heritage-element {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(25, 25, 112, 0.2);
+            animation: heritageFloat 30s linear infinite;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        @keyframes heritageFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(300px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section with College Building Parallax */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .parallax-layer-1 {
+            background: linear-gradient(135deg, rgba(25,25,112,0.8), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            transform: translateZ(-3px) scale(4);
+            animation: collegeZoom1 35s ease-in-out infinite alternate;
+        }
+
+        .parallax-layer-2 {
+            background: linear-gradient(135deg, rgba(139,0,0,0.3), rgba(25,25,112,0.2)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            transform: translateZ(-2px) scale(3);
+            animation: collegeZoom2 30s ease-in-out infinite alternate;
+        }
+
+        .parallax-layer-3 {
+            background: linear-gradient(135deg, rgba(0,100,0,0.2), rgba(139,0,0,0.1)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            transform: translateZ(-1px) scale(2);
+            animation: collegeZoom3 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes collegeZoom1 {
+            0% { transform: translateZ(-3px) scale(4); }
+            100% { transform: translateZ(-3px) scale(4.3); }
+        }
+
+        @keyframes collegeZoom2 {
+            0% { transform: translateZ(-2px) scale(3); }
+            100% { transform: translateZ(-2px) scale(3.2); }
+        }
+
+        @keyframes collegeZoom3 {
+            0% { transform: translateZ(-1px) scale(2); }
+            100% { transform: translateZ(-1px) scale(2.2); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 0 20px;
+            animation: fadeInUp 2.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+            animation: slideInLeft 2s ease-out 0.5s both;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-200px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            animation: slideInRight 2s ease-out 0.8s both;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #FFD700;
+        }
+
+        .hero-description {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: slideInRight 2s ease-out 1.2s both;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(200px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(45deg, #191970, #8B0000, #006400);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.5s ease;
+            box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4);
+            animation: bounceIn 2s ease-out 1.8s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.2);
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            80% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(25, 25, 112, 0.6);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.5s ease;
+            transform: translateY(-100%);
+            border-bottom: 2px solid rgba(25, 25, 112, 0.1);
+        }
+
+        .navbar.visible {
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #191970;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #8B0000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #191970, #8B0000);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #191970;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 150px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(45deg, #191970, #8B0000, #006400);
+            border-radius: 3px;
+        }
+
+        /* Foundation Section */
+        .foundation {
+            background: linear-gradient(135deg, #F0F8FF 0%, #E6E6FA 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .foundation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            background-attachment: fixed;
+            animation: foundationMove 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes foundationMove {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-40px) scale(1.05); }
+        }
+
+        .foundation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .foundation-text {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: #555;
+        }
+
+        .foundation-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #191970;
+            margin-bottom: 2rem;
+        }
+
+        .foundation-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: all 0.5s ease;
+        }
+
+        .foundation-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .foundation-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .foundation-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Historical Quote */
+        .historical-quote {
+            background: rgba(25, 25, 112, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(25, 25, 112, 0.2);
+            color: #191970;
+            font-style: italic;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .historical-quote::before {
+            content: '"';
+            font-size: 6rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: #8B0000;
+            opacity: 0.5;
+        }
+
+        .historical-quote::after {
+            content: '"';
+            font-size: 6rem;
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+            color: #8B0000;
+            opacity: 0.5;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: white;
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            background-attachment: fixed;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #191970, #8B0000, #006400);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(25, 25, 112, 0.3);
+        }
+
+        .timeline-item {
+            padding: 20px 50px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background: #FFD700;
+            border: 5px solid white;
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 30px 35px;
+            background: white;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-left: 6px solid #191970;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #191970;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-date {
+            color: #8B0000;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(139, 0, 0, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: linear-gradient(135deg, #191970 0%, #8B0000 50%, #006400 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            background-attachment: fixed;
+            animation: achievementMove 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes achievementMove {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-30px); }
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .achievement-card:hover::before {
+            left: 100%;
+        }
+
+        .achievement-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .achievement-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #191970;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .achievement-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FFA500, #FFD700);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .achievement-card:hover .achievement-icon::before {
+            opacity: 1;
+        }
+
+        .achievement-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Notable Alumni Section */
+        .alumni {
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .alumni::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            background-attachment: fixed;
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .alumni-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            border-left: 6px solid #191970;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alumni-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(25,25,112,0.05), rgba(139,0,0,0.05));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .alumni-card:hover::before {
+            opacity: 1;
+        }
+
+        .alumni-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+        }
+
+        .alumni-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #191970, #8B0000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .alumni-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #191970;
+            margin-bottom: 0.5rem;
+        }
+
+        .alumni-card .position {
+            color: #8B0000;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Legacy Section */
+        .legacy {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legacy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            background-attachment: fixed;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .legacy-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .legacy-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(20px);
+        }
+
+        .legacy-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #191970;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1.2s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1.2s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 1.2s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* College Pride Animation */
+        .college-pride {
+            animation: collegePride 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes collegePride {
+            from {
+                text-shadow: 0 0 15px #FFD700;
+                color: #333;
+            }
+            to {
+                text-shadow: 0 0 30px #FFD700, 0 0 50px #191970;
+                color: #191970;
+            }
+        }
+
+        /* Heritage Scroll Effect */
+        .heritage-scroll {
+            animation: heritageScroll 4s ease-out;
+        }
+
+        @keyframes heritageScroll {
+            from {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1.2rem;
+            }
+            
+            .foundation-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 20px;
+            }
+
+            .timeline-item::after {
+                left: 12px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #191970, #8B0000, #006400);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 6px solid rgba(255,255,255,0.3);
+            border-top: 6px solid #FFD700;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* College Emblem Animation */
+        .college-emblem {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .emblem-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(25, 25, 112, 0.05);
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            border: 2px solid rgba(25, 25, 112, 0.1);
+        }
+
+        .emblem-item:hover {
+            transform: translateY(-10px);
+            background: rgba(25, 25, 112, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .emblem-icon {
+            font-size: 4rem;
+            color: #191970;
+            margin-bottom: 1rem;
+            transition: all 0.5s ease;
+        }
+
+        .emblem-item:hover .emblem-icon {
+            transform: scale(1.3);
+            color: #8B0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Heritage Elements Background -->
+    <div class="heritage-elements" id="heritageElements"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-university"></i>
+                RGC Heritage
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#foundation">Foundation</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#alumni">Alumni</a></li>
+                <li><a href="#legacy">Legacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="parallax-layer parallax-layer-1"></div>
+        <div class="parallax-layer parallax-layer-2"></div>
+        <div class="parallax-layer parallax-layer-3"></div>
+        <div class="hero-content">
+            <h1 class="floating college-pride">History of Rangpur Government College</h1>
+            <p class="hero-subtitle">A Legacy of Excellence Since 1962</p>
+            <p class="hero-description">Discover the remarkable journey of one of Bangladesh's most prestigious educational institutions, where tradition meets innovation and dreams become reality.</p>
+            <a href="#foundation" class="cta-button">Explore Our Heritage</a>
+        </div>
+    </section>
+
+    <!-- Foundation Section -->
+    <section class="section foundation" id="foundation">
+        <div class="container">
+            <h2 class="section-title fade-in">The Foundation Story</h2>
+            <div class="foundation-content">
+                <div class="foundation-text slide-in-left">
+                    <h3>Birth of an Institution</h3>
+                    <p>Rangpur Government College was established in 1962 with a vision to provide quality higher education to the students of northern Bangladesh. Founded during a time of great social and political change, the college emerged as a beacon of hope and learning in the region.</p>
+                    <p>The institution was born out of the pressing need for accessible higher education in Rangpur district. Local leaders, educators, and philanthropists came together with the government to create what would become one of the most respected colleges in the country.</p>
+                    <p>From its humble beginnings with just a few departments and a handful of students, Rangpur Government College has grown into a comprehensive institution offering diverse academic programs and serving thousands of students from across the region.</p>
+                    
+                    <div class="historical-quote heritage-scroll">
+                        Education is the most powerful weapon which you can use to change the world - Nelson Mandela
+                    </div>
+                    
+                    <div class="college-emblem">
+                        <div class="emblem-item">
+                            <div class="emblem-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>60+ Years of Excellence</h4>
+                        </div>
+                        <div class="emblem-item">
+                            <div class="emblem-icon"><i class="fas fa-users"></i></div>
+                            <h4>50,000+ Alumni</h4>
+                        </div>
+                        <div class="emblem-item">
+                            <div class="emblem-icon"><i class="fas fa-award"></i></div>
+                            <h4>National Recognition</h4>
+                        </div>
+                        <div class="emblem-item">
+                            <div class="emblem-icon"><i class="fas fa-globe"></i></div>
+                            <h4>Global Impact</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="foundation-image slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Historic college building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section timeline-section" id="timeline">
+        <div class="container">
+            <h2 class="section-title fade-in">Historical Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>College Establishment</h3>
+                        <div class="timeline-date">1962</div>
+                        <p>Rangpur Government College was officially established with the vision of providing quality higher education to the northern region of Bangladesh. Started with Arts and Commerce faculties.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Science Faculty Addition</h3>
+                        <div class="timeline-date">1968</div>
+                        <p>The Science faculty was introduced, expanding the college's academic offerings and establishing it as a comprehensive institution for higher learning.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Liberation War Period</h3>
+                        <div class="timeline-date">1971</div>
+                        <p>During Bangladesh's Liberation War, the college played a significant role. Many students and faculty members participated in the independence movement.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Post-Independence Growth</h3>
+                        <div class="timeline-date">1975</div>
+                        <p>After independence, the college experienced rapid growth in student enrollment and infrastructure development, becoming a key educational hub.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Honors Programs Launch</h3>
+                        <div class="timeline-date">1985</div>
+                        <p>Introduction of Honors programs in various subjects, elevating the academic standards and attracting students from across the country.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Infrastructure Modernization</h3>
+                        <div class="timeline-date">1995</div>
+                        <p>Major infrastructure development including new academic buildings, laboratories, and library facilities to accommodate growing student population.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Digital Era Transition</h3>
+                        <div class="timeline-date">2005</div>
+                        <p>Introduction of computer labs, internet facilities, and digital learning resources, marking the college's entry into the digital age.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Golden Jubilee</h3>
+                        <div class="timeline-date">2012</div>
+                        <p>Celebrated 50 years of excellence with grand festivities, alumni reunions, and the launch of various development projects.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Modern Campus Development</h3>
+                        <div class="timeline-date">2020-Present</div>
+                        <p>Ongoing modernization with smart classrooms, research facilities, and sustainable campus initiatives for the next generation of learners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section achievements" id="achievements">
+        <div class="container">
+            <h2 class="section-title fade-in">Major Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Academic Excellence</h3>
+                    <p>Consistently ranked among the top government colleges in Bangladesh with outstanding HSC and degree results. Our students regularly achieve top positions in national examinations.</p>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>National Recognition</h3>
+                    <p>Received multiple awards from the Ministry of Education for excellence in higher education, innovative teaching methods, and outstanding student performance.</p>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Research Contributions</h3>
+                    <p>Faculty and students have published numerous research papers in national and international journals, contributing significantly to academic knowledge.</p>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>International Collaborations</h3>
+                    <p>Established partnerships with universities and colleges worldwide, facilitating student exchange programs and collaborative research projects.</p>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Community Service</h3>
+                    <p>Actively involved in community development programs, literacy campaigns, and social welfare activities, making a positive impact on society.</p>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Environmental Initiatives</h3>
+                    <p>Pioneer in implementing green campus initiatives, renewable energy projects, and environmental awareness programs in the region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable Alumni Section -->
+    <section class="section alumni" id="alumni">
+        <div class="container">
+            <h2 class="section-title fade-in">Notable Alumni</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Dr. Abdul Rahman</h3>
+                    <p class="position">Former Vice-Chancellor, Dhaka University</p>
+                    <p>Distinguished academician and researcher who served as Vice-Chancellor of Dhaka University and contributed significantly to higher education reform in Bangladesh.</p>
+                </div>
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Ms. Fatima Khatun</h3>
+                    <p class="position">Secretary, Ministry of Education</p>
+                    <p>Senior civil servant who has played a crucial role in educational policy formulation and implementation at the national level.</p>
+                </div>
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Dr. Mohammad Hasan</h3>
+                    <p class="position">Renowned Physician & Researcher</p>
+                    <p>Leading medical professional and researcher who has made significant contributions to healthcare and medical research in Bangladesh.</p>
+                </div>
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Prof. Rashida Begum</h3>
+                    <p class="position">Acclaimed Author & Poet</p>
+                    <p>Celebrated writer and poet whose literary works have been recognized nationally and internationally, enriching Bengali literature.</p>
+                </div>
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Justice Aminul Islam</h3>
+                    <p class="position">High Court Judge</p>
+                    <p>Respected jurist who has served with distinction in the judiciary and contributed to the development of legal jurisprudence.</p>
+                </div>
+                <div class="alumni-card fade-in">
+                    <div class="alumni-avatar">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Mr. Karim Ahmed</h3>
+                    <p class="position">Successful Entrepreneur</p>
+                    <p>Business leader and entrepreneur who has built successful enterprises and contributed to economic development and job creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <h2 class="section-title fade-in">By the Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="62">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Alumni Worldwide</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Academic Departments</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="200">0</div>
+                    <div class="stat-label">Faculty Members</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Current Students</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">Success Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legacy Section -->
+    <section class="section legacy" id="legacy">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Lasting Legacy</h2>
+            <div class="legacy-grid">
+                <div class="legacy-item slide-in-left">
+                    <h3><i class="fas fa-book-open"></i> Educational Excellence</h3>
+                    <p>For over six decades, Rangpur Government College has maintained its commitment to providing quality education, producing graduates who have excelled in various fields and contributed to national development.</p>
+                </div>
+                <div class="legacy-item slide-in-right">
+                    <h3><i class="fas fa-lightbulb"></i> Innovation & Research</h3>
+                    <p>The college has been at the forefront of educational innovation, introducing new teaching methodologies, research programs, and technology integration to enhance learning outcomes.</p>
+                </div>
+                <div class="legacy-item slide-in-left">
+                    <h3><i class="fas fa-hands-helping"></i> Social Impact</h3>
+                    <p>Beyond academics, the college has played a vital role in community development, social awareness, and cultural preservation, making it an integral part of the region's social fabric.</p>
+                </div>
+                <div class="legacy-item slide-in-right">
+                    <h3><i class="fas fa-seedling"></i> Future Vision</h3>
+                    <p>As we move forward, Rangpur Government College continues to evolve, embracing new challenges and opportunities while staying true to its founding principles of excellence and service.</p>
+                </div>
+                <div class="legacy-item slide-in-left">
+                    <h3><i class="fas fa-globe-americas"></i> Global Recognition</h3>
+                    <p>The college's reputation extends beyond national borders, with alumni making significant contributions in international organizations, universities, and multinational corporations worldwide.</p>
+                </div>
+                <div class="legacy-item slide-in-right">
+                    <h3><i class="fas fa-heart"></i> Cultural Heritage</h3>
+                    <p>Rangpur Government College has been a guardian of Bengali culture and traditions, organizing cultural events, preserving local heritage, and promoting arts and literature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2500);
+        });
+
+        // Create heritage elements animation
+        function createHeritageElements() {
+            const heritageContainer = document.getElementById('heritageElements');
+            const heritageTerms = ['Excellence', 'Heritage', 'Tradition', 'Knowledge', 'Wisdom', 'Legacy', 'Pride', 'Achievement', 'Innovation', 'Progress', 'Unity', 'Success', 'Honor', 'Dedication', 'Inspiration'];
+            
+            function addHeritageElement() {
+                const element = document.createElement('div');
+                element.className = 'heritage-element';
+                element.textContent = heritageTerms[Math.floor(Math.random() * heritageTerms.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDuration = (Math.random() * 25 + 25) + 's';
+                element.style.animationDelay = Math.random() * 8 + 's';
+                
+                heritageContainer.appendChild(element);
+                
+                setTimeout(() => {
+                    if (heritageContainer.contains(element)) {
+                        heritageContainer.removeChild(element);
+                    }
+                }, 35000);
+            }
+            
+            // Add elements periodically
+            setInterval(addHeritageElement, 4000);
+            
+            // Add initial elements
+            for (let i = 0; i < 6; i++) {
+                setTimeout(addHeritageElement, i * 2000);
+            }
+        }
+
+        // Navbar Show/Hide on Scroll
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Timeline Animation
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 300);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 30);
+            });
+        }
+
+        // Trigger counter animation when statistics section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateCounters, 500);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.statistics');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Dynamic text animation for hero section
+        const heroDescription = document.querySelector('.hero-description');
+        const descriptions = [
+            'Discover the remarkable journey of one of Bangladesh\'s most prestigious educational institutions, where tradition meets innovation and dreams become reality.',
+            'Explore six decades of academic excellence, cultural heritage, and unwavering commitment to shaping future leaders.',
+            'Witness the transformation of a vision into a legacy that continues to inspire generations of students and educators.',
+            'Experience the rich history of an institution that has been the cornerstone of higher education in northern Bangladesh.'
+        ];
+        
+        let descIndex = 0;
+        setInterval(() => {
+            heroDescription.style.opacity = '0';
+            setTimeout(() => {
+                descIndex = (descIndex + 1) % descriptions.length;
+                heroDescription.textContent = descriptions[descIndex];
+                heroDescription.style.opacity = '1';
+            }, 800);
+        }, 8000);
+
+        // College pride animations
+        setInterval(() => {
+            const cards = document.querySelectorAll('.achievement-card, .alumni-card, .legacy-item');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            randomCard.classList.add('heritage-scroll');
+            
+            setTimeout(() => {
+                randomCard.classList.remove('heritage-scroll');
+            }, 4000);
+        }, 10000);
+
+        // College pride glow effect for random elements
+        setInterval(() => {
+            const titles = document.querySelectorAll('h3, .section-title');
+            const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+            randomTitle.classList.add('college-pride');
+            
+            setTimeout(() => {
+                randomTitle.classList.remove('college-pride');
+            }, 6000);
+        }, 12000);
+
+        // Mouse trail effect with college symbols
+        document.addEventListener('mousemove', function(e) {
+            const symbols = ['🎓', '📚', '🏛️', '🏆', '⭐', '🌟', '📜', '🎯', '💡', '🔬'];
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.fontSize = '20px';
+            trail.style.pointerEvents = 'none';
+            trail.style.zIndex = '9999';
+            trail.style.opacity = '0.9';
+            trail.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'translateY(-40px) rotate(360deg) scale(0.3)';
+                trail.style.transition = 'all 1.5s ease';
+                
+                setTimeout(() => {
+                    if (document.body.contains(trail)) {
+                        document.body.removeChild(trail);
+                    }
+                }, 1500);
+            }, 300);
+        });
+
+        // Initialize heritage elements animation
+        createHeritageElements();
+
+        // Dynamic quote display
+        function showCollegeQuotes() {
+            const quotes = [
+                'Education is the most powerful weapon which you can use to change the world - Nelson Mandela',
+                'The function of education is to teach one to think intensively and to think critically - Martin Luther King Jr.',
+                'Education is not preparation for life; education is life itself - John Dewey',
+                'The beautiful thing about learning is that no one can take it away from you - B.B. King',
+                'Education is the passport to the future, for tomorrow belongs to those who prepare for it today - Malcolm X',
+                'Live as if you were to die tomorrow. Learn as if you were to live forever - Mahatma Gandhi'
+            ];
+            
+            const quote = document.querySelector('.historical-quote');
+            if (quote) {
+                let quoteIndex = 0;
+                setInterval(() => {
+                    quote.style.opacity = '0';
+                    setTimeout(() => {
+                        quote.textContent = quotes[quoteIndex];
+                        quote.style.opacity = '1';
+                        quoteIndex = (quoteIndex + 1) % quotes.length;
+                    }, 800);
+                }, 10000);
+            }
+        }
+
+        // Start quote animation
+        setTimeout(showCollegeQuotes, 5000);
+
+        // Parallax effect for background images
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('[style*="background-attachment: fixed"]');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.3 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // College emblem floating animation for random items
+        setInterval(() => {
+            const items = document.querySelectorAll('.emblem-item, .stat-item');
+            const randomItem = items[Math.floor(Math.random() * items.length)];
+            randomItem.classList.add('floating');
+            
+            setTimeout(() => {
+                randomItem.classList.remove('floating');
+            }, 5000);
+        }, 8000);
+
+        // College milestone celebration effect
+        function createMilestoneEffect() {
+            const milestones = ['1962', '1971', '1985', '2012', '2024'];
+            
+            setInterval(() => {
+                const milestone = document.createElement('div');
+                milestone.textContent = milestones[Math.floor(Math.random() * milestones.length)];
+                milestone.style.position = 'fixed';
+                milestone.style.left = '50%';
+                milestone.style.top = '50%';
+                milestone.style.transform = 'translate(-50%, -50%)';
+                milestone.style.fontSize = '5rem';
+                milestone.style.fontFamily = 'Playfair Display, serif';
+                milestone.style.color = 'rgba(25, 25, 112, 0.1)';
+                milestone.style.pointerEvents = 'none';
+                milestone.style.zIndex = '1';
+                milestone.style.opacity = '0';
+                milestone.style.transition = 'all 4s ease';
+                
+                document.body.appendChild(milestone);
+                
+                setTimeout(() => {
+                    milestone.style.opacity = '1';
+                    milestone.style.transform = 'translate(-50%, -50%) scale(2)';
+                }, 100);
+                
+                setTimeout(() => {
+                    milestone.style.opacity = '0';
+                    milestone.style.transform = 'translate(-50%, -50%) scale(3)';
+                }, 3000);
+                
+                setTimeout(() => {
+                    if (document.body.contains(milestone)) {
+                        document.body.removeChild(milestone);
+                    }
+                }, 4000);
+            }, 18000);
+        }
+
+        // Start milestone effect
+        setTimeout(createMilestoneEffect, 12000);
+
+        // Add typing effect to timeline items
+        function addTypingEffect() {
+            const timelineContents = document.querySelectorAll('.timeline-content p');
+            
+            timelineContents.forEach((content, index) => {
+                const text = content.textContent;
+                content.textContent = '';
+                
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    if (i < text.length) {
+                        content.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                    }
+                }, 30);
+            });
+        }
+
+        // Observe timeline items for typing effect
+        const typingObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(addTypingEffect, 1500);
+                    typingObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.timeline').forEach(timeline => {
+            typingObserver.observe(timeline);
+        });
+
+        // College wisdom reveal animation
+        function revealCollegeWisdom() {
+            const wisdomTexts = [
+                'Knowledge is the light that illuminates the path to success',
+                'Excellence is not a destination but a journey',
+                'Education transforms lives and builds nations',
+                'In learning you will teach, and in teaching you will learn',
+                'The future belongs to those who believe in their dreams'
+            ];
+            
+            setInterval(() => {
+                const wisdom = document.createElement('div');
+                wisdom.textContent = wisdomTexts[Math.floor(Math.random() * wisdomTexts.length)];
+                wisdom.style.position = 'fixed';
+                wisdom.style.bottom = '30px';
+                wisdom.style.right = '30px';
+                wisdom.style.background = 'rgba(25, 25, 112, 0.9)';
+                wisdom.style.color = 'white';
+                wisdom.style.padding = '20px 30px';
+                wisdom.style.borderRadius = '15px';
+                wisdom.style.fontFamily = 'Cormorant Garamond, serif';
+                wisdom.style.fontStyle = 'italic';
+                wisdom.style.fontSize = '1.1rem';
+                wisdom.style.zIndex = '1000';
+                wisdom.style.opacity = '0';
+                wisdom.style.transform = 'translateX(100%)';
+                wisdom.style.transition = 'all 0.6s ease';
+                wisdom.style.pointerEvents = 'none';
+                wisdom.style.maxWidth = '300px';
+                wisdom.style.textAlign = 'center';
+                
+                document.body.appendChild(wisdom);
+                
+                setTimeout(() => {
+                    wisdom.style.opacity = '1';
+                    wisdom.style.transform = 'translateX(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    wisdom.style.opacity = '0';
+                    wisdom.style.transform = 'translateX(100%)';
+                }, 5000);
+                
+                setTimeout(() => {
+                    if (document.body.contains(wisdom)) {
+                        document.body.removeChild(wisdom);
+                    }
+                }, 5600);
+            }, 25000);
+        }
+
+        // Start college wisdom reveal
+        setTimeout(revealCollegeWisdom, 10000);
+
+        // Add interactive hover effects for emblem items
+        document.querySelectorAll('.emblem-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) rotateY(10deg)';
+                this.style.boxShadow = '0 25px 50px rgba(25, 25, 112, 0.2)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateY(0deg)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Create floating college years
+        function createFloatingYears() {
+            const collegeYears = ['1962', '1968', '1971', '1975', '1985', '1995', '2005', '2012', '2024'];
+            
+            setInterval(() => {
+                const year = document.createElement('div');
+                year.textContent = collegeYears[Math.floor(Math.random() * collegeYears.length)];
+                year.style.position = 'fixed';
+                year.style.left = Math.random() * window.innerWidth + 'px';
+                year.style.top = window.innerHeight + 'px';
+                year.style.color = 'rgba(25, 25, 112, 0.2)';
+                year.style.fontSize = '2.5rem';
+                year.style.fontFamily = 'Playfair Display, serif';
+                year.style.fontWeight = 'bold';
+                year.style.pointerEvents = 'none';
+                year.style.zIndex = '1';
+                year.style.transition = 'all 10s linear';
+                
+                document.body.appendChild(year);
+                
+                setTimeout(() => {
+                    year.style.top = '-100px';
+                    year.style.opacity = '0';
+                }, 100);
+                
+                setTimeout(() => {
+                    if (document.body.contains(year)) {
+                        document.body.removeChild(year);
+                    }
+                }, 10000);
+            }, 6000);
+        }
+
+        // Start floating years
+        setTimeout(createFloatingYears, 8000);
+
+        // Add book page flip effect for cards
+        function createCardFlipEffect() {
+            const cards = document.querySelectorAll('.achievement-card, .alumni-card, .legacy-item');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'rotateY(180deg)';
+                    this.style.transition = 'transform 0.8s ease';
+                    
+                    setTimeout(() => {
+                        this.style.transform = 'rotateY(0deg)';
+                    }, 800);
+                });
+            });
+        }
+
+        // Initialize card flip effect
+        createCardFlipEffect();
+
+        // Add college background color change on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            if (scrollPercent > 85) {
+                document.body.style.background = 'linear-gradient(135deg, #F0F8FF, #E6E6FA)';
+            } else {
+                document.body.style.background = '#0a0a0a';
+            }
+        });
+
+        // Final initialization
+        console.log('🏛️ Rangpur Government College History website loaded successfully!');
+        console.log('🎓 Heritage elements are floating...');
+        console.log('📚 Timeline is ready for exploration...');
+        console.log('🏆 Achievement sections are animated...');
+        console.log('⭐ Alumni profiles are interactive...');
+        console.log('🌟 Legacy sections showcase our proud history...');
+    </script>
+</body>
+</html>

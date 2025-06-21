@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Process - Rangpur Government College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Parallax Background */
+        .parallax-container {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(59, 130, 246, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            background-size: cover, 50px 50px;
+            z-index: -2;
+            will-change: transform;
+        }
+
+        .parallax-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.3) 0%, transparent 50%);
+            z-index: -1;
+            will-change: transform;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease 0.4s forwards;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Application Process Section */
+        .application-section {
+            background: white;
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Process Steps */
+        .process-timeline {
+            position: relative;
+            margin: 4rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #10b981, #3b82f6);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(50px);
+        }
+
+        .step-content {
+            flex: 1;
+            max-width: 500px;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #10b981;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .process-step:nth-child(odd) .step-content::before {
+            right: -60px;
+        }
+
+        .process-step:nth-child(even) .step-content::before {
+            left: -60px;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .step-content:hover .step-icon::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-features {
+            list-style: none;
+        }
+
+        .step-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .step-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 20s linear infinite;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .process-step,
+            .process-step:nth-child(even) {
+                flex-direction: row;
+                transform: translateX(0);
+            }
+
+            .step-content {
+                margin-left: 60px;
+            }
+
+            .step-content::before {
+                left: -60px !important;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Parallax Background -->
+    <div class="parallax-bg"></div>
+    <div class="parallax-overlay"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">RGC</div>
+                <div class="logo-text">Rangpur Government College</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">Application Process</h1>
+                <p class="hero-subtitle">Your journey to excellence starts here. Follow our streamlined application process to join Rangpur Government College.</p>
+            </div>
+        </section>
+
+        <!-- Application Process Section -->
+        <section class="application-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title animate-on-scroll">How to Apply</h2>
+                    <p class="section-subtitle animate-on-scroll">Follow these simple steps to complete your application and secure your place at our prestigious institution.</p>
+                </div>
+
+                <div class="process-timeline">
+                    <div class="timeline-line"></div>
+
+                    <!-- Step 1 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus"></i>
+                                <div class="step-number">1</div>
+                            </div>
+                            <h3 class="step-title">Create Account & Registration</h3>
+                            <p class="step-description">Begin your journey by creating a secure account on our online portal. Fill in your basic information and verify your email address.</p>
+                            <ul class="step-features">
+                                <li>Valid email address required</li>
+                                <li>Secure password creation</li>
+                                <li>Email verification process</li>
+                                <li>Profile setup completion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-file-alt"></i>
+                                <div class="step-number">2</div>
+                            </div>
+                            <h3 class="step-title">Complete Application Form</h3>
+                            <p class="step-description">Fill out the comprehensive application form with accurate personal, academic, and contact information.</p>
+                            <ul class="step-features">
+                                <li>Personal information details</li>
+                                <li>Academic background history</li>
+                                <li>Course preference selection</li>
+                                <li>Guardian information</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-upload"></i>
+                                <div class="step-number">3</div>
+                            </div>
+                            <h3 class="step-title">Upload Required Documents</h3>
+                            <p class="step-description">Submit all necessary documents including certificates, transcripts, and identification proofs in the specified format.</p>
+                            <ul class="step-features">
+                                <li>SSC/HSC certificates</li>
+                                <li>Academic transcripts</li>
+                                <li>National ID/Birth certificate</li>
+                                <li>Passport-size photographs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-credit-card"></i>
+                                <div class="step-number">4</div>
+                            </div>
+                            <h3 class="step-title">Payment & Fee Submission</h3>
+                            <p class="step-description">Complete the application fee payment through our secure online payment gateway or designated bank channels.</p>
+                            <ul class="step-features">
+                                <li>Online payment gateway</li>
+                                <li>Bank transfer options</li>
+                                <li>Mobile banking support</li>
+                                <li>Payment confirmation receipt</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                                <div class="step-number">5</div>
+                            </div>
+                            <h3 class="step-title">Application Review & Verification</h3>
+                            <p class="step-description">Our admissions team will review your application and verify all submitted documents for accuracy and completeness.</p>
+                            <ul class="step-features">
+                                <li>Document verification process</li>
+                                <li>Academic eligibility check</li>
+                                <li>Application status updates</li>
+                                <li>Communication via email/SMS</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="step-number">6</div>
+                            </div>
+                            <h3 class="step-title">Admission Confirmation</h3>
+                            <p class="step-description">Receive your admission decision and complete the enrollment process to secure your place at Rangpur Government College.</p>
+                            <ul class="step-features">
+                                <li>Admission decision notification</li>
+                                <li>Enrollment confirmation</li>
+                                <li>Class schedule information</li>
+                                <li>Welcome package delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="section-container">
+                <h2 class="cta-title animate-on-scroll">Ready to Begin Your Journey?</h2>
+                <p class="cta-description animate-on-scroll">Join thousands of successful students who have started their academic journey with us. Apply now and take the first step towards your bright future.</p>
+                <div class="cta-buttons animate-on-scroll">
+                    <a href="online_application.html" class="btn btn-primary">Start Application</a>
+                    <a href="#" class="btn btn-secondary">Download Prospectus</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Parallax Effect
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const parallaxOverlay = document.querySelector('.parallax-overlay');
+            
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrolled * 0.5}px) scale(1.1)`;
+            }
+            
+            if (parallaxOverlay) {
+                parallaxOverlay.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        }
+
+        // Header Scroll Effect
+        function updateHeader() {
+            const header = document.getElementById('header');
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Process Steps Animation
+        const processStepsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        // Initialize animations
+        function initAnimations() {
+            // Observe elements for scroll animations
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe process steps
+            document.querySelectorAll('.process-step').forEach(el => {
+                processStepsObserver.observe(el);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Button hover effects
+        function initButtonEffects() {
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Step content hover effects
+        function initStepEffects() {
+            document.querySelectorAll('.step-content').forEach(step => {
+                step.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                    this.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.2)';
+                });
+                
+                step.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        }
+
+        // Throttle function for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', throttle(() => {
+            updateParallax();
+            updateHeader();
+        }, 16));
+
+        window.addEventListener('load', () => {
+            initAnimations();
+            initSmoothScrolling();
+            initButtonEffects();
+            initStepEffects();
+        });
+
+        // Resize handler
+        window.addEventListener('resize', throttle(() => {
+            updateParallax();
+        }, 100));
+
+        // Add loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

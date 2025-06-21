@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangpur Government College - Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* Background Slider */
+        .bg-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bg-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            transform: scale(1);
+            animation: zoom 30s infinite alternate;
+        }
+
+        .bg-slide.active {
+            opacity: 1;
+        }
+
+        @keyframes zoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Registration Container */
+        .registration-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 800px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease;
+        }
+
+        .registration-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .registration-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .registration-header p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 30px auto;
+            max-width: 500px;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: #4CAF50;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Form Styles */
+        .registration-form {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-group.floating label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group.floating input,
+        .input-group.floating select,
+        .input-group.floating textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group.floating input:focus,
+        .input-group.floating select:focus,
+        .input-group.floating textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .input-group.floating input:focus ~ label,
+        .input-group.floating input:valid ~ label,
+        .input-group.floating select:focus ~ label,
+        .input-group.floating select:valid ~ label,
+        .input-group.floating textarea:focus ~ label,
+        .input-group.floating textarea:valid ~ label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0 5px;
+            color: #4CAF50;
+        }
+
+        .input-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* File Upload */
+        .file-upload {
+            margin-top: 30px;
+        }
+
+        .file-upload label {
+            display: block;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .upload-area i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            position: static;
+            transform: none;
+        }
+
+        .upload-area p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        /* Form Navigation */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .prev-btn, .next-btn, .submit-btn, .home-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prev-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .prev-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .next-btn, .submit-btn, .home-btn {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .next-btn:hover, .submit-btn:hover, .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .next-btn:active, .submit-btn:active, .home-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Success Animation */
+        .registration-complete {
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 1s ease;
+        }
+
+        .success-animation {
+            margin: 30px auto;
+            width: 100px;
+            height: 100px;
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 5;
+            stroke: #4CAF50;
+            stroke-miterlimit: 10;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+            animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+        }
+
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 5;
+            stroke-miterlimit: 10;
+            stroke: #4CAF50;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0 0 0 100px rgba(76, 175, 80, 0);
+            }
+        }
+
+        .registration-complete h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        .registration-complete p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #4CAF50;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .registration-container {
+                padding: 20px;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .prev-btn, .next-btn, .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .progress-step {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Slider -->
+    <div class="bg-slider">
+        <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="images/logo.jpg" alt="College Logo" class="logo">
+                <div class="logo-text">
+                    <h1>Rangpur Government College</h1>
+                    <p>Established 1872 • Excellence in Education</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="registration-container">
+                <div class="registration-header">
+                    <h2 class="animated-text">Student Registration</h2>
+                    <p>Join our prestigious institution for the academic year 2023-2024</p>
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">1</div>
+                        <div class="progress-step" data-step="2">2</div>
+                        <div class="progress-step" data-step="3">3</div>
+                        <div class="progress-step" data-step="4">4</div>
+                    </div>
+                </div>
+
+                <form id="registrationForm" class="registration-form">
+                    <!-- Step 1 -->
+                    <div class="form-step active" data-step="1">
+                        <div class="input-group floating">
+                            <input type="text" id="fullName" required>
+                            <label for="fullName">Full Name</label>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <input type="email" id="email" required>
+                            <label for="email">Email Address</label>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <input type="tel" id="phone" required>
+                            <label for="phone">Phone Number</label>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" data-step="2">
+                        <div class="input-group floating">
+                            <select id="department" required>
+                                <option value=""></option>
+                                <option value="science">Science</option>
+                                <option value="arts">Arts</option>
+                                <option value="commerce">Commerce</option>
+                            </select>
+                            <label for="department">Department</label>
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <select id="program" required>
+                                <option value=""></option>
+                                <option value="hsc">Higher Secondary (HSC)</option>
+                                <option value="honors">Honors</option>
+                                <option value="masters">Masters</option>
+                            </select>
+                            <label for="program">Program</label>
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <input type="text" id="sscGpa" required>
+                            <label for="sscGpa">SSC GPA</label>
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step" data-step="3">
+                        <div class="input-group floating">
+                            <input type="text" id="fatherName" required>
+                            <label for="fatherName">Father's Name</label>
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <input type="text" id="motherName" required>
+                            <label for="motherName">Mother's Name</label>
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <textarea id="address" required></textarea>
+                            <label for="address">Permanent Address</label>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="form-step" data-step="4">
+                        <div class="input-group floating">
+                            <input type="password" id="password" required>
+                            <label for="password">Create Password</label>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="input-group floating">
+                            <input type="password" id="confirmPassword" required>
+                            <label for="confirmPassword">Confirm Password</label>
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="input-group file-upload">
+                            <label for="photo">Upload Photo</label>
+                            <input type="file" id="photo" accept="image/*" required>
+                            <div class="upload-area">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop your photo or click to browse</p>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="submit" class="submit-btn">Submit Registration <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="registration-complete" style="display: none;">
+                    <div class="success-animation">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <h2>Registration Successful!</h2>
+                    <p>Thank you for registering with Rangpur Government College. We've sent a confirmation email to your address.</p>
+                    <button class="home-btn">Return to Homepage</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Rangpur Government College. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Background Slider
+            const bgSlides = document.querySelectorAll('.bg-slide');
+            let currentSlide = 0;
+            
+            function changeBackground() {
+                bgSlides.forEach(slide => slide.classList.remove('active'));
+                currentSlide = (currentSlide + 1) % bgSlides.length;
+                bgSlides[currentSlide].classList.add('active');
+            }
+            
+            setInterval(changeBackground, 5000);
+            
+            // Form Navigation
+            const formSteps = document.querySelectorAll('.form-step');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const nextBtns = document.querySelectorAll('.next-btn');
+            const prevBtns = document.querySelectorAll('.prev-btn');
+            const form = document.getElementById('registrationForm');
+            const registrationComplete = document.querySelector('.registration-complete');
+            
+            let currentStep = 0;
+            
+            function updateFormStep(step) {
+                formSteps.forEach((formStep, index) => {
+                    formStep.classList.toggle('active', index === step);
+                });
+                
+                progressSteps.forEach((progressStep, index) => {
+                    if (index <= step) {
+                        progressStep.classList.add('active');
+                    } else {
+                        progressStep.classList.remove('active');
+                    }
+                });
+            }
+            
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Validate current step before proceeding
+                    const currentFormStep = formSteps[currentStep];
+                    const inputs = currentFormStep.querySelectorAll('input[required], select[required], textarea[required]');
+                    let isValid = true;
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            input.style.borderColor = '#f44336';
+                            isValid = false;
+                            
+                            // Add shake animation
+                            input.parentElement.style.animation = 'shake 0.5s';
+                            setTimeout(() => {
+                                input.parentElement.style.animation = '';
+                            }, 500);
+                        } else {
+                            input.style.borderColor = '';
+                        }
+                    });
+                    
+                    if (isValid) {
+                        currentStep++;
+                        updateFormStep(currentStep);
+                    }
+                });
+            });
+            
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentStep--;
+                    updateFormStep(currentStep);
+                });
+            });
+            
+            // Form Submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    registrationComplete.style.display = 'block';
+                    
+                    // Scroll to top of registration complete section
+                    registrationComplete.scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+            });
+            
+            // File Upload Interaction
+            const fileInput = document.getElementById('photo');
+            const uploadArea = document.querySelector('.upload-area');
+            
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    const fileName = fileInput.files[0].name;
+                    uploadArea.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <p>${fileName}</p>
+                        <small>Click to change</small>
+                    `;
+                    uploadArea.querySelector('i').style.color = '#4CAF50';
+                }
+            });
+            
+            // Drag and Drop for file upload
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#4CAF50';
+                uploadArea.style.background = 'rgba(76, 175, 80, 0.1)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                uploadArea.style.background = '';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                uploadArea.style.background = '';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // Home button
+            const homeBtn = document.querySelector('.home-btn');
+            homeBtn.addEventListener('click', () => {
+                alert('Redirecting to homepage...');
+                // In a real implementation, you would redirect to the homepage
+                // window.location.href = '/';
+            });
+            
+            // Add shake animation to CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    20%, 60% { transform: translateX(-5px); }
+                    40%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Animated text effect
+            const animatedText = document.querySelector('.animated-text');
+            if (animatedText) {
+                const text = animatedText.textContent;
+                animatedText.innerHTML = '';
+                
+                for (let i = 0; i < text.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = text[i];
+                    span.style.animationDelay = `${i * 0.1}s`;
+                    span.classList.add('letter-animation');
+                    animatedText.appendChild(span);
+                }
+                
+                const letterStyle = document.createElement('style');
+                letterStyle.textContent = `
+                    .letter-animation {
+                        display: inline-block;
+                        opacity: 0;
+                        animation: fadeInUp 0.5s forwards;
+                    }
+                `;
+                document.head.appendChild(letterStyle);
+            }
+        });
+    </script>
+</body>
+</html>

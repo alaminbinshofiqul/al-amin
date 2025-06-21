@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangpur Government College - Fees Structure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a4b8e;
+            --secondary-color: #f5a623;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .fees-section {
+            position: relative;
+            padding: 80px 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg-slideshow-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .bg-slideshow-img.active {
+            opacity: 0.3;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .fees-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fees-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .fees-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .fees-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .card-header .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .fee-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .fee-name {
+            font-weight: 500;
+        }
+
+        .fee-amount {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .total-fee {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .total-amount {
+            color: var(--accent-color);
+        }
+
+        .note {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(26, 75, 142, 0.1);
+            animation: float 15s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            top: 80%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .fees-container {
+                gap: 20px;
+            }
+            
+            .fees-card {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .fees-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .fees-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .card-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .fee-item {
+                flex-direction: column;
+            }
+            
+            .fee-amount {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="fees-section">
+        <div class="bg-slideshow">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="College Campus" class="bg-slideshow-img active">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Students Studying" class="bg-slideshow-img">
+            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Library" class="bg-slideshow-img">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graduation" class="bg-slideshow-img">
+        </div>
+        
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        
+        <div class="section-header">
+            <h2>Fees Structure</h2>
+            <p>Transparent and affordable fee structure for all programs offered at Rangpur Government College</p>
+        </div>
+        
+        <div class="fees-container">
+            <div class="fees-card">
+                <div class="card-header">
+                    <div class="icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Science Program</h3>
+                    <p>Higher Secondary Certificate (HSC)</p>
+                </div>
+                <div class="card-body">
+                    <div class="fee-item">
+                        <span class="fee-name">Admission Fee</span>
+                        <span class="fee-amount">৳ 500</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Tuition Fee (Monthly)</span>
+                        <span class="fee-amount">৳ 300</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Laboratory Fee</span>
+                        <span class="fee-amount">৳ 200</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Library Fee</span>
+                        <span class="fee-amount">৳ 100</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Sports Fee</span>
+                        <span class="fee-amount">৳ 50</span>
+                    </div>
+                    <div class="total-fee">
+                        <span>Total (Per Year):</span>
+                        <span class="total-amount">৳ 4,700</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fees-card">
+                <div class="card-header">
+                    <div class="icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Arts Program</h3>
+                    <p>Higher Secondary Certificate (HSC)</p>
+                </div>
+                <div class="card-body">
+                    <div class="fee-item">
+                        <span class="fee-name">Admission Fee</span>
+                        <span class="fee-amount">৳ 500</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Tuition Fee (Monthly)</span>
+                        <span class="fee-amount">৳ 250</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Library Fee</span>
+                        <span class="fee-amount">৳ 100</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Sports Fee</span>
+                        <span class="fee-amount">৳ 50</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Cultural Activities</span>
+                        <span class="fee-amount">৳ 100</span>
+                    </div>
+                    <div class="total-fee">
+                        <span>Total (Per Year):</span>
+                        <span class="total-amount">৳ 3,800</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fees-card">
+                <div class="card-header">
+                    <div class="icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Commerce Program</h3>
+                    <p>Higher Secondary Certificate (HSC)</p>
+                </div>
+                <div class="card-body">
+                    <div class="fee-item">
+                        <span class="fee-name">Admission Fee</span>
+                        <span class="fee-amount">৳ 500</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Tuition Fee (Monthly)</span>
+                        <span class="fee-amount">৳ 275</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Library Fee</span>
+                        <span class="fee-amount">৳ 100</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Computer Lab Fee</span>
+                        <span class="fee-amount">৳ 150</span>
+                    </div>
+                    <div class="fee-item">
+                        <span class="fee-name">Sports Fee</span>
+                        <span class="fee-amount">৳ 50</span>
+                    </div>
+                    <div class="total-fee">
+                        <span>Total (Per Year):</span>
+                        <span class="total-amount">৳ 4,250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            <p><strong>Note:</strong> Fees are subject to change as per government regulations. Additional examination fees may apply. Scholarships and fee waivers are available for eligible students.</p>
+        </div>
+    </section>
+
+    <script>
+        // Background slideshow animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.bg-slideshow-img');
+            let currentImage = 0;
+            
+            function changeBackground() {
+                images[currentImage].classList.remove('active');
+                currentImage = (currentImage + 1) % images.length;
+                images[currentImage].classList.add('active');
+            }
+            
+            setInterval(changeBackground, 5000);
+            
+            // Card animation on scroll
+            const feesCards = document.querySelectorAll('.fees-card');
+            
+            function checkVisibility() {
+                feesCards.forEach((card, index) => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight - 100) {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }
+            
+            // Initial check
+            checkVisibility();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkVisibility);
+            
+            // Floating shapes animation
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                // Randomize initial positions
+                shape.style.left = `${Math.random() * 80 + 10}%`;
+                shape.style.top = `${Math.random() * 80 + 10}%`;
+                
+                // Randomize size
+                const size = Math.random() * 150 + 50;
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                
+                // Randomize animation duration
+                shape.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            });
+        });
+    </script>
+</body>
+</html>

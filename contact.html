@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rangpur Government College</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #f97316;
+            --secondary-light: #fb923c;
+            --secondary-dark: #ea580c;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --gray-dark: #475569;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            transition: all 0.3s ease;
+        }
+
+        input, textarea, select {
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2), 0 2px 4px -1px rgba(249, 115, 22, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3), 0 4px 6px -2px rgba(249, 115, 22, 0.2);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .p-8 {
+            padding: 2rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        .bg-success {
+            background-color: var(--success);
+        }
+
+        .bg-warning {
+            background-color: var(--warning);
+        }
+
+        .bg-danger {
+            background-color: var(--danger);
+        }
+
+        .bg-info {
+            background-color: var(--info);
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .text-secondary {
+            color: var(--secondary);
+        }
+
+        .text-gray {
+            color: var(--gray);
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 1s ease forwards;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 1s ease forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.4s;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            position: relative;
+            background-color: white;
+        }
+
+        .contact-info-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .contact-info-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .info-card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        .info-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .info-card-text {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            position: relative;
+            background-color: #f8fafc;
+        }
+
+        .contact-form-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .contact-form-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .form-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .form-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(79, 70, 229, 0.3), rgba(79, 70, 229, 0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .form-image-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .form-image-text {
+            font-size: 1.125rem;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .form-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        .form-submit:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        }
+
+        .form-submit:disabled {
+            background: var(--gray-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .form-error {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .form-loading {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+            display: none;
+        }
+
+        /* Map Section */
+        .map-section {
+            position: relative;
+            background-color: white;
+        }
+
+        .map-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .map-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Departments Section */
+        .departments {
+            position: relative;
+            background-color: #f8fafc;
+        }
+
+        .departments-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .departments-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .department-card {
+            height: 100%;
+            padding: 2rem;
+        }
+
+        .department-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .department-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .department-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .department-contact-icon {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 0.125rem;
+        }
+
+        .department-contact-text {
+            color: var(--gray);
+        }
+
+        .department-hours {
+            margin-top: 1.5rem;
+        }
+
+        .department-hours-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .department-hours-list {
+            list-style: none;
+            color: var(--gray);
+        }
+
+        .department-hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed var(--gray-light);
+        }
+
+        .department-hours-item:last-child {
+            border-bottom: none;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            position: relative;
+            background-color: white;
+        }
+
+        .faq-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .faq-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gray);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 20rem;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .social-content {
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-text {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-cta {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-handle {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--gray-light);
+        }
+
+        .footer-contact-icon {
+            color: var(--primary-light);
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray-light);
+            font-size: 0.875rem;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.05;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .floating-element-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 4rem;
+            animation-delay: 0s;
+        }
+
+        .floating-element-2 {
+            top: 20%;
+            right: 10%;
+            font-size: 3rem;
+            animation-delay: 2s;
+        }
+
+        .floating-element-3 {
+            bottom: 15%;
+            left: 10%;
+            font-size: 3.5rem;
+            animation-delay: 4s;
+        }
+
+        .floating-element-4 {
+            bottom: 30%;
+            right: 5%;
+            font-size: 4rem;
+            animation-delay: 6s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 4rem 0;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-image {
+                display: none;
+            }
+
+            .social-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+
+            .social-link {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .social-title {
+                font-size: 1.5rem;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element floating-element-1">📞</div>
+        <div class="floating-element floating-element-2">✉️</div>
+        <div class="floating-element floating-element-3">📍</div>
+        <div class="floating-element floating-element-4">📱</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Rangpur Government College Campus" class="hero-bg-image">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Get in Touch</h1>
+                <p class="hero-subtitle">We're here to answer your questions and help you connect with our college community.</p>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    <a href="#faq" class="btn btn-outline text-white">View FAQs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="section contact-info" id="contact-info">
+        <div class="contact-info-bg"></div>
+        <div class="container">
+            <div class="contact-info-content">
+                <h2 class="section-title">Contact Information</h2>
+                <p class="section-subtitle">Reach out to us through any of these channels for inquiries, feedback, or assistance.</p>
+                
+                <div class="grid grid-3">
+                    <div class="card info-card opacity-0 animate-fadeInUp delay-100">
+                        <div class="info-card-icon animate-pulse">📍</div>
+                        <h3 class="info-card-title">Our Location</h3>
+                        <p class="info-card-text">123 College Road, Rangpur City<br>Rangpur-5400, Bangladesh</p>
+                        <a href="https://maps.google.com" target="_blank" class="info-card-link">Get Directions →</a>
+                    </div>
+                    
+                    <div class="card info-card opacity-0 animate-fadeInUp delay-200">
+                        <div class="info-card-icon animate-pulse">📞</div>
+                        <h3 class="info-card-title">Phone Numbers</h3>
+                        <p class="info-card-text">Main Office: +880 1234 567890<br>Admission: +880 1234 567891<br>Emergency: +880 1234 567892</p>
+                        <a href="tel:+8801234567890" class="info-card-link">Call Now →</a>
+                    </div>
+                    
+                    <div class="card info-card opacity-0 animate-fadeInUp delay-300">
+                        <div class="info-card-icon animate-pulse">✉️</div>
+                        <h3 class="info-card-title">Email Addresses</h3>
+                        <p class="info-card-text">General Inquiries: info@rangpurcollege.edu.bd<br>Admissions: admissions@rangpurcollege.edu.bd<br>Support: support@rangpurcollege.edu.bd</p>
+                        <a href="mailto:info@rangpurcollege.edu.bd" class="info-card-link">Send Email →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section contact-form-section" id="contact-form">
+        <div class="contact-form-bg"></div>
+        <div class="container">
+            <div class="contact-form-content">
+                <h2 class="section-title">Send Us a Message</h2>
+                <p class="section-subtitle">Have questions or need information? Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <div class="form-container">
+                    <div class="form-image opacity-0 animate-fadeInLeft">
+                        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rangpur College Campus">
+                        <div class="form-image-overlay">
+                            <h3 class="form-image-title">We'd Love to Hear From You</h3>
+                            <p class="form-image-text">Our team is always ready to assist you with any questions or concerns you may have about our programs, admissions, or campus life.</p>
+                            <div class="flex gap-4">
+                                <a href="tel:+8801234567890" class="btn btn-outline text-white">Call Us</a>
+                                <a href="mailto:info@rangpurcollege.edu.bd" class="btn btn-outline text-white">Email Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-card opacity-0 animate-fadeInRight">
+                        <h3 class="form-title">Contact Form</h3>
+                        <div class="form-success" id="formSuccess">
+                            Your message has been sent successfully! We'll get back to you soon.
+                        </div>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name*</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                    <div class="form-error" id="firstNameError"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name*</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                    <div class="form-error" id="lastNameError"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address*</label>
+                                    <input type="email" id="email" name="email" required>
+                                    <div class="form-error" id="emailError"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                    <div class="form-error" id="phoneError"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject*</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="admission">Admission Information</option>
+                                    <option value="programs">Academic Programs</option>
+                                    <option value="facilities">Campus Facilities</option>
+                                    <option value="events">Events & Activities</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="form-error" id="subjectError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message*</label>
+                                <textarea id="message" name="message" required></textarea>
+                                <div class="form-error" id="messageError"></div>
+                            </div>
+                            
+                            <button type="submit" class="form-submit" id="submitButton">
+                                <span class="form-loading" id="formLoading"></span>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section map-section" id="map">
+        <div class="map-bg"></div>
+        <div class="container">
+            <div class="map-content">
+                <h2 class="section-title">Find Us</h2>
+                <p class="section-subtitle">Visit our campus located in the heart of Rangpur City. We're easily accessible by public transportation.</p>
+                
+                <div class="map-container opacity-0 animate-fadeInUp">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.0456338045197!2d89.24902491501983!3d25.74432638364112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e33c81af4e7ee7%3A0x5a3ab61d6c5b7ec6!2sRangpur%20Government%20College!5e0!3m2!1sen!2sbd!4v1653047724413!5m2!1sen!2sbd" class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="section departments" id="departments">
+        <div class="departments-bg"></div>
+        <div class="container">
+            <div class="departments-content">
+                <h2 class="section-title">Department Contacts</h2>
+                <p class="section-subtitle">Connect directly with our academic departments for program-specific inquiries.</p>
+                
+                <div class="grid grid-3">
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-100">
+                        <h3 class="department-title">Science & Technology</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Dr. Aminul Islam, Head of Department</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567893</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">science@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>9:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-200">
+                        <h3 class="department-title">Arts & Humanities</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Prof. Nasreen Ahmed, Head of Department</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567894</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">arts@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>9:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-300">
+                        <h3 class="department-title">Business Studies</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Dr. Rafiqul Haque, Head of Department</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567895</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">business@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>9:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-100">
+                        <h3 class="department-title">Social Sciences</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Prof. Mahmuda Begum, Head of Department</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567896</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">social@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>9:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-200">
+                        <h3 class="department-title">Admissions Office</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Mr. Kamal Hossain, Admissions Director</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567891</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">admissions@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>8:00 AM - 5:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 1:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card department-card opacity-0 animate-fadeInUp delay-300">
+                        <h3 class="department-title">Student Affairs</h3>
+                        <div class="department-contact">
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">👤</span>
+                                <span class="department-contact-text">Ms. Farhana Rahman, Student Affairs Director</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">📞</span>
+                                <span class="department-contact-text">+880 1234 567897</span>
+                            </div>
+                            <div class="department-contact-item">
+                                <span class="department-contact-icon">✉️</span>
+                                <span class="department-contact-text">studentaffairs@rangpurcollege.edu.bd</span>
+                            </div>
+                        </div>
+                        <div class="department-hours">
+                            <h4 class="department-hours-title">Office Hours</h4>
+                            <ul class="department-hours-list">
+                                <li class="department-hours-item">
+                                    <span>Sunday - Thursday</span>
+                                    <span>9:00 AM - 4:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </li>
+                                <li class="department-hours-item">
+                                    <span>Saturday</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="faq-bg"></div>
+        <div class="container">
+            <div class="faq-content">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about contacting and visiting our college.</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-100">
+                        <div class="faq-question">What are the general office hours of the college?</div>
+                        <div class="faq-answer">
+                            The general office hours of Rangpur Government College are from 9:00 AM to 4:00 PM, Sunday through Thursday. On Fridays, the office is open from 9:00 AM to 12:00 PM, and it remains closed on Saturdays except for the Admissions Office which is open from 9:00 AM to 12:00 PM.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-200">
+                        <div class="faq-question">How can I schedule a campus tour?</div>
+                        <div class="faq-answer">
+                            To schedule a campus tour, you can contact our Admissions Office at +880 1234 567891 or email admissions@rangpurcollege.edu.bd. Campus tours are typically available Monday through Thursday from 10:00 AM to 2:00 PM. We recommend scheduling your tour at least one week in advance.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-300">
+                        <div class="faq-question">What is the best way to contact a specific department?</div>
+                        <div class="faq-answer">
+                            The best way to contact a specific department is to email the department directly using the email addresses provided on our website. You can also call the department's direct line during office hours. If you're unsure which department to contact, you can reach out to our main office at +880 1234 567890, and they will direct your inquiry to the appropriate department.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-400">
+                        <div class="faq-question">How long does it typically take to receive a response to an email inquiry?</div>
+                        <div class="faq-answer">
+                            We strive to respond to all email inquiries within 24-48 business hours. During peak periods such as admission season or the beginning of a new semester, response times may be slightly longer. If your inquiry is urgent, we recommend calling our main office directly.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-500">
+                        <div class="faq-question">Is there parking available for visitors on campus?</div>
+                        <div class="faq-answer">
+                            Yes, we have designated visitor parking areas on campus. Visitor parking is available near the main entrance and is clearly marked. Parking is free for the first two hours, after which a nominal fee applies. If you're visiting for an official appointment or event, please inform the relevant department in advance, and they can arrange for extended free parking.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item opacity-0 animate-fadeInUp delay-600">
+                        <div class="faq-question">How can I contact the college for emergency situations?</div>
+                        <div class="faq-answer">
+                            For emergency situations during office hours, please call our emergency hotline at +880 1234 567892. After hours, you can reach our campus security at +880 1234 567899. For medical emergencies on campus, contact our health center directly at +880 1234 567898. All emergency numbers are operational 24/7.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="section social-section">
+        <div class="container">
+            <div class="social-content">
+                <h2 class="social-title opacity-0 animate-fadeInUp">Connect With Us on Social Media</h2>
+                <p class="social-text opacity-0 animate-fadeInUp delay-100">Stay updated with the latest news, events, and announcements by following us on our social media platforms.</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link opacity-0 animate-fadeInUp delay-200">📘</a>
+                    <a href="#" class="social-link opacity-0 animate-fadeInUp delay-300">🐦</a>
+                    <a href="#" class="social-link opacity-0 animate-fadeInUp delay-400">📸</a>
+                    <a href="#" class="social-link opacity-0 animate-fadeInUp delay-500">📹</a>
+                    <a href="#" class="social-link opacity-0 animate-fadeInUp delay-600">🔗</a>
+                </div>
+                
+                <p class="social-cta opacity-0 animate-fadeInUp delay-700">Follow us at</p>
+                <p class="social-handle opacity-0 animate-fadeInUp delay-800">@RangpurGovtCollege</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Rangpur Government College</div>
+                    <p class="footer-description">A premier educational institution committed to academic excellence, innovation, and holistic development.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">📱</a>
+                        <a href="#" class="footer-social-link">📘</a>
+                        <a href="#" class="footer-social-link">📸</a>
+                        <a href="#" class="footer-social-link">🐦</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="program.html" class="footer-link">Academic Programs</a>
+                        <a href="admission.html" class="footer-link">Admissions</a>
+                        <a href="campus_life.html" class="footer-link">Campus Life</a>
+                        <a href="research.html" class="footer-link">Research</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Student Resources</h3>
+                    <div class="footer-links">
+                        <a href="student_login.html" class="footer-link">Student Portal</a>
+                        <a href="digital_liabrary.html" class="footer-link">Library</a>
+                        <a href="schollarship.html" class="footer-link">Career Services</a>
+                        <a href="#" class="footer-link">Health & Wellness</a>
+                        <a href="#" class="footer-link">Financial Aid</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">📍</div>
+                            <div>123 College Road, Rangpur, Bangladesh</div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">📞</div>
+                            <div>+880 1234 567890</div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">✉️</div>
+                            <div>info@rangpurcollege.edu.bd</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rangpur Government College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const sections = document.querySelectorAll('.section');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formLoading = document.getElementById('formLoading');
+        const submitButton = document.getElementById('submitButton');
+        
+        // Form Fields
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const subject = document.getElementById('subject');
+        const message = document.getElementById('message');
+        
+        // Error Elements
+        const firstNameError = document.getElementById('firstNameError');
+        const lastNameError = document.getElementById('lastNameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const subjectError = document.getElementById('subjectError');
+        const messageError = document.getElementById('messageError');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Initialize FAQ accordions
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Initialize contact form
+            contactForm.addEventListener('submit', handleFormSubmit);
+            
+            // Trigger scroll once to animate elements in view
+            handleScroll();
+        });
+        
+        // Handle scroll events
+        function handleScroll() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+                
+                // Check if section is in viewport
+                if (sectionTop < windowHeight * 0.75 && sectionBottom > 0) {
+                    // Add animation classes to elements
+                    const animatedElements = section.querySelectorAll('.opacity-0');
+                    animatedElements.forEach(element => {
+                        element.classList.add('animate-fadeInUp');
+                    });
+                }
+            });
+        }
+        
+        // Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            resetErrors();
+            
+            // Validate form
+            if (validateForm()) {
+                // Show loading indicator
+                formLoading.style.display = 'inline-block';
+                submitButton.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    // Hide loading indicator
+                    formLoading.style.display = 'none';
+                    
+                    // Show success message
+                    formSuccess.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Re-enable submit button
+                    submitButton.disabled = false;
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formSuccess.style.display = 'none';
+                    }, 5000);
+                }, 2000);
+            }
+        }
+        
+        // Validate form
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate first name
+            if (firstName.value.trim() === '') {
+                firstNameError.textContent = 'First name is required';
+                isValid = false;
+            }
+            
+            // Validate last name
+            if (lastName.value.trim() === '') {
+                lastNameError.textContent = 'Last name is required';
+                isValid = false;
+            }
+            
+            // Validate email
+            if (email.value.trim() === '') {
+                emailError.textContent = 'Email is required';
+                isValid = false;
+            } else if (!isValidEmail(email.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate phone (optional)
+            if (phone.value.trim() !== '' && !isValidPhone(phone.value)) {
+                phoneError.textContent = 'Please enter a valid phone number';
+                isValid = false;
+            }
+            
+            // Validate subject
+            if (subject.value === '') {
+                subjectError.textContent = 'Please select a subject';
+                isValid = false;
+            }
+            
+            // Validate message
+            if (message.value.trim() === '') {
+                messageError.textContent = 'Message is required';
+                isValid = false;
+            } else if (message.value.trim().length < 10) {
+                messageError.textContent = 'Message must be at least 10 characters';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Reset form errors
+        function resetErrors() {
+            firstNameError.textContent = '';
+            lastNameError.textContent = '';
+            emailError.textContent = '';
+            phoneError.textContent = '';
+            subjectError.textContent = '';
+            messageError.textContent = '';
+        }
+        
+        // Validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Validate phone format
+        function isValidPhone(phone) {
+            const phoneRegex = /^[+]?[\d\s-]{10,15}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Parallax effect for background images
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            
+            document.querySelectorAll('[class$="-bg"]').forEach(bg => {
+                const speed = 0.5;
+                const yPos = -(scrollPosition * speed);
+                bg.style.backgroundPositionY = yPos + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
+

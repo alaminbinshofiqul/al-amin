@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Rangpur Government College</title>
+    <link rel="stylesheet" href="styleev.css">
+    <link rel="stylesheet" href="css/events-style.css">
+    <link rel="stylesheet" href="css/events-animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Rangpur Government College</h1>
+                    <p>Established 1902</p>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="fade-in">College Events</h1>
+                <p class="fade-in-delayed">Stay updated with our latest events and activities</p>
+            </div>
+        </section>
+
+        <section class="event-categories">
+            <div class="container">
+                <div class="category-filters">
+                    <button class="filter-btn active" data-filter="all">All Events</button>
+                    <button class="filter-btn" data-filter="academic">Academic</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="sports">Sports</button>
+                    <button class="filter-btn" data-filter="seminar">Seminars</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-event">
+            <div class="container">
+                <div class="featured-event-card reveal">
+                    <div class="event-image">
+                        <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg" alt="Annual Science Fair">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">OCT</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <h2>Annual Science Fair 2025</h2>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Science Building</span>
+                            <span><i class="fas fa-clock"></i> 10:00 AM - 4:00 PM</span>
+                            <span><i class="fas fa-users"></i> 500+ Participants</span>
+                        </div>
+                        <p>Join us for an exciting showcase of innovative projects and scientific discoveries by our talented students.</p>
+                        <a href="#" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="upcoming-events">
+            <div class="container">
+                <h2 class="section-title reveal">Upcoming Events</h2>
+                <div class="events-grid">
+                    <!-- Academic Event -->
+                    <div class="event-card reveal" data-category="academic">
+                        <div class="card-header">
+                            <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg" alt="Research Symposium">
+                            <div class="event-type academic">Academic</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-date-small">
+                                <span class="day">20</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <h3>Research Symposium</h3>
+                            <p>Annual research presentation by faculty members and graduate students.</p>
+                            <div class="event-info">
+                                <span><i class="fas fa-clock"></i> 2:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Main Auditorium</span>
+                            </div>
+                            <a href="#" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Event -->
+                    <div class="event-card reveal" data-category="cultural">
+                        <div class="card-header">
+                            <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg" alt="Cultural Festival">
+                            <div class="event-type cultural">Cultural</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-date-small">
+                                <span class="day">25</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <h3>Annual Cultural Festival</h3>
+                            <p>Celebrate diversity through music, dance, and traditional performances.</p>
+                            <div class="event-info">
+                                <span><i class="fas fa-clock"></i> 5:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> College Ground</span>
+                            </div>
+                            <a href="#" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Sports Event -->
+                    <div class="event-card reveal" data-category="sports">
+                        <div class="card-header">
+                            <img src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg" alt="Sports Tournament">
+                            <div class="event-type sports">Sports</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-date-small">
+                                <span class="day">30</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <h3>Inter-College Sports Meet</h3>
+                            <p>Annual sports competition featuring various athletic events.</p>
+                            <div class="event-info">
+                                <span><i class="fas fa-clock"></i> 9:00 AM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Sports Complex</span>
+                            </div>
+                            <a href="#" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Seminar Event -->
+                    <div class="event-card reveal" data-category="seminar">
+                        <div class="card-header">
+                            <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg" alt="Technology Seminar">
+                            <div class="event-type seminar">Seminar</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="event-date-small">
+                                <span class="day">05</span>
+                                <span class="month">NOV</span>
+                            </div>
+                            <h3>Technology in Education</h3>
+                            <p>Expert discussion on implementing modern technology in education.</p>
+                            <div class="event-info">
+                                <span><i class="fas fa-clock"></i> 11:00 AM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Conference Hall</span>
+                            </div>
+                            <a href="#" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="event-calendar">
+            <div class="container">
+                <h2 class="section-title reveal">Event Calendar</h2>
+                <div class="calendar-wrapper reveal">
+                    <div class="calendar-header">
+                        <button class="calendar-nav prev"><i class="fas fa-chevron-left"></i></button>
+                        <h3 class="current-month">October 2025</h3>
+                        <button class="calendar-nav next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Calendar will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="event-registration">
+            <div class="container">
+                <div class="registration-content reveal">
+                    <h2>Want to Organize an Event?</h2>
+                    <p>Submit your event proposal and join our vibrant community of event organizers.</p>
+                    <a href="#" class="propose-btn">Propose Event</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Rangpur Government College</h3>
+                    <p>Shaping futures since 1902</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rangpur Government College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mainev.js"></script>
+</body>
+</html>
