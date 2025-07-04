@@ -988,21 +988,41 @@
                 </div>
                 <div class="contact-form slide-in-right">
                     <h3>Send us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+
+
+  <form action="submit_english.php" method="POST">
+  <label>First Name*</label><br>
+  <input type="text" name="firstName" required><br><br>
+
+  <label>Last Name*</label><br>
+  <input type="text" name="lastName" required><br><br>
+
+  <label>Email*</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <label>Phone</label><br>
+  <input type="tel" name="phone"><br><br>
+
+  <label>Subject*</label><br>
+  <select name="subject" required>
+    <option value="">Select</option>
+    <option value="general">General Inquiry</option>
+    <option value="admission">Admission</option>
+    <option value="programs">Academic Programs</option>
+    <option value="facilities">Facilities</option>
+    <option value="events">Events</option>
+    <option value="other">Other</option>
+  </select><br><br>
+
+  <label>Message*</label><br>
+  <textarea name="message" rows="5" required></textarea><br><br>
+
+  <button type="submit">Send Message</button>
+</form>
+
+
+
+
                 </div>
             </div>
         </div>

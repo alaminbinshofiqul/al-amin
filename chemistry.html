@@ -974,21 +974,41 @@
                 </div>
                 <div class="contact-form slide-in-right">
                     <h3>Send us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+
+
+  <!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info slide-in-left">
+                <!-- Your existing contact info remains the same -->
+            </div>
+            <div class="contact-form slide-in-right">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    <div id="formResponse" style="margin-top: 15px;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
                 </div>
             </div>
         </div>
@@ -1200,5 +1220,65 @@
         // Start formula animation
         setTimeout(showChemicalFormulas, 2000);
     </script>
+
+
+
+<!-- Add this script right before </body> -->
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    const responseDiv = document.getElementById('formResponse');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Clear previous messages
+    responseDiv.innerHTML = '';
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    
+    try {
+        const response = await fetch('contact_handler.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        // First check if response is OK
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Try to parse JSON
+        const data = await response.json();
+        
+        if (data.success) {
+            responseDiv.innerHTML = `
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> ${data.message}
+                </div>`;
+            form.reset();
+        } else {
+            responseDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i> ${data.message}
+                </div>`;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        responseDiv.innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> 
+                ${error.message || 'Failed to send message. Please try again later.'}
+            </div>`;
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+    }
+});
+</script>
+
 </body>
 </html>

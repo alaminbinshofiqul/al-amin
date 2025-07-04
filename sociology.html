@@ -864,25 +864,74 @@
                 </div>
                 <div class="contact-form slide-in-right">
                     <h3>Send us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+                    
+
+                    <section class="section contact" id="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info slide-in-left">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Address</h3>
+                        <p>Department of Sociology<br>Rangpur Government College<br>Rangpur, Bangladesh</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+880-521-12345<br>+880-521-67890</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>sociology@rgc.edu.bd<br>info@rgc.edu.bd</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Office Hours</h3>
+                        <p>Sunday - Thursday: 9:00 AM - 5:00 PM<br>Friday: 9:00 AM - 12:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form slide-in-right">
+                <h3>Send us a Message</h3>
+                <form id="sociologyContactForm" action="handle_form.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required minlength="5">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required minlength="10"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="spinner"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+                    <div id="formResponse" class="response-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <script>
         // Loading Screen
@@ -1041,5 +1090,84 @@
             }, 100);
         });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('sociologyContactForm');
+    const responseDiv = document.getElementById('formResponse');
+    const submitButton = form.querySelector('.submit-btn');
+    const buttonText = submitButton.querySelector('.btn-text');
+    const spinner = submitButton.querySelector('.spinner');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop page from reloading
+
+        // Show loading spinner
+        buttonText.style.display = 'none';
+        spinner.style.display = 'inline-block';
+        submitButton.disabled = true;
+        responseDiv.style.display = 'none'; // Hide old messages
+
+        const formData = new FormData(form);
+
+        // Send data to the PHP script
+        fetch('handle_form.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // Get the JSON response from PHP
+        .then(data => {
+            // Display the response message
+            responseDiv.textContent = data.message;
+            if (data.status === 'success') {
+                responseDiv.className = 'response-message success';
+                form.reset(); // Clear form fields
+            } else {
+                responseDiv.className = 'response-message error';
+            }
+        })
+        .catch(error => {
+            // Handle network or other errors
+            responseDiv.textContent = 'A network error occurred. Please try again.';
+            responseDiv.className = 'response-message error';
+        })
+        .finally(() => {
+            // Always restore the button after the attempt
+            buttonText.style.display = 'inline-block';
+            spinner.style.display = 'none';
+            submitButton.disabled = false;
+        });
+    });
+});
+</script>
+
+<style>
+    .response-message {
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-align: center;
+        display: none; /* Hidden by default */
+    }
+    .response-message.success {
+        display: block;
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    .response-message.error {
+        display: block;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+    .submit-btn .spinner {
+        display: none;
+    }
+</style>
+
+
+
 </body>
 </html>

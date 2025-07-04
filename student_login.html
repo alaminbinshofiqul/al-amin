@@ -4,471 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login - Rangpur Government College</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        * {
             margin: 0;
             padding: 0;
-        }
-
-        :root {
-            --primary: #4f46e5;
-            --primary-light: #6366f1;
-            --primary-dark: #4338ca;
-            --secondary: #f97316;
-            --secondary-light: #fb923c;
-            --secondary-dark: #ea580c;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gray-light: #94a3b8;
-            --gray-dark: #475569;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --info: #06b6d4;
-            --white: #ffffff;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        /* Animated Background Elements */
-        .bg-elements {
+        /* Animated Background */
+        .bg-animation {
             position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bg-image {
-            position: absolute;
-            inset: 0;
-            opacity: 0.1;
-            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s ease-out;
-        }
-
-        .bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            mix-blend-mode: multiply;
-            opacity: 0.2;
-        }
-
-        .bg-blob-1 {
-            top: 10%;
-            left: 10%;
-            width: 20rem;
-            height: 20rem;
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .bg-blob-2 {
-            top: 20%;
-            right: 15%;
-            width: 25rem;
-            height: 25rem;
-            background: linear-gradient(45deg, #10b981, #06b6d4);
-            animation: float 25s infinite ease-in-out 3s;
-        }
-
-        .bg-blob-3 {
-            bottom: 15%;
-            left: 20%;
-            width: 22rem;
-            height: 22rem;
-            background: linear-gradient(45deg, #a855f7, #8b5cf6);
-            animation: float 18s infinite ease-in-out 6s;
-        }
-
-        .bg-blob-4 {
-            bottom: 25%;
-            right: 10%;
-            width: 18rem;
-            height: 18rem;
-            background: linear-gradient(45deg, #ef4444, #f43f5e);
-            animation: float 22s infinite ease-in-out 9s;
-        }
-
-        /* Floating Academic Elements */
-        .academic-elements {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .academic-shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: academicFloat 12s infinite ease-in-out;
-            font-size: 2rem;
-        }
-
-        .academic-shape-1 {
-            top: 15%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .academic-shape-2 {
-            top: 25%;
-            right: 8%;
-            animation-delay: 2s;
-        }
-
-        .academic-shape-3 {
-            top: 65%;
-            left: 8%;
-            animation-delay: 4s;
-        }
-
-        .academic-shape-4 {
-            bottom: 20%;
-            right: 12%;
-            animation-delay: 6s;
-        }
-
-        .academic-shape-5 {
-            top: 45%;
-            left: 12%;
-            animation-delay: 1s;
-        }
-
-        .academic-shape-6 {
-            bottom: 35%;
-            right: 25%;
-            animation-delay: 3s;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg) scale(1);
-            }
-            25% {
-                transform: translateY(-20px) rotate(90deg) scale(1.05);
-            }
-            50% {
-                transform: translateY(-10px) rotate(180deg) scale(0.95);
-            }
-            75% {
-                transform: translateY(-30px) rotate(270deg) scale(1.1);
-            }
-        }
-
-        @keyframes academicFloat {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-15px) rotate(180deg);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 53%, 80%, 100% {
-                transform: translate3d(0, 0, 0);
-            }
-            40%, 43% {
-                transform: translate3d(0, -30px, 0);
-            }
-            70% {
-                transform: translate3d(0, -15px, 0);
-            }
-            90% {
-                transform: translate3d(0, -4px, 0);
-            }
-        }
-
-        /* Layout */
-        .container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .login-wrapper {
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            position: relative;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #667eea, #764ba2);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
 
-        .login-wrapper::before {
+        .bg-animation::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
         }
 
-        /* Left Side - Branding */
-        .login-brand {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .login-brand::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(0.5deg); }
+            66% { transform: translateY(15px) rotate(-0.5deg); }
+        }
+
+        /* Scrolling Background Images */
+        .scrolling-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            z-index: -1;
             opacity: 0.1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white"/><circle cx="20" cy="20" r="1" fill="white"/><circle cx="80" cy="30" r="1.5" fill="white"/><circle cx="30" cy="70" r="1" fill="white"/><circle cx="70" cy="80" r="2" fill="white"/></svg>') repeat;
+            animation: scroll 30s linear infinite;
         }
 
-        .brand-content {
-            position: relative;
-            z-index: 2;
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+            animation: slideDown 1s ease-out;
         }
 
         .college-logo {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            animation: bounce 2s infinite;
+            font-size: 2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .college-name {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease-out;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .college-tagline {
-            font-size: 1.125rem;
+        .college-subtitle {
+            font-size: 1.1rem;
             opacity: 0.9;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            font-weight: 300;
         }
 
-        .brand-features {
+        /* Login Container */
+        .login-container {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .brand-feature {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            backdrop-filter: blur(10px);
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .brand-feature:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .brand-feature:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .brand-feature-icon {
-            font-size: 1.5rem;
-        }
-
-        .brand-feature-text {
-            font-weight: 500;
-        }
-
-        /* Right Side - Login Form */
-        .login-form-section {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideUp 1s ease-out 0.3s both;
             position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .login-header {
             text-align: center;
             margin-bottom: 2rem;
-            animation: fadeInDown 1s ease-out 0.5s both;
         }
 
         .login-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 2rem;
+            color: #333;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .login-subtitle {
-            color: var(--gray);
-            font-size: 1.125rem;
+            color: #666;
+            font-size: 0.95rem;
         }
 
-        .login-form {
-            animation: fadeInUp 1s ease-out 0.7s both;
-        }
-
+        /* Form Styles */
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
         }
 
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s ease;
-        }
-
         .form-input {
             width: 100%;
             padding: 1rem 1rem 1rem 3rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .form-input:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-            background: white;
-        }
-
-        .form-input.error {
-            border-color: var(--danger);
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .form-icon {
@@ -476,520 +196,206 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gray);
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
+            color: #999;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
         }
 
         .form-input:focus + .form-icon {
-            color: var(--primary);
+            color: #667eea;
         }
 
-        .form-error {
-            color: var(--danger);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--gray);
-            cursor: pointer;
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .password-toggle:hover {
-            color: var(--primary);
-        }
-
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkbox {
-            width: 1.25rem;
-            height: 1.25rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.25rem;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox input {
-            opacity: 0;
-            position: absolute;
-            inset: 0;
-            cursor: pointer;
-        }
-
-        .checkbox input:checked + .checkmark {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .checkbox input:checked + .checkmark::after {
-            display: block;
-        }
-
-        .checkmark {
-            position: absolute;
-            inset: 0;
-            border-radius: 0.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .checkmark::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 0.875rem;
-            font-weight: bold;
-            display: none;
-        }
-
-        .forgot-password {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .forgot-password:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
-        .login-button {
+        .login-btn {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 0.75rem;
-            font-size: 1.125rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            margin-bottom: 1.5rem;
         }
 
-        .login-button::before {
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .login-button:hover::before {
-            transform: translateX(100%);
+        .login-btn:hover::before {
+            left: 100%;
         }
 
-        .login-button:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-        }
-
-        .login-button:disabled {
-            background: var(--gray-light);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .button-loading {
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s linear infinite;
-            margin-right: 0.5rem;
-            display: none;
-        }
-
-        .login-divider {
+        /* Additional Links */
+        .login-links {
             text-align: center;
-            margin: 1.5rem 0;
-            position: relative;
-            color: var(--gray);
+            margin-top: 1.5rem;
         }
 
-        .login-divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e2e8f0;
-        }
-
-        .login-divider span {
-            background: white;
-            padding: 0 1rem;
-            position: relative;
-        }
-
-        .social-login {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-button {
-            padding: 0.75rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
-            background: white;
-            color: var(--dark);
+        .login-links a {
+            color: #667eea;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
         }
 
-        .social-button:hover {
-            border-color: var(--primary);
-            background: rgba(79, 70, 229, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .login-footer {
-            text-align: center;
-            color: var(--gray);
-        }
-
-        .login-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .login-footer a:hover {
+        .login-links a:hover {
+            color: #764ba2;
             text-decoration: underline;
         }
 
-        /* Success Message */
-        .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            padding: 1rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1.5rem;
-            display: none;
-            animation: fadeInUp 0.5s ease;
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Loading Overlay */
-        .loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .loading-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .loading-spinner {
-            width: 4rem;
-            height: 4rem;
-            border: 4px solid rgba(79, 70, 229, 0.2);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s linear infinite;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .login-wrapper {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-            }
-
-            .login-brand {
-                display: none;
-            }
-
-            .login-form-section {
-                padding: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .login-form-section {
-                padding: 1.5rem;
-            }
-
-            .login-title {
+            .college-name {
                 font-size: 2rem;
             }
-
-            .college-name {
-                font-size: 1.5rem;
+            
+            .login-card {
+                padding: 2rem;
+                margin: 1rem;
             }
-
-            .social-login {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .login-title {
-                font-size: 1.75rem;
-            }
-
-            .form-input {
-                padding: 0.875rem 0.875rem 0.875rem 2.5rem;
-            }
-
-            .form-icon {
-                left: 0.875rem;
-                font-size: 1.125rem;
+            
+            .header {
+                padding: 1rem 0;
             }
         }
 
-        /* Additional Animations */
-        .animate-on-scroll {
+        /* Loading Animation */
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
         }
 
-        .animate-on-scroll.visible {
+        .message.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-            animation: pulse 2s infinite;
+        .message.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.6);
-        }
-
-        /* Notification Toast */
-        .toast {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: white;
-            color: var(--dark);
-            padding: 1rem 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast.success {
-            border-left: 4px solid var(--success);
-        }
-
-        .toast.error {
-            border-left: 4px solid var(--danger);
-        }
-
-        .toast.warning {
-            border-left: 4px solid var(--warning);
+        .message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
     </style>
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="bg-elements">
-        <div class="bg-image" id="parallaxBg"></div>
-        <div class="bg-blob bg-blob-1"></div>
-        <div class="bg-blob bg-blob-2"></div>
-        <div class="bg-blob bg-blob-3"></div>
-        <div class="bg-blob bg-blob-4"></div>
-    </div>
+    <div class="bg-animation"></div>
+    <div class="scrolling-bg"></div>
 
-    <!-- Floating Academic Elements -->
-    <div class="academic-elements">
-        <div class="academic-shape academic-shape-1">🎓</div>
-        <div class="academic-shape academic-shape-2">📚</div>
-        <div class="academic-shape academic-shape-3">🔬</div>
-        <div class="academic-shape academic-shape-4">💻</div>
-        <div class="academic-shape academic-shape-5">📊</div>
-        <div class="academic-shape academic-shape-6">🏆</div>
-    </div>
+    <header class="header">
+        <div class="college-logo">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h1 class="college-name">Rangpur Government College</h1>
+        <p class="college-subtitle">Excellence in Education Since 1962</p>
+    </header>
 
-    <!-- Main Container -->
-    <div class="container">
-        <div class="login-wrapper">
-            <!-- Left Side - Branding -->
-            <div class="login-brand">
-                <div class="brand-content">
-                    <div class="college-logo">🏛️</div>
-                    <h1 class="college-name">Rangpur Government College</h1>
-                    <p class="college-tagline">Excellence in Education Since 1965</p>
-                    
-                    <div class="brand-features">
-                        <div class="brand-feature">
-                            <span class="brand-feature-icon">🌟</span>
-                            <span class="brand-feature-text">Premier Educational Institution</span>
-                        </div>
-                        <div class="brand-feature">
-                            <span class="brand-feature-icon">👨‍🎓</span>
-                            <span class="brand-feature-text">10,000+ Alumni Network</span>
-                        </div>
-                        <div class="brand-feature">
-                            <span class="brand-feature-icon">🏅</span>
-                            <span class="brand-feature-text">Award-Winning Programs</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2 class="login-title">Student Portal</h2>
+                <p class="login-subtitle">Sign in to access your academic dashboard</p>
             </div>
 
-            <!-- Right Side - Login Form -->
-            <div class="login-form-section">
-                <div class="login-header">
-                    <h2 class="login-title">Student Portal</h2>
-                    <p class="login-subtitle">Access your academic dashboard</p>
+            <div id="message" class="message"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="studentId" class="form-input" placeholder="Student ID" required>
+                    <i class="fas fa-user form-icon"></i>
                 </div>
 
-                <div class="success-message" id="successMessage">
-                    Login successful! Redirecting to your dashboard...
+                <div class="form-group">
+                    <input type="password" id="password" class="form-input" placeholder="Password" required>
+                    <i class="fas fa-lock form-icon"></i>
                 </div>
 
-                <form class="login-form" id="loginForm">
-                    <div class="form-group">
-                        <label for="studentId" class="form-label">Student ID</label>
-                        <div style="position: relative;">
-                            <input type="text" id="studentId" name="studentId" class="form-input" placeholder="Enter your student ID" required>
-                            <span class="form-icon">👤</span>
-                        </div>
-                        <div class="form-error" id="studentIdError"></div>
-                    </div>
+                <button type="submit" class="login-btn">
+                    Sign In
+                    <div class="loading" id="loading"></div>
+                </button>
+            </form>
 
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <div style="position: relative;">
-                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
-                            <span class="form-icon">🔒</span>
-                            <button type="button" class="password-toggle" id="passwordToggle">👁️</button>
-                        </div>
-                        <div class="form-error" id="passwordError"></div>
-                    </div>
-
-                    <div class="form-options">
-                        <label class="remember-me">
-                            <div class="checkbox">
-                                <input type="checkbox" id="rememberMe">
-                                <span class="checkmark"></span>
-                            </div>
-                            <span>Remember me</span>
-                        </label>
-                        <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
-                    </div>
-
-                    <button type="submit" class="login-button" id="loginButton">
-                        <span class="button-loading" id="buttonLoading"></span>
-                        Sign In
-                    </button>
-                </form>
-
-                <div class="login-divider">
-                    <span>or continue with</span>
-                </div>
-
-                <div class="social-login">
-                    <a href="#" class="social-button" id="googleLogin">
-                        <span>🔍</span>
-                        <span>Google</span>
-                    </a>
-                    <a href="#" class="social-button" id="microsoftLogin">
-                        <span>🪟</span>
-                        <span>Microsoft</span>
-                    </a>
-                </div>
-
-                <div class="login-footer">
-                    <p>Don't have an account? <a href="#" id="registerLink">Register here</a></p>
-                    <p><a href="#" id="guestAccess">Continue as Guest</a></p>
-                </div>
+            <div class="login-links">
+                <a href="#" id="forgotPassword">Forgot Password?</a>
+                <a href="#" id="newStudent">New Student Registration</a>
             </div>
         </div>
-    </div>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-    </div>
-
-    <!-- Floating Action Button -->
-    <button class="fab" id="helpButton" title="Need Help?">❓</button>
-
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        <div id="toastMessage"></div>
     </div>
 
     <script>
@@ -997,371 +403,178 @@
         const loginForm = document.getElementById('loginForm');
         const studentIdInput = document.getElementById('studentId');
         const passwordInput = document.getElementById('password');
-        const passwordToggle = document.getElementById('passwordToggle');
-        const rememberMeCheckbox = document.getElementById('rememberMe');
-        const loginButton = document.getElementById('loginButton');
-        const buttonLoading = document.getElementById('buttonLoading');
-        const successMessage = document.getElementById('successMessage');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const parallaxBg = document.getElementById('parallaxBg');
-        const helpButton = document.getElementById('helpButton');
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toastMessage');
+        const loginBtn = document.querySelector('.login-btn');
+        const loading = document.getElementById('loading');
+        const messageDiv = document.getElementById('message');
 
-        // Error elements
-        const studentIdError = document.getElementById('studentIdError');
-        const passwordError = document.getElementById('passwordError');
-
-        // Demo credentials
-        const demoCredentials = {
-            'RGC2024001': 'student123',
-            'RGC2024002': 'password456',
-            'admin': 'admin123'
-        };
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeApp();
+        // Animation on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
         });
 
-        function initializeApp() {
-            // Add event listeners
-            loginForm.addEventListener('submit', handleLogin);
-            passwordToggle.addEventListener('click', togglePassword);
-            helpButton.addEventListener('click', showHelp);
-            
-            // Add scroll event for parallax
-            window.addEventListener('scroll', handleParallax);
-            
-            // Add input validation
-            studentIdInput.addEventListener('input', validateStudentId);
-            passwordInput.addEventListener('input', validatePassword);
-            
-            // Load saved credentials
-            loadSavedCredentials();
-            
-            // Add keyboard shortcuts
-            document.addEventListener('keydown', handleKeyboardShortcuts);
-            
-            // Add social login handlers
-            document.getElementById('googleLogin').addEventListener('click', handleGoogleLogin);
-            document.getElementById('microsoftLogin').addEventListener('click', handleMicrosoftLogin);
-            document.getElementById('forgotPassword').addEventListener('click', handleForgotPassword);
-            document.getElementById('registerLink').addEventListener('click', handleRegister);
-            document.getElementById('guestAccess').addEventListener('click', handleGuestAccess);
-            
-            // Show welcome toast
-            setTimeout(() => {
-                showToast('Welcome to Rangpur Government College Student Portal!', 'success');
-            }, 1000);
-        }
-
-        // Handle login form submission
-        async function handleLogin(e) {
+        // Form submission handler
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Reset errors
-            clearErrors();
-            
-            // Get form data
             const studentId = studentIdInput.value.trim();
-            const password = passwordInput.value;
-            const rememberMe = rememberMeCheckbox.checked;
-            
-            // Validate inputs
-            if (!validateForm(studentId, password)) {
+            const password = passwordInput.value.trim();
+
+            if (!studentId || !password) {
+                showMessage('Please fill in all fields', 'error');
                 return;
             }
-            
+
             // Show loading state
             setLoadingState(true);
-            
+
             try {
                 // Simulate API call
                 await simulateLogin(studentId, password);
                 
-                // Save credentials if remember me is checked
-                if (rememberMe) {
-                    saveCredentials(studentId);
-                }
+                showMessage('Login successful! Redirecting...', 'success');
                 
-                // Show success
-                showSuccess();
-                
-                // Redirect after delay
+                // Simulate redirect after success
                 setTimeout(() => {
-                    redirectToDashboard();
+                    window.location.href = '/dashboard';
                 }, 2000);
-                
+
             } catch (error) {
+                showMessage(error.message, 'error');
+            } finally {
                 setLoadingState(false);
-                showToast(error.message, 'error');
             }
-        }
+        });
 
         // Simulate login API call
         function simulateLogin(studentId, password) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (demoCredentials[studentId] === password) {
-                        resolve({ success: true, user: { id: studentId } });
+                    // Demo credentials
+                    if (studentId === 'RGC2024001' && password === 'student123') {
+                        resolve({ success: true });
                     } else {
                         reject(new Error('Invalid student ID or password'));
                     }
-                }, 1500);
+                }, 2000);
             });
         }
 
-        // Validate form inputs
-        function validateForm(studentId, password) {
-            let isValid = true;
-            
-            // Validate student ID
-            if (!studentId) {
-                showFieldError('studentId', 'Student ID is required');
-                isValid = false;
-            } else if (studentId.length < 6) {
-                showFieldError('studentId', 'Student ID must be at least 6 characters');
-                isValid = false;
-            }
-            
-            // Validate password
-            if (!password) {
-                showFieldError('password', 'Password is required');
-                isValid = false;
-            } else if (password.length < 6) {
-                showFieldError('password', 'Password must be at least 6 characters');
-                isValid = false;
-            }
-            
-            return isValid;
-        }
-
-        // Real-time validation
-        function validateStudentId() {
-            const value = studentIdInput.value.trim();
-            if (value && value.length < 6) {
-                showFieldError('studentId', 'Student ID must be at least 6 characters');
+        // Show loading state
+        function setLoadingState(isLoading) {
+            if (isLoading) {
+                loginBtn.disabled = true;
+                loginBtn.style.opacity = '0.7';
+                loading.style.display = 'inline-block';
             } else {
-                clearFieldError('studentId');
+                loginBtn.disabled = false;
+                loginBtn.style.opacity = '1';
+                loading.style.display = 'none';
             }
         }
 
-        function validatePassword() {
-            const value = passwordInput.value;
-            if (value && value.length < 6) {
-                showFieldError('password', 'Password must be at least 6 characters');
-            } else {
-                clearFieldError('password');
-            }
+        // Show message
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.classList.add('show');
+
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 5000);
         }
 
-        // Show field error
-        function showFieldError(fieldName, message) {
-            const input = document.getElementById(fieldName);
-            const error = document.getElementById(fieldName + 'Error');
-            
-            input.classList.add('error');
-            error.textContent = message;
-            error.style.display = 'block';
-        }
+        // Input animations
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.transform = 'scale(1.02)';
+            });
 
-        // Clear field error
-        function clearFieldError(fieldName) {
-            const input = document.getElementById(fieldName);
-            const error = document.getElementById(fieldName + 'Error');
-            
-            input.classList.remove('error');
-            error.style.display = 'none';
-        }
+            input.addEventListener('blur', () => {
+                input.parentElement.style.transform = 'scale(1)';
+            });
+        });
 
-        // Clear all errors
-        function clearErrors() {
-            clearFieldError('studentId');
-            clearFieldError('password');
-        }
+        // Forgot password handler
+        document.getElementById('forgotPassword').addEventListener('click', (e) => {
+            e.preventDefault();
+            showMessage('Password reset link will be sent to your registered email', 'success');
+        });
 
-        // Set loading state
-        function setLoadingState(loading) {
-            if (loading) {
-                loginButton.disabled = true;
-                buttonLoading.style.display = 'inline-block';
-                loadingOverlay.classList.add('active');
-            } else {
-                loginButton.disabled = false;
-                buttonLoading.style.display = 'none';
-                loadingOverlay.classList.remove('active');
-            }
-        }
+        // New student registration handler
+        document.getElementById('newStudent').addEventListener('click', (e) => {
+            e.preventDefault();
+            showMessage('Please contact the admission office for new registration', 'success');
+        });
 
-        // Show success message
-        function showSuccess() {
-            setLoadingState(false);
-            successMessage.style.display = 'block';
-            showToast('Login successful! Welcome back!', 'success');
-        }
-
-        // Toggle password visibility
-        function togglePassword() {
-            const type = passwordInput.type === 'password' ? 'text' : 'password';
-            passwordInput.type = type;
-            passwordToggle.textContent = type === 'password' ? '👁️' : '🙈';
-        }
-
-        // Handle parallax scrolling
-        function handleParallax() {
-            const scrollY = window.pageYOffset;
-            if (parallaxBg) {
-                parallaxBg.style.transform = `translateY(${scrollY * 0.5}px)`;
-            }
-        }
-
-        // Save credentials to localStorage
-        function saveCredentials(studentId) {
-            localStorage.setItem('rememberedStudentId', studentId);
-        }
-
-        // Load saved credentials
-        function loadSavedCredentials() {
-            const savedStudentId = localStorage.getItem('rememberedStudentId');
-            if (savedStudentId) {
-                studentIdInput.value = savedStudentId;
-                rememberMeCheckbox.checked = true;
-            }
-        }
-
-        // Handle keyboard shortcuts
-        function handleKeyboardShortcuts(e) {
-            // Ctrl/Cmd + Enter to submit form
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
                 loginForm.dispatchEvent(new Event('submit'));
             }
-            
-            // Escape to clear form
-            if (e.key === 'Escape') {
-                clearForm();
-            }
-        }
+        });
 
-        // Clear form
-        function clearForm() {
-            loginForm.reset();
-            clearErrors();
-        }
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.scrolling-bg');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateX(-${50 + speed * 0.01}%)`;
+        });
 
-        // Show help
-        function showHelp() {
-            const helpText = `
-                Demo Credentials:
-                • Student ID: RGC2024001, Password: student123
-                • Student ID: RGC2024002, Password: password456
-                • Student ID: admin, Password: admin123
-                
-                Features:
-                • Remember me functionality
-                • Real-time validation
-                • Keyboard shortcuts (Ctrl+Enter to submit, Esc to clear)
-                • Social login options
+        // Add floating particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: -1;
+                animation: float-particle 15s linear infinite;
             `;
             
-            alert(helpText);
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 15000);
         }
 
-        // Social login handlers
-        function handleGoogleLogin(e) {
-            e.preventDefault();
-            showToast('Google login integration coming soon!', 'warning');
-        }
-
-        function handleMicrosoftLogin(e) {
-            e.preventDefault();
-            showToast('Microsoft login integration coming soon!', 'warning');
-        }
-
-        function handleForgotPassword(e) {
-            e.preventDefault();
-            const email = prompt('Enter your email address to reset password:');
-            if (email) {
-                showToast('Password reset link sent to your email!', 'success');
+        // Add particle animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-particle {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
             }
-        }
+        `;
+        document.head.appendChild(style);
 
-        function handleRegister(e) {
-            e.preventDefault();
-            showToast('Registration portal will open soon!', 'warning');
-        }
+        // Create particles periodically
+        setInterval(createParticle, 3000);
 
-        function handleGuestAccess(e) {
-            e.preventDefault();
-            showToast('Redirecting to guest portal...', 'success');
-            setTimeout(() => {
-                window.location.href = '#guest-portal';
-            }, 1500);
-        }
-
-        // Redirect to dashboard
-        function redirectToDashboard() {
-            // In a real application, this would redirect to the actual dashboard
-            showToast('Redirecting to dashboard...', 'success');
-            setTimeout(() => {
-                window.location.href = '#dashboard';
-            }, 1000);
-        }
-
-        // Show toast notification
-        function showToast(message, type = 'success') {
-            toastMessage.textContent = message;
-            toast.className = `toast ${type}`;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Add some interactive animations
-        document.addEventListener('mousemove', function(e) {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            // Move floating elements based on mouse position
-            const academicShapes = document.querySelectorAll('.academic-shape');
-            academicShapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = mouseX * speed;
-                const y = mouseY * speed;
-                shape.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
-
-        // Add focus animations
-        const formInputs = document.querySelectorAll('.form-input');
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
-            });
-        });
-
-        // Add click animations to buttons
-        const buttons = document.querySelectorAll('button, .social-button');
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Auto-focus first input
-        setTimeout(() => {
-            studentIdInput.focus();
-        }, 500);
+        // Demo credentials info
+        console.log('Demo Credentials:');
+        console.log('Student ID: RGC2024001');
+        console.log('Password: student123');
     </script>
 </body>
 </html>

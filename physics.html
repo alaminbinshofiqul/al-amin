@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Department - Rangpur Government College</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
     <style>
+
+
+
+
+
+        /* Basic styles for the alert messages */
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .alert-success {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+        }
+        .alert-danger {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+
+
+    <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -752,6 +783,10 @@
             100% { transform: rotate(360deg); }
         }
     </style>
+
+
+
+
 </head>
 <body>
     
@@ -923,61 +958,42 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info slide-in-left">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Address</h3>
-                            <p>Department of Physics<br>Rangpur Government College<br>Rangpur, Bangladesh</p>
-                        </div>
+      <!-- Contact Section -->
+    <!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        
+        <!-- Success message display -->
+        <div id="form-success" style="display: none; background: #4CAF50; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+            Thank you for your message! We'll get back to you soon.
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info slide-in-left">
+                <!-- ... (keep your existing contact info) ... -->
+            </div>
+            <div class="contact-form slide-in-right">
+                <h3>Send us a Message</h3>
+                <form action="process_contact.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+880-521-12349<br>+880-521-67894</p>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>physics@rgc.edu.bd<br>info@rgc.edu.bd</p>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Office Hours</h3>
-                            <p>Sunday - Thursday: 9:00 AM - 5:00 PM<br>Friday: 9:00 AM - 12:00 PM</p>
-                        </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                     </div>
-                </div>
-                <div class="contact-form slide-in-right">
-                    <h3>Send us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <script>
         // Loading Screen
@@ -1185,5 +1201,29 @@
         // Start formula animation
         setTimeout(showPhysicsFormulas, 2000);
     </script>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success')) {
+        alert("Thanks for your message! We’ll get back to you soon.");
+    }
+</script>
+
+
+<script>
+// Check for success parameter in URL
+const urlParams = new URLSearchParams(window.location.search);
+const successParam = urlParams.get('success');
+
+if (successParam === '1') {
+    // Show success message
+    document.getElementById('form-success').style.display = 'block';
+    
+    // Remove the success parameter from URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+</script>
+
+
 </body>
 </html>
