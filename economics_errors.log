@@ -1,0 +1,2 @@
+[05-Jul-2025 06:14:42 Europe/Berlin] Primary connection failed, trying root: SQLSTATE[HY000] [1045] Access denied for user 'economics_user'@'localhost' (using password: YES)
+[05-Jul-2025 06:14:44 Europe/Berlin] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\webdesign\economics_contact_handler.php on line 104

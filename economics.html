@@ -862,62 +862,122 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info slide-in-left">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Address</h3>
-                            <p>Department of Economics<br>Rangpur Government College<br>Rangpur, Bangladesh</p>
-                        </div>
+    <!-- Contact Section -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <h2 class="section-title fade-in">Contact Economics Department</h2>
+        <div class="contact-content">
+            <div class="contact-info slide-in-left">
+                <!-- Your existing contact info -->
+            </div>
+            <div class="contact-form slide-in-right">
+                <h3>Send us a Message</h3>
+                <form id="economicsContactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required minlength="3">
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+880-521-12346<br>+880-521-67891</p>
-                        </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>economics@rgc.edu.bd<br>info@rgc.edu.bd</p>
-                        </div>
+                    <div class="form-group">
+                        <select name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="Admission Inquiry">Admission Inquiry</option>
+                            <option value="Course Information">Course Information</option>
+                            <option value="Research Collaboration">Research Collaboration</option>
+                            <option value="Other Query">Other Query</option>
+                        </select>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Office Hours</h3>
-                            <p>Sunday - Thursday: 9:00 AM - 5:00 PM<br>Friday: 9:00 AM - 12:00 PM</p>
-                        </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required minlength="20"></textarea>
                     </div>
-                </div>
-                <div class="contact-form slide-in-right">
-                    <h3>Send us a Message</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="spinner" style="display:none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                    <div id="economicsFormResponse" class="response-message"></div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<script>
+document.getElementById('economicsContactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    const responseDiv = document.getElementById('economicsFormResponse');
+    const submitBtn = form.querySelector('.submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const spinner = submitBtn.querySelector('.spinner');
+    
+    // UI Feedback
+    responseDiv.innerHTML = '';
+    responseDiv.className = 'response-message';
+    btnText.style.display = 'none';
+    spinner.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    try {
+        const response = await fetch('economics_contact_handler.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            responseDiv.innerHTML = `
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i> ${data.message}
+                </div>`;
+            form.reset();
+        } else {
+            responseDiv.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> ${data.message}
+                </div>`;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        responseDiv.innerHTML = `
+            <div class="error-message">
+                <i class="fas fa-exclamation-triangle"></i> Failed to send message. Please try again.
+            </div>`;
+    } finally {
+        btnText.style.display = 'inline-block';
+        spinner.style.display = 'none';
+        submitBtn.disabled = false;
+    }
+});
+</script>
+
+<style>
+.response-message {
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+.success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+.spinner {
+    margin-left: 8px;
+}
+</style>
     <script>
         // Loading Screen
         window.addEventListener('load', function() {
